@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>CB_Customer</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-calendar/components/bootstrap3/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+        <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">  
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/src/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-calendar/css/calendar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-calendar/components/bootstrap3/css/bootstrap-theme.min.css') }}">
+
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/profile.css') }}">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>	
+
+<body>
+
+
+<div class="wrapper">
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img id="logo-header" src="../static/img/logos/logo2.png" alt="Logo">
+            </a>
+            <!-- End Logo -->
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active">
+                                <a href="/">Index </a> 
+                            </li>
+                            <li><a href="#">Customer <i class="fa fa-check"></i></a></li>
+                            <li><a href="/ivendor/">Vendor</a></li>
+                            <li><a href="/metrics/">Admin</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_faq.html">Help</a></li>  
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_login.html">Login</a></li>   
+                </ul>
+                <!-- End Topbar Navigation -->
+            </div>
+        </div>
+        <!-- End Topbar -->
+    
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" style="padding-top:25px">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <!-- Home -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Option 1: Default Page</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Home -->
+
+                    <!-- Search Block -->
+                    <li>
+                        <i class="search fa fa-search search-btn"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>    
+                    </li>
+                    <!-- End Search Block -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+            </div>    
+        </div>            
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===-->
+
+{% block content %}{% endblock %}
+    <div class="footer-v1">
+
+        <!--=== Copyright ===-->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            2014 &copy; Unify. ALL Rights Reserved. 
+                            <a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">  
+                        <a href="index.html">
+                            <img class="pull-right" id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div> 
+        </div><!--/copyright--> 
+        <!--=== End Copyright ===-->
+    </div>
+</div><!--/wrapper-->
+
+<!-- JS Global Compulsory -->           
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-1.10.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-migrate-1.2.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap-calendar/components/bootstrap3/js/bootstrap.min.js') }}"></script>
+<!-- JS Calendar Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap-calendar/js/calendar.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap-calendar/components/underscore/underscore-min.js') }}"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/waypoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/jquery.counterup.min.js') }}"></script> 
+<!-- Datepicker Form -->
+<script src="{{ url_for('static', filename='plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js') }}"></script>
+<!-- Scrollbar -->
+<script src="{{ url_for('static', filename='plugins/scrollbar/src/jquery.mousewheel.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/scrollbar/src/perfect-scrollbar.js') }}"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/datepicker.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initCounter();
+        Datepicker.initDatepicker();
+    });
+</script>
+<script>
+    jQuery(document).ready(function ($) {
+        "use strict";
+        $('.contentHolder').perfectScrollbar();
+    });
+</script>
+<script type="text/javascript">
+    var calendar = $("#calendar").calendar(
+        {
+            events_source: '/static/plugins/bootstrap-calendar/events.json.php'
+        }); 
+</script>
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js') }}"></script>
+<![endif]-->
+
+</body>
+</html>	    

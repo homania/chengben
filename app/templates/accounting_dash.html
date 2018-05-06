@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>Pay | Admin</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">     
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css')}}">
+<style>
+
+.INclass a {
+    font-weight:bold;
+    color:green;
+}
+
+.OUTclass a {
+    font-weight:bold;
+    color:red;
+}
+
+.BOTHclass a {
+    font-weight:bold;
+    color:blue;
+}
+
+</style>
+
+</head>	
+
+<body>
+
+
+<div class="wrapper">
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div>
+            <a class="navbar-brand" href="index.html">
+                <img id="logo-header" src="../static/img/logos/logo2.png" alt="Logo">
+            </a>
+            </div>
+            <!-- End Logo -->
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active">
+                                <a href="/">Index</a> 
+                            </li>
+                            <li><a href="/customer/">Customer</a></li>
+                            <li><a href="#">Vendor <i class="fa fa-check"></i></a></a></li>
+                            <li><a href="/metrics/">Admin</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_faq.html">Help</a></li>  
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_login.html">Login</a></li>   
+                </ul>
+                <!-- End Topbar Navigation -->
+            </div>
+        </div>
+        <!-- End Topbar -->
+    
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" style="padding-top:25px;">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <!-- Home -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Option 1: Default Page</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Home -->
+
+                    <!-- Search Block -->
+                    <li>
+                        <i class="search fa fa-search search-btn"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>    
+                    </li>
+                    <!-- End Search Block -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+            </div>    
+        </div>            
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===-->   
+
+    <!--=== Profile ===-->
+    <div class="profile container content">
+    	<div class="row">
+            <!--Left Sidebar-->
+            <div class="col-md-3 md-margin-bottom-40">
+                <img class="img-responsive profile-img margin-bottom-20"  src="{{ url_for('static', filename='img/custom/NFprofile.jpg')}}" alt="">
+
+                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                    <li class="list-group-item active">
+                        <a href="profile.html"><i class="fa fa-bar-chart-o"></i> Overall</a>
+                    </li>
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-metrics" data-toggle="collapse"><i class="fa fa-cubes"></i>  Metrics 客服</a>
+                        <ul id="collapse-content-metrics" class="collapse in">
+                            <li>                           
+                                <a href="admin_metrics.php"><i class="fa fa-cog"></i> Clicks/ Site Performance</a>
+                            </li>
+                            <li><a href="admin_metrics.php"><i class="fa fa-align-center"></i> Items 食品</a></li>
+                            <li><a href="admin_metrics.php"><i class="fa fa-align-center"></i> Brands 品牌</a></li>
+                            <li><a href="admin_metrics.php"><i class="fa fa-align-center"></i> Vendors 商業/場商</a></li>
+                            <li><a href="admin_metrics.php"><i class="fa fa-align-center"></i> Members 會員</a></li>
+                        </ul>
+                    </li>                      
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-items" data-toggle="collapse"><i class="fa fa-cubes"></i> Item Mgmt 食品管理</a>
+                        <ul id="collapse-content-items" class="collapse in">
+                            <li>
+                                <span class="badge badge-u">New</span>                            
+                                <a href="admin_items.php"><i class="fa fa-cog"></i> Items 食品</a>
+                            </li>
+                            <li><a href="admin_items.php"><i class="fa fa-align-center"></i> Brands 品牌</a></li>
+                            <li><a href="admin_items.php"><i class="fa fa-align-center"></i> Vendors 商業/場商</a></li>
+                            <li><span class="badge badge-red">Later</span> <a href="admin_items.php"><i class="fa fa-align-center"></i> Vendor-Daily Budget</a></li>
+                            <li><a href="admin_items.php"><i class="fa fa-align-center"></i> Members 會員</a></li>
+                        </ul>
+                    </li>                         
+                    
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-cats" data-toggle="collapse"><i class="fa fa-cubes"></i>  Category Mgmt </a>
+                        <ul id="collapse-content-cats" class="collapse in">
+                            <li><a href="#"><i class="fa fa-cog"></i> MainPage </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> SubCategories</a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Items/ SearchTags</a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Vendors SubCats 商業/場商</a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Members 會員</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-receive" data-toggle="collapse"><i class="fa fa-cubes"></i>  Accounts Receivables 快計收款</a>
+                        <ul id="collapse-content-receive" class="collapse in">
+                            <li><a href="admin_receive.php"><i class="fa fa-cog"></i> Due this Month </a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-cog"></i> Receivables Calendar </a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Receivables Entry</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Past Due/ Warn/ Schedule PickUp</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Invoice Re-Print/Email</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Vendors Acct Suspend 商業/場商</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Daily/Monthly Revenue Chart</a></li>
+                        </ul>
+                    </li>                        
+                                     
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-pay" data-toggle="collapse"><i class="fa fa-cubes"></i>  Accounts Payables 快計收款</a>
+                        <ul id="collapse-content-pay" class="collapse in">
+                            <li><a href="admin_pay.php"><i class="fa fa-cog"></i> Payments Calendar </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Payment Entry (Sing/Recur)</a></li>
+                            <li><span class="badge badge-red">Later</span>  <a href="#"><i class="fa fa-align-center"></i> Tax/ Insurance</a></li> 
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Expense Entry</a></li>
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Daily/Monthly Payables List</a></li>
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Gross/ Net Profit Chart</a></li>
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Outstanding Unscheduled</a></li>
+                        </ul>
+                    </li>  
+
+                    <li class="list-group-item list-toggle active"><span class="badge badge-red">Later</span>            
+                        <a class="accordion-toggle" href="#collapse-content-hr" data-toggle="collapse"><i class="fa fa-cubes"></i>  HR 人手管理</a>
+                        <ul id="collapse-content-hr" class="collapse">
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-cog"></i> Vacation/Interview Calendar </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Vacation Request Entry </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> New Employee Entry </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Employee Lookbook </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Employee Leaving Form </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Interview Scheduling</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> PT Scheduling TimeEntry</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Employment Contracts/ Forms</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> 1111, Yes123 Link</a></li>
+                        </ul>
+                    </li>  
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-mrkting" data-toggle="collapse"><i class="fa fa-cubes"></i> Marketing Documents 文件管理</a>
+                        <ul id="collapse-content-mrkting" class="collapse in">
+                            <li><a href="#"><i class="fa fa-cog"></i> New Vendor Intro Packet </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> New Restaurant Sales Flier </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Monthly Restaurant Sales Flier </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Business Card Design </a></li>
+                        </ul>
+                    </li> 
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-invest" data-toggle="collapse"><i class="fa fa-cubes"></i>  Investors</a>
+                        <ul id="collapse-content-invest" class="collapse in">
+                            <li><a href="#"><i class="fa fa-align-center"></i> Financial Forecasts</a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Business Plan </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Monthly Analysis .doc</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Internal Goals & Discuss</a></li>
+                        </ul>
+                    </li>                     
+                    
+                    <li class="list-group-item list-toggle active"> <span class="badge badge-red">Later</span>               
+                        <a class="accordion-toggle" href="#collapse-content-ads" data-toggle="collapse"><i class="fa fa-cubes"></i>  Advertising </a>
+                        <ul id="collapse-content-ads" class="collapse">
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Marketing Calendar </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Google Adwords/ Adsense</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Facebook Ads </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Partnership Ads </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> MailChimp NewsLetter(?) </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Ad Cost/ InFlow Analysis </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> PriceTicker Alerts </a></li>
+                        </ul>
+                    </li>                                                                
+                </ul>   
+
+            </div>
+            <!--End Left Sidebar-->
+            
+            <div class="col-md-9">
+                <!--Profile Body-->
+                <div class="profile-body">
+                    <!--Service Block v3-->
+                    <div class="row margin-bottom-10">
+                        <div class="col-sm-6 sm-margin-bottom-20">
+                            <div class="service-block-v3 service-block-u">
+                                <i class="icon-users"></i>
+                                <span class="service-heading">Clicks This Month</span>
+                                <span class="counter">52,147</span>
+                                
+                                <div class="clearfix margin-bottom-10"></div>
+                                
+                                <div class="row margin-bottom-20">
+                                    <div class="col-xs-6 service-in">
+                                        <small>Last Week</small>
+                                        <h4 class="counter">1,385</h4>
+                                    </div>
+                                    <div class="col-xs-6 text-right service-in">
+                                        <small>Last Month</small>
+                                        <h4 class="counter">6,048</h4>
+                                    </div>
+                                </div>
+                                <div class="statistics">
+                                <h3 class="heading-xs">Statistics in Progress Bar <span class="pull-right">67%</span></h3>
+                                    <div class="progress progress-u progress-xxs">
+                                        <div style="width: 67%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="67" role="progressbar" class="progress-bar progress-bar-light">
+                                        </div>
+                                    </div>
+                                    <small>11% less <strong>than last month</strong></small>
+                                </div>            
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div class="service-block-v3 service-block-blue">
+                                <i class="icon-screen-desktop"></i>
+                                <span class="service-heading">Remaining Budget</span>
+                                <span class="counter">324,056</span>
+                                
+                                <div class="clearfix margin-bottom-10"></div>
+                                
+                                <div class="row margin-bottom-20">
+                                    <div class="col-xs-6 service-in">
+                                        <small>Last Week</small>
+                                        <h4 class="counter">26,904</h4>
+                                    </div>
+                                    <div class="col-xs-6 text-right service-in">
+                                        <small>Last Month</small>
+                                        <h4 class="counter">124,766</h4>
+                                    </div>
+                                </div>
+                                <div class="statistics">
+                                <h3 class="heading-xs">Statistics in Progress Bar <span class="pull-right">89%</span></h3>
+                                    <div class="progress progress-u progress-xxs">
+                                        <div style="width: 89%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="89" role="progressbar" class="progress-bar progress-bar-light">
+                                        </div>
+                                    </div>
+                                    <small>15% higher <strong>than last month</strong></small>
+                                </div>            
+                            </div>
+                        </div>
+                    </div><!--/end row-->
+                    <!--End Service Block v3-->
+
+                    <hr>
+                        <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>Payables Calendar </h2>
+                            <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">View All</a>
+                            
+<a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">Add Receive<i class="glyphicon glyphicon-plus" style="font-size:16px;margin-left:5px;"></i></a>                            
+                            
+<a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="">Search Receive <i class="search fa fa-search search-btn pull-right" style="font-size:16px;margin-top:-6px;margin-left:5px;"></i></a>                                   
+                            
+                        </div>
+
+                        
+<!--Datepicker-->
+<form action="" id="sky-form2" class="sky-form">
+    <div id="inline-start" >
+        <input type="text" class="form-control" id="datetimepicker" />
+
+    </div>
+</form>
+
+<!--End Datepicker-->
+                        
+                    <hr>
+
+                    <!--Table Search v1-->
+                    <div class="table-search-v1">
+                    
+                        <div class="table-responsive">
+                         <div class="tab-v1">
+                            <ul class="nav nav-justified nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#profile">Payables/ Receivables</a></li>
+                                <li><a data-toggle="tab" href="#payment">Add Item</a></li>
+                            </ul>
+                   		</div>
+                   	    <div class="tab-content">
+                                <div id="profile" class="profile-edit tab-pane fade in active">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="white-space:nowrap;" width="15%">Client</th>
+                                                <th class="hidden-sm" width="10%">TransType</th>
+                                                <th>scheduled date</th>
+                                                <th width="10%">Amount</th>
+                                                <th width="100">METHOD</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="changebody">
+                                             
+                                                {% for t in trans %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="#" style="font-family:Meiryo; font-size:14px;">{{t.trans_from}}</a>
+                                                    </td>
+                                                    <td> <a href="#" style="font-family:Meiryo; font-size:14px;">
+                                                         {{t.trans_type}} </a></td>
+                                                    <td>
+                                                         <span style="font-family:Meiryo; font-size:14px;">{{t.scheduled_date.month}}-{{t.scheduled_date.day}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span style="font-family:Meiryo; font-size:14px;">{{t.amount}}</span>
+                                                    </td>
+                                                    <td> {{t.trans_method}} </td>
+                                                    <td>
+                                                       <span style="color:#666666;float:left;margin-right:5px;"> <i class="fa fa-print"></i> Invoice </span>
+                                                       <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-envelope"></i> Email </span>
+                                                       <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-ban"></i> Suspend </span>
+                                                    </td>
+                                                </tr>                                    
+                                                {% endfor %}
+                                            <tr><td colspan="6">
+                                            <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+                                            </td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="payment" class="profile-edit tab-pane fade">
+            
+                                    <form action="../test/php/formmail.php" method="post" name="OrderForm" id="sky-form" class="sky-form">
+                                        <fieldset>                  
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-search"></i>
+                                                    <input type="text" name="FullName" placeholder="Vendor" required>
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="email" name="EmailAddr" placeholder="BUS ID/ TRANSACTION REF# HISTORY">
+                                                </label>                            
+                                            </section>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="email" name="EmailAddr" placeholder="Description i.e. Phone/ Salaries">
+                                                </label>   
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="email" name="EmailAddr" placeholder="Due Date">
+                                                </label>   
+                                            </section>
+                                         </div>
+                                                                <div class="row">
+                                            <section class="col col-6">
+                                                <label class="select">
+                                                    <select name="L1Cate">
+                                                        <option value="none" selected disabled style="display:none">Payable Type</option>
+                                                        <option value="">Single</option>
+                                                        <option value="" disabled>Recur</option>
+                                                        <option value="">-- Weekly </option>
+                                                        <option value="">-- Monthly </option>
+                                                        <option value="">-- Bi-Monthly </option>
+                                                    </select>
+                                                    <i></i>
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="text" name="Price" placeholder="Price (NTD)">
+                                                </label>  
+                                            </section>
+                                         </div>
+                                         
+                                         <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="text" name="Price" placeholder="Payment Date">
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="select">
+                                                    <select name="L1Cate">
+                                                        <option value="none" selected disabled style="display:none">PaymentType</option>
+                                                        <option value="">CASH</option>
+                                                        <option value="">DIRECT DEPOSIT</option>
+                                                        <option value="">CREDIT CARD</option>
+                                                        <option value="">WAIVED</option>
+                                                    </select>
+                                                    <i></i>
+                                                </label>                            
+
+                                            </section>
+                                         </div>
+
+                                         <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="text" name="Price" placeholder="RECEIPT ISSUED NUMBER 發票/收據號碼">
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="text" name="Price" placeholder="CASH: WHO誰收 DD: ACCT#, CC: REFER#">
+                                                </label>                          
+
+                                            </section>
+                                         </div>
+                                                                <div class="row">
+                                                    <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Save Item</button>
+                                        </div>                                               
+                                                                  
+                                        </fieldset>
+                                      </form>
+                      
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                    <!--End Table Search v1-->
+                        
+                     <hr style="margin:0px; margin-bottom: 20px;">
+
+                    <!--Table Search v2-->
+                    <div class="table-search-v2 margin-bottom-20">
+                       <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>Outstanding Payable</h2>
+                            <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">View All</a>
+                            
+<a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">Add Receive<i class="glyphicon glyphicon-plus" style="font-size:16px;margin-left:5px;"></i></a>                            
+                            
+<a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="">Search Receive <i class="search fa fa-search search-btn pull-right" style="font-size:16px;margin-top:-6px;margin-left:5px;"></i></a>                                   
+                            
+                        </div>   
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Vendor</th>
+                                        <th>About</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{ url_for('static', filename='img/testimonials/img1.jpg') }}" alt="">
+                                        </td>
+                                        <td class="td-width">
+                                            <h3><a href="#">Jason Bourne - Salary</a></h3>
+                                            <p>BALANCE: 20,583NT CASH</p>
+                                            <small class="hex">Due Date January 20th, 2016 (16 days past due)</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-success">History</span>
+                                        </td>
+                                        <td>
+						   <span style="color:#666666;margin-right:5px;"> <i class="fa fa-print"></i> Invoice </span>
+                           <span style="color:#666666;margin-right:5px;"><i class="fa fa-envelope"></i> Email </span>
+                           <span style="color:#666666;margin-right:5px;"><i class="fa fa-ban"></i> Suspend </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{ url_for('static', filename='img/testimonials/img2.jpg')}}" alt="">
+                                        </td>
+                                        <td>
+                                            <h3><a href="#">CHT - Landline</a></h3>
+                                            <p>BALANCE: 3,583NT CASH</p>
+                                            <small class="hex">Due Date January 20th, 2016 (4 days past due)</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-info"> Pending</span>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline s-icons">
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="#">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="#">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                    <i class="fa fa-dropbox"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <span><a href="#">info@example.com</a></span>
+                                            <span><a href="#">www.htmlstream.com</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{ url_for('static', filename='img/testimonials/img3.jpg')}}" alt="">
+                                        </td>
+                                        <td>
+                                            <h3><a href="#">Pellentesque semper tempus vehicula</a></h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo lacus. Fusce non malesuada ante. Donec vel arcu.</p>
+                                            <small class="hex">Joined March 3, 2014</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-warning">Expiring</span>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline s-icons">
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="#">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="#">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                    <i class="fa fa-dropbox"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <span><a href="#">info@example.com</a></span>
+                                            <span><a href="#">www.htmlstream.com</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{ url_for('static', filename='img/testimonials/img4.jpg')}}" alt="">
+                                        </td>
+                                        <td>
+                                            <h3><a href="#">Alesuada fames ac turpis egestas</a></h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo lacus. Fusce non malesuada ante. Donec vel arcu.</p>
+                                            <small class="hex">Joined March 4, 2014</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-danger">Error!</span>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline s-icons">
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="#">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="#">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                    <i class="fa fa-dropbox"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <span><a href="#">info@example.com</a></span>
+                                            <span><a href="#">www.htmlstream.com</a></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                    <!--End Table Search v2-->
+                </div>
+                <!--End Profile Body-->
+            </div>
+        </div><!--/end row-->
+    </div><!--/container-->    
+    <!--=== End Profile ===-->
+    <div class="footer-v1">
+        <!--=== Copyright ===-->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            2014 &copy; Unify. ALL Rights Reserved. 
+                            <a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">  
+                        <a href="index.html">
+                            <img class="pull-right" id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png')}} " alt="">
+                        </a>
+                    </div>
+                </div>
+            </div> 
+        </div><!--/copyright--> 
+        <!--=== End Copyright ===-->
+    </div>
+</div><!--/wrapper-->
+
+<!-- JS Global Compulsory -->           
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js')}}"></script> 
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/smoothScroll.js')}}"></script>
+<script src="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js')}}"></script>
+<!-- JS Customization -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/custom.js')}}"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/datepicker.js')}}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        Datepicker.initDatepicker();
+    });
+</script>
+        
+<script type="text/javascript">
+
+var INeventDates = {};
+var OUTeventDates = {};
+{% for t in trans %}
+    {% if 'IN' in t.trans_type %}
+INeventDates[ new Date( '{{t.scheduled_date.month}}/{{t.scheduled_date.day}}/{{t.scheduled_date.year}}' )] = new Date( '{{t.scheduled_date.month}}/{{t.scheduled_date.day}}/{{t.scheduled_date.year}}' ).toString();
+    {% endif %}
+    {% if 'OUT' in t.trans_type %}
+OUTeventDates[ new Date( '{{t.scheduled_date.month}}/{{t.scheduled_date.day}}/{{t.scheduled_date.year}}' )] = new Date( '{{t.scheduled_date.month}}/{{t.scheduled_date.day}}/{{t.scheduled_date.year}}' ).toString();
+    {% endif %}
+{% endfor %}
+
+$('#inline-start').datepicker({
+    beforeShowDay: function(date) {
+        var highlight = INeventDates[date];
+        var highlight2 = OUTeventDates[date];
+        if (highlight && highlight2)
+            {return [true, "BOTHclass", highlight];}
+        else if (highlight)
+            {return [true, "INclass", highlight];}
+        else if (highlight2)
+            {return [true, "OUTclass", highlight2];}
+        else {return [true, '', ''];}
+        },
+    onSelect: function(dateText, inst)
+    { 
+      var dateAsString = dateText; //the first parameter of this function
+      var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+      
+      document.getElementById("datetimepicker").value = dateText;
+      $.ajax({
+          url: "/dytrans/",
+          type: "get",
+          data: {jsdata: dateText},
+          success: function(response) {
+            $("#changebody").html(response);}
+          })
+    }
+});
+</script> 
+ 
+
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js')}}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js')}}"></script>
+<![endif]-->
+
+</body>
+</html>	

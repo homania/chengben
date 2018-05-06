@@ -1,0 +1,13 @@
+<table>
+<tr><td>
+<span style="margin-bottom:10px;font-weight:700;color:#b3b3b3">Item Suggestions </span><br>
+
+
+{% if final_item %}
+    {% for f in final_item %}
+    <tr onclick="change_item('{{f[0]}}','{{f[1]}}')" style="width:100px;cursor:pointer;">
+        <td>{{f[0]}} {{f[1]}}</td>
+    </tr>
+    {% endfor %}
+{% endif %}
+</table>

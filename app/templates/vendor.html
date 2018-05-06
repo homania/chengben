@@ -1,0 +1,71 @@
+{% extends "base_vendor.html" %}
+{% block content %}
+    {% include 'head_vendor.html' %}
+
+    <!--=== Content Side Right ===-->
+    <div class="content-side-right">
+        <!-- Interactive Slider -->
+    <div class="search-block parallaxBg" style="height:15px;padding:0px;">
+        <div class="container">
+        </div>    
+    </div><!--/container-->
+  <!-- End Interactive Slider -->
+
+      <!--Profile Blog-->
+        <div>
+          <div class="container content-sm profile" style="padding:5px; margin:0px;width:100%;">
+            <div class="row" style="margin:0px;">
+                <div class="profile-body" style="padding:0px;">                    
+                    <div class="panel panel-profile">
+                        <div class="panel-heading overflow-h">
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>{{ admin.ch_name }} : ({{ count }}) VENDOR_REF#: {{ page }} </h2>
+                            <a href="page_profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                        </div>
+                        <div class="panel-body">
+                                {% for item in items %}
+                                <div class="col-lg-4 col-md-6 itemadjust">
+                                    <div class="profile-blog blog-border">
+                                        <img class="img-responsive" src="{{ item.image_url }}" alt="" style="width:150px;height:150px;">
+                                        <div class="name-location">
+                                            <strong>{{ item.name }}</strong>
+                                            {% if item.gen_cat %}
+                                                <p>{{item.vendorcat}}: {{ item.gen_cat }}</p>
+                                            {% endif %}
+                                            <ul class="list-inline share-list">
+                                                <li class="price" style="margin-left:5px;"><i class="fa fa-bell"></i>
+                                                {% if item.price %}
+                                                    {{ item.price }}NT <br>
+                                                    {% if item.weight %}
+                                                        {% if item.pack %}
+                                                            1{{ item.pack }}: 
+                                                        {% else %}
+                                                            1分:
+                                                        {% endif %}
+                                                        {{item.weight}}{{item.unit}}
+                                                    {% endif %}
+                                                {%else%}
+                                                    聯絡報價
+                                                {%endif%}
+                                                </li><br>
+                                                <li style="margin-left:-15px;"><i class="fa fa-twitter"></i><a href="{{ item.web_url }}">Follow</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix margin-bottom-20"></div>    
+                                        <div style="height: 40px; overflow:hidden;">
+                                            <p>{{ item.desc }}</p>
+                            		</div>
+                                    </div>
+                                </div>    
+                                {% endfor %}                        
+                        </div>        
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    {% include 'page_vendor.html' %}
+
+    {% include 'owl.html' %}
+    
+    </div><!--content side right -->
+{% endblock %}

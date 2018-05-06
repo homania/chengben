@@ -1,0 +1,36 @@
+{% extends "baseL2.html" %}
+{% block content %}
+    {% include 'headerv7leftL2.html' %}
+
+    <!--=== Content Side Right ===-->
+    <div class="content-side-right">
+        <!-- Interactive Slider -->
+    <div class="search-block parallaxBg" style="height:15px;padding:0px;">
+        <div class="container">
+        </div>    
+    </div><!--/container-->
+  <!-- End Interactive Slider -->
+
+      <!--Profile Blog-->
+<div id="computers-and-parts" style="-webkit-column-count: 4;-moz-column-count: 6;column-count: 6;column-gap:1em;">     	
+        {% for item in l1menu %}       
+          {% if item.parent_id == page %} 
+            <div>
+              <h2>{{ item.menu_name }}</h2>	
+        	<ul>
+            {% for items in l2menu %}
+                {% if items.parent_id == item.menu_id %}        		
+                    <li><a href="/L4/{{ items.menu_id }}/?keyword={{ items.keyword }}">{{ items.menu_name }} &nbsp;&nbsp;&nbsp;({{ items.sub_count }})</a></li>
+                {% endif %}
+            {% endfor %}
+        	</ul>
+            </div>
+          {% endif %}
+   	{% endfor %} 
+
+</div> <!-- end computers-and-parts-->
+
+    {% include 'owlL2.html' %}
+    
+    </div><!--content side right -->
+{% endblock %}

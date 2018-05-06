@@ -1,0 +1,76 @@
+{% extends "base2.html" %}
+{% block content %}
+    {% include 'headerv7left.html' %}
+
+    <!--=== Content Side Right ===-->
+    <div class="content-side-right">
+        <!-- Interactive Slider -->
+    <div class="search-block parallaxBg" style="height:15px;padding:0px;">
+        <div class="container">
+        </div>    
+    </div><!--/container-->
+  <!-- End Interactive Slider -->
+
+      <!--Profile Blog-->
+        <div class="bg-color-light">
+          <div class="container content-sm profile" style="padding:5px; margin:0px;width:100%;">
+            <div class="row" style="margin:0px;">
+                <div class="profile-body" style="padding:0px;">                    
+                    <div class="panel panel-profile">
+                        <div class="panel-heading overflow-h">
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>{{ admin.menu_name }} : ({{ count }}) PAGE: {{ page }} </h2>
+                            <a href="page_profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                        </div>
+                        <div class="panel-body">
+                                {% for item in items %}
+                                    {% for v in vendors %}
+                                        {% if v.vendor_id == item.vendor %}
+                                <div class="col-lg-4 col-md-6 itemadjust">
+                                    <div class="profile-blog blog-border">
+                                        <img class="img-responsive" src="{{ item.image_url }}" alt="" style="width:150px;height:150px;">
+                                        <div class="name-location">
+                                            <strong>{{ item.name }}</strong>   
+                                            <span><i class="fa fa-map-marker"></i>
+                                                <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}"> {{ v.ch_name }}
+                                            </a></span>
+                                        </div>
+                                        {% if item.gen_cat %}
+                                            <span style="margin-left: 20px; color:#555;">{{item.vendorcat}}: {{ item.gen_cat }}</span>
+                                        {% endif %}
+                                        <br/>
+                                        <span style="margin-left: 20px; color:#555;">{{item.searchtags}}</span>                                        <div class="clearfix margin-bottom-20"></div>    
+                                        <div style="height: 40px; overflow:hidden;">
+                                        <p>{{ item.desc }}</p>
+                            			</div>
+                                        <hr>test test
+                                        <ul class="list-inline share-list" style="white-space:nowrap">
+                                            <li class="price"><i class="fa fa-bell"></i>
+                                            {% if item.price %}
+                                                {{ item.price }}NT
+                                                {% if item.weight %} ({{item.weight}}{{item.unit}})  {% endif %}
+                                            {%else%}
+                                                <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}">聯絡報價</a>
+                                            {%endif%}
+                                            </li>
+                                            <li><i class="fa fa-group"></i>
+                                                <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}">{{ v.phone1[:5] }}
+                                            ..聯絡</a></li>
+                                            <li><i class="fa fa-twitter"></i><a href="{{ item.web_url }}">Follow</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}                        
+                        </div>        
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    {% include 'pagenum.html' %}
+
+    {% include 'owl.html' %}
+    
+    </div><!--content side right -->
+{% endblock %}

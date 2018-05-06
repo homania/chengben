@@ -1,0 +1,29 @@
+<div class="tag-box tag-box-v7 text-justify"> 
+<div class="text-center">
+    <ul class="pagination">
+{% if test.has_prev %}
+    <li><a href="{{ url_for("vendor", vendorid=vendorid, page=test.prev_num) }}">&laquo; Prev</a></li>
+{% else %}
+    <li><a>First page</a></li>
+{% endif %}
+
+{%- for page in test.iter_pages() %}
+{% if page %}
+    {% if page != test.page %}
+    <li><a href="{{ url_for("vendor", vendorid=vendorid, page=page) }}">{{ page }}</a></li>
+    {% else %}
+    <li class="active"><a href="#">{{ page }}</a></li>
+    {% endif %}
+{% else %}
+    <li><span class=ellipsis>…</span></li>
+{% endif %}
+{%- endfor %}
+
+{% if test.has_next %}
+    <li><a href="{{ url_for("vendor", vendorid=vendorid, page=test.next_num) }}">Next &raquo;</a></li>
+{% else %}
+    <li><a>Last page</a></li>
+{% endif %}
+	</ul>                                                            
+</div>
+</div>

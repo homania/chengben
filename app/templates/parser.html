@@ -1,0 +1,345 @@
+{% extends "base3.html" %}
+{% block content %}
+<div style="float:left;width:70%; height:900px;">
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container" style="width:100%">
+            <!-- Logo -->
+            <a class="logo" style="height:75px;">
+            </a>
+            <!-- End Logo -->
+            
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active"><a href="unify_CB.html">Index <i class="fa fa-check"></i></a></li>
+                            <li><a href="index_customer.php">Customer</a></li>
+                            <li><a href="index_vendor.php">Vendor</a></li>
+                            <li><a href="index_admin.php">Admin</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_faq.html">Help</a></li>  
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_login.html">Login</a></li>   
+                </ul>
+            </div>
+            <!-- End Topbar -->
+        </div><!--/end container-->
+    </div>
+    <!--=== End Header ===-->
+
+    <!--=== Content ===-->
+    <div class="container content" style="height:800px;width:100%; padding-top:0px;">
+        <!--=== Pricewatch Code ===-->
+        <div style="padding:10px;">    
+            <div>
+                   
+                    <div>
+                        <!-- {% for r in results %}       
+                          <h2>{{r}}</h2>
+                        {% endfor %}             -->
+                        <table border="0" width="100%" height="100%">
+                                <tr>
+                                <td>
+<iframe id="webframe" name="webframe" src="{{fitem.web_url}}" style="height:410px;width:100%"></iframe>
+                                </td>
+                                <td width=5%>
+                                    <a id="GS" name ="GS" href="https://www.google.com.tw/search?q={{fitem.name}}" target="_new">Google Search</a>
+                                </td>
+                                </tr>
+                                <tr>
+<td><iframe id="mdbgframe" name="mdbgframe" src="https://www.mdbg.net/chinese/dictionary?page=worddict&wdrst=1&wdqtm=0&wdqcham=1&wdqt={{fitem.name}}#text"
+style="height:410px;width:100%" ></iframe></td>
+                                <td>
+                                    <a id="GSI" name ="GSI"  href="https://www.google.com.tw/search?q={{fitem.name}}&tbm=isch" target="_new">Google Image link</a>
+                                </td>
+                                </tr>
+                        </table>
+
+                       </div>
+            </div>
+                            
+                  
+            </div> <!-- end computers-and-parts-->
+            
+        </div>    <!--=== End Pricewatch Code ===-->
+    </div>                 
+    <!--=== Container Part ===-->
+
+    <!--=== Footer Version 1 ===-->
+    <div class="footer-v1">        
+        <!--=== Copyright ===-->
+        <div class="copyright" style="height:40px;padding:0;margin:0;background:#3e4753">
+            <div class="container" style="height:40px;padding:10;margin:0;width:100%">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        
+                            2016 &copy; ChengBen. ALL Rights Reserved. 
+                            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        
+                    </div>
+                    <div class="col-md-6">  
+                    </div>
+                </div>
+            </div> 
+        </div><!--/copyright--> 
+        <!--=== End Copyright ===-->
+    </div>     
+    <!--=== End Footer Version 1 ===-->
+</div> <!--=== LEFT ===-->
+
+<div style="float:right;width:30%;height:100%;background-color:white;"> <!--=== RIGHT ===-->
+    <div style="position:fixed; width: 450px;height:100%; top:0px;background-color:white;">
+        <div style="margin-top: 20px;">
+            <form action="" method="post">
+            {{form.hidden_tag()}}
+            <h3 style="text-align:center;">
+                Item Editor
+            </h3>
+            <input type="number" name="idItemData" id="idItemData" style="width:130px;height:100%" autocomplete=off value="{{fitem.idItemData}}">
+
+            <div style="margin-left:10px;">
+            <table border="1">
+            <tr>
+                <td>
+                <div class="li">Item Name:</div>
+                 <div class="ri">
+                    <input type="text" name="name" id="name" style="width:130px;height:100%" autocomplete=off value="{{fitem.name}}">
+                </div>
+                </td>
+                <td>
+                 <div class="li">Brand:</div>
+                 <div class="ri">
+                    <input type="text" name="brand" id="brand" style="width:130px;height:100%" autocomplete=off value="{{fitem.brand}}">
+                 </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 <div class="li">Category:</div>
+                 <div class="ri" style="vertical-align:text-top;">
+                 <input type="text" name="cat_type" id="cat_type" style="width:130px;height:100%;top:0px;" value="{{fitem.cat_type}}">
+                    <br/>
+                    Meat<br/>
+                    NonMeat<br/>
+                    FishMeat<br/>
+                    Shellfish Squid+shell<br/>
+                    NonFish<br/>
+                    DryGood<br/>
+                    Processed<br/>
+                    Supplies<br/>
+                    Equipment<br/>
+                    Cleaning<br/>
+                    Vegetable<br/>
+                    Dairy<br/>
+                    Dish<br/>
+                    Pastry<br/>
+                    </select>
+
+                 </div>
+                </td>            
+                <td>                
+                    <div class="li">Searchtags:</div>
+                    <textarea name="searchtags" id="searchtags" style="width:100%;height:70px" autocomplete=off>{{fitem.searchtags}}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 <div class="li">Weight:</div>
+                 <div class="ri">
+                    <input type="text" name="weight" id="weight" style="width:130px;height:100%" autocomplete=off value="{{fitem.weight}}">
+                 </div>
+                </td>           
+                <td>                    
+                 <div class="li">Unit (g/kg/L/..):</div>
+                 <div class="ri">
+                    <input type="text" name="unit" id="unit" style="width:50px;height:100%" autocomplete=off value="{{fitem.unit}}">
+                 </div>
+                </td>
+            </tr>
+            <tr>                
+                <td>
+                 <div class="li">Pack (包/盒/箱/..):</div>
+                 <div class="ri">
+                    <input type="text" name="pack" id="pack" style="width:50px;height:100%" autocomplete=off value="{{fitem.pack}}">
+                 </div>
+                </td>
+                <td>                
+                 <div class="li">VendorID:</div>
+                 <div class="ri">
+                    <input type="number" name="vendor" id="vendor" style="width:130px;height:100%" autocomplete=off value="{{fitem.vendor}}">
+                 </div>
+                </td>                
+            </tr>
+            <tr>                
+                <td>                    
+                 <div class="li">web_url:</div>
+                 <div class="ri">
+                    <input type="text" name="web_url" id="web_url" style="width:130px;height:100%" autocomplete=off value="{{fitem.web_url}}">
+                 </div>
+                </td>
+                <td>
+                 <div class="li">image_url:</div>
+                 <div class="ri">
+                    <input type="text" name="image_url" id="image_url" style="width:130px;height:100%" autocomplete=off value="{{fitem.image_url}}">
+                 </div>
+                </td>
+            </tr>
+            <tr>                
+                <td>                
+                 <div class="li">V MajCat:</div>
+                 <div class="ri">
+                    <input type="text" name="vendorcat" id="vendorcat" style="width:130px;height:100%" autocomplete=off value="{{fitem.vendorcat}}">
+                 </div>
+                </td>
+                <td>
+                 <div class="li">V MinCat:</div>
+                 <div class="ri">
+                    <input type="text" name="gen_cat" id="gen_cat" style="width:130px;height:100%" autocomplete=off  value="{{fitem.gen_cat}}">
+                 </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 <div class="li">Active:</div>
+                 <div class="ri">
+                    <input type="number" name="active" id="active" style="width:130px;height:100%" autocomplete=off value="{{fitem.active}}">
+                 </div>
+                </td>
+                <td>                    
+                 <div class="li">Confirmed:</div>
+                 <div class="ri">
+                    <input type="number" name="confirmed" id="confirmed" style="width:130px;height:100%" autocomplete=off value="{{fitem.confirmed}}">
+                 </div>
+                </td>
+            <tr>
+            </tr>
+                <td>
+                <div class="li">Description:</div>
+                    <textarea name="desc" id="desc" style="width:100%;height:70px" autocomplete=off>{{fitem.desc}}</textarea>
+                </td>
+                <td>
+                 <div class="li">Price:</div>
+                 <div class="ri">
+                    <input type="text" name="price" id="price" style="width:130px;height:100%" autocomplete=off value="{{fitem.price}}">
+                 </div>
+                </td>
+            </tr>                    
+                </table>
+                <br>
+                <input type="submit" value="Save Changes">
+                <br>
+                <br>
+                <h3> Unconfirmed </h3> 
+                {% for i in items %}
+                    <span onclick = "change({{i.idItemData}}, '{{i.name}}', '{{i.brand}}', '{{i.desc}}', '{{i.price}}', '{{i.weight}}', '{{i.unit}}', '{{i.pack}}',
+                        '{{i.web_url}}', '{{i.image_url}}', '{{i.searchtags}}', '{{i.cat_type}}','{{i.vendorcat}}','{{i.gen_cat}}', '{{i.active}}','{{i.vendor}}',
+                        '{{i.confirmed}}')" style="cursor:pointer;">
+                        {{ i.name }} {{i.match}}% 
+                    </span><br>
+                {% endfor %}
+            </div>
+            </form>
+        </div>
+    </div>
+</div> <!--=== RIGHT ===-->
+
+
+<script type="text/javascript" src="../static/plugins/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../static/plugins/jquery-migrate-1.2.1.min.js"></script>
+<!-- JS Implementing Plugins -->           
+<script type="text/javascript" src="../static/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="../static/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="../static/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="../static/plugins/bxslider/jquery.bxslider.js"></script>
+<!-- Order Form -->
+<script src="../static/plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js"></script>
+<script src="../static/plugins/sky-forms/version-2.0.1/js/jquery.form.min.js"></script>
+<!-- Checkout Form -->
+<script src="../static/plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js"></script>
+<script src="../static/plugins/sky-forms/version-2.0.1/js/jquery.maskedinput.min.js"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="../static/js/app.js"></script>
+<script type="text/javascript" src="../static/js/forms/order.js"></script>
+<script type="text/javascript" src="../static/js/forms/review.js"></script>
+<script type="text/javascript" src="../static/js/forms/checkout.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        OrderForm.initOrderForm();        
+        ReviewForm.initReviewForm();        
+        CheckoutForm.initCheckoutForm();    		
+    });
+</script>
+
+<script type="text/javascript">
+$(function(){
+$("#cat_type, #test, #Meat").change(function()
+    {   alert("I am an alert box!1");
+        if($("#Meat").is(":selected")){
+            document.getElementbyId("cat_type").value = "Meat";
+            alert("I am an alert box!2");
+        }
+        else if($("#NonMeat").is(":selected")){
+            document.getElementbyId("cat_type").value = "NonMeat";
+            alert("I am an alert box2!");
+        }
+    });
+});
+</script>
+
+<script type="text/javascript">
+function change(idItemData, name, brand, desc, price, weight, unit, pack, web_url, image_url, searchtags, cat_type, vendorcat, gen_cat, active, vendor, confirmed)
+{
+    if (price != 'None') {document.getElementById("price").value = price;}
+        else if (price == 'None') {document.getElementById("price").value = '';}
+    if (brand != 'None') {document.getElementById("brand").value = brand;}
+        else if (brand == 'None') {document.getElementById("brand").value = '';}
+    if (desc != 'None') {document.getElementById("desc").value = desc;}
+        if (desc == 'None') {document.getElementById("desc").value = '';}
+    if (weight != 'None') {document.getElementById("weight").value = weight;}
+        else if (weight == 'None') {document.getElementById("weight").value = '';}
+    if (unit != 'None') {document.getElementById("unit").value = unit;}
+        else if (unit == 'None') {document.getElementById("unit").value = '';}
+    if (pack != 'None') {document.getElementById("pack").value = pack;}
+        else if (pack == 'None') {document.getElementById("pack").value = '';}
+    if (web_url != 'None') {
+            document.getElementById('web_url').value = web_url;
+            document.getElementById('webframe').src = web_url;
+            }
+        else if (web_url == 'None') {document.getElementById("web_url").value = '';}
+    if (image_url != 'None') {document.getElementById("image_url").value = image_url;}
+        else if (image_url == 'None') {document.getElementById("image_url").value = '';}
+    if (searchtags != 'None') {document.getElementById("searchtags").value = searchtags;}
+        else if (searchtags == 'None') {document.getElementById("searchtags").value = '';}
+    if (cat_type != 'None') {document.getElementById("cat_type").value = cat_type;}
+        else if (cat_type == 'None') {document.getElementById("cat_type").value = '';}
+    if (vendorcat != 'None') {document.getElementById("vendorcat").value = vendorcat;}
+        else if (vendorcat != 'None') {document.getElementById("vendorcat").value = '';}
+    if (gen_cat != 'None') {document.getElementById("gen_cat").value = gen_cat;}
+        else if (gen_cat == 'None') {document.getElementById("gen_cat").value = '';}
+    if (active != 'None') {document.getElementById("active").value = active;}
+        else if (active == 'None') {document.getElementById("active").value = ''}
+    if (vendor != 'None') {document.getElementById("vendor").value = vendor;}
+        else if (vendor == 'None') {document.getElementById("vendor").value = '';}
+    if (confirmed != 'None') {document.getElementById("confirmed").value = confirmed;}
+        else if (confirmed == 'None') {document.getElementById("confirmed").value = '';}
+    
+    document.getElementById("idItemData").value = idItemData;
+
+     if (name != 'None') {
+             document.getElementById('name').value = name;
+             search_string = "https://www.mdbg.net/chinese/dictionary?page=worddict&wdrst=1&wdqtm=0&wdqcham=1&wdqt=" + name
+             document.getElementById('mdbgframe').src = search_string;
+             document.getElementById('GS').href = 'https://www.google.com.tw/search?q=' + name;
+             document.getElementById('GSI').href = 'https://www.google.com.tw/search?q=' + name + '&tbm=isch';   
+             }
+}
+	  
+
+</script>
+{% endblock %}

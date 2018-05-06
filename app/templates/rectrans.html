@@ -1,0 +1,25 @@
+    {% for t in trans %}
+    <tr>
+        <td>
+            <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;">{{t[0]}}</a>
+        </td>
+        <td>
+        <span onclick="bot_rec('{{t[2]}}','{{t[1]}}','{{t[0]}}')">
+        <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;">
+             {{t[1]}} </a></td>
+        <td>
+             <span style="font-family:Meiryo; font-size:14px;">{{t[2]}}</span>
+        </td>
+        <td>
+            <span style="font-family:Meiryo; font-size:14px;">{{t[3]}}</span>
+        </td>
+        <td>
+           <span style="color:#666666;float:left;margin-right:5px;"> <i class="fa fa-print"></i> Invoice </span>
+           <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-envelope"></i> Email </span>
+           <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-ban"></i> Suspend </span>
+        </td>
+    </tr>                                    
+    {% endfor %}
+<tr><td colspan="6">
+<button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+</td></tr>

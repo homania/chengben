@@ -1,0 +1,72 @@
+            <div class="topbar">
+                <input type="hidden" id="hid_email">
+                <ul class="loginbar pull-right" id="login_sec">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active"><a href="unify_CB.html">Index <i class="fa fa-check"></i></a></li>
+                            <li><a href="/customer/">Customer</a></li>
+                            <li><a href="/ivendor/">Vendor</a></li>
+                            <li><a href="/metrics/">Admin</a></li>
+                            <li><a href="/l1mgmt/">MenuMgmt</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>
+                    {% if user.is_anonymous != True %}
+                        <li><a id="logout_link" href="javascript:void(0)">logout</a></li>
+                    {% else %}
+                        <li><a href="javascript:void(0)">Help</a></li>
+                    {% endif %}
+                    <li class="topbar-devider"></li>   
+                    <li>
+                            {% if user.is_anonymous != True %}
+                                 {{user.email}} ({{user.acct_type}})
+                            {% else %}
+                                <a id="login_link" href="javascript:void(0)">LOGIN</a>
+                            {% endif %}
+                    </li>                
+                </ul>
+            </div>
+    <!--=== End Header ===-->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js') }}"></script>
+<script type="text/javascript">
+$(function () {
+    $("#login_link").on('click', function() {
+        $.ajax({
+          url: "/login",
+          type: "get",
+          success: function(response) {
+            $("#login_sec").html(response);}
+          })
+    });   
+
+    $("#login_sec").on('click', '.button_submit', function () {
+        if ((document.getElementById("email").value != "") && (document.getElementById("password").value != "")){
+            $.ajax({
+              url: "/login",
+              type: "get",
+              data: {email: document.getElementById("email").value,
+                     password: document.getElementById("password").value
+                     },          
+              success: function(response) {
+                $("#login_sec").html(response);}
+              })
+            document.getElementById("hid_email").value=document.getElementById("email").value
+        }
+        else {alert('Please Enter Email/Pass');}
+    });
+
+    $("#login_sec").on('click', '#logout_link', function () {
+        $.ajax({
+          url: "/logout",
+          type: "get",
+          data: {email: document.getElementById("hid_email").value
+                 },             
+          success: function(response) {
+            $("#login_sec").html(response);}
+          })
+    });
+});
+</script>

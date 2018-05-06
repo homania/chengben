@@ -1,0 +1,24 @@
+    <div class="col-md-4 md-margin-bottom-40">
+        {% if trans.all %}
+            <h3 onclick="edit_item('{{trans[0].datef}}','{{trans[0].receipt_id}}', '{{trans[0].ref_id}}', '','',
+                    '', '', '','','1')">
+                    {{trans[0].ref_id}}: {{subtotal}}<h3>
+            <h3>{{trans[0].store_name}}<h3>
+            <h3>{{trans[0].datef}}<h3>
+        {% endif %}
+    </div>
+    <div class="col-md-4 md-margin-bottom-40">
+        <table>
+        {% if trans.all %}
+            {% for t in trans %}
+            <tr onclick="edit_item('{{t.datef}}','{{t.receipt_id}}', '{{t.ref_id}}', '{{t.store_name}}','{{t.item_name}}','{{t.price}}',
+                                '{{t.net_weight}}', '{{t.unit_weight}}','{{t.unit}}','{{t.quantity}}')">
+                <td width="20px"> <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px; text-decoration: none;">{{t.quantity}}</a></td>
+                <td cellpadding="10"><a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;text-decoration: none;">{{t.item_name}}</a></td>
+                <td width="50px" style="text-align:right"> <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;text-decoration: none;">{{t.price}}</a></td>
+            </tr>                                    
+            {% endfor %}
+        {% endif %}
+        </table>
+    </div>
+    

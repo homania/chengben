@@ -1,0 +1,65 @@
+                    <div class="row margin-bottom-0" style="background:#EAEAEA; padding:5px;">
+                        <!--Recent Clicks-->
+                        <div class="col-sm-6">
+                            <div class="panel panel-profile no-bg">
+                                <div class="panel-heading overflow-h">
+                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-list-ul"></i>Top Clicked Items</h2>
+                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                                </div>
+                <div class="table-responsive">
+                            <table class="table table-hover" style="table-layout:fixed;">
+                                <thead>
+                                    <tr>
+                                        <td style="white-space:nowrap;overflow: hidden; width: 250px;">Ref_ID</th>
+                                        <td style="white-space:nowrap;overflow: hidden; width: 100px;">Clicks </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for x in range (0,6) %}
+                                    <tr>
+                                        <td style="width: 150px;"> {{test[x][2]}} (iD:{{test[x][1]}})</td>
+                                        <td style="white-space:nowrap;overflow: hidden; width: 200px;"> {{test[x][0]}} </td>
+                                    </tr>
+                                {% endfor %}
+                                    <tr><td colspan="6">
+                                    <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+                                    </td></tr>
+                                </tbody>
+                            </table>
+                        </div>   
+                            </div>        
+                        </div>
+                        <!--End Recent Clicks-->
+
+                        <!--Unique Clicks-->
+                        <div class="col-sm-6 md-margin-bottom-20">
+                                <div class="panel-heading overflow-h">
+                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-usd"></i>
+                                    Top Velocity last 7 days</h2>
+                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                                </div>
+                <div class="table-responsive">
+                            <table class="table table-hover" style="table-layout:fixed;">
+                                <thead>
+                                    <tr>
+                                        <td style="white-space:nowrap;overflow: hidden; width: 250px;">Item</td>
+                                        <td style="white-space:nowrap;overflow: hidden; width: 100px;">Clicks/ month</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for x in range (0,6) %}
+                                    <tr>
+                    <td style="white-space:nowrap;overflow: hidden; width: 250px;"> {{test2[x][2]}} </td>
+                    <td style="white-space:nowrap;overflow: hidden; width: 100px;"> {{test2[x][0]}} </td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr><td colspan="6">
+                                    <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+                                    </td></tr>
+                                </tbody>
+                            </table>
+                        </div>   
+                <!--End Notification-->
+                            </div>
+                        <!--End Top Performing Items-->
+                    </div><!--/end row-->

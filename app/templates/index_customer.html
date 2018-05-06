@@ -1,0 +1,248 @@
+{% extends "customer_header_footer.html" %}
+{% block content %}
+    <!--=== Profile ===-->
+    <div class="profile container content">
+    	<div class="row">
+            <!--Left Sidebar-->
+                {% set active_link = 'dashboard' %}
+        	{% include 'admin/leftmenu_c.html' %}
+            <!--End Left Sidebar-->
+            
+            <div class="col-md-9">
+                <!--Profile Body-->
+                <div class="profile-body">
+                    
+                    <div class="row margin-bottom-0">
+                    
+                        <!--Popular Category Searches-->
+                        <div class="col-sm-6">
+                            <div class="panel panel-profile">
+                                <div class="panel-heading overflow-h">
+                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-list-ul"></i>Popular Categories {{test}}</h2>
+                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                                </div>
+                <div class="table-responsive">
+                            <table class="table table-hover" style="font-family:Meiryo; font-size:14px;">
+
+                                <tbody>
+                                    <tr>
+                                        {% for cat in PopCat[0:4] %}
+                                            <td>
+                                                {{ cat.menu_name }}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                   <tr>
+                                        {% for cat in PopCat[4:8] %}
+                                            <td>
+                                                {{ cat.menu_name }}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        {% for cat in PopCat[8:12] %}
+                                            <td>
+                                                {{ cat.menu_name }}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        {% for cat in PopCat[12:16] %}
+                                            <td>
+                                                {{ cat.menu_name }}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        {% for cat in PopCat[16:20] %}
+                                            <td>
+                                                {{ cat.menu_name }}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>   
+                            </div>        
+                        </div>
+                        <!--End Popular Category Searches-->
+
+                        <!--Popular/New/Ad Items-->
+                        <div class="col-sm-6 panel-profile" style="background-color:#FFF";>
+                                <div class="panel-heading overflow-h">
+                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-usd"></i>Popular Items</h2>
+                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                                </div>
+
+                                {% for item in PopItems %}
+                                  <div class="comment">
+                                        <img src="{{item.image_url}}" alt="">
+                                        <div class="overflow-h">
+                                            <strong>{{ item.name }} <small class="pull-right"> {{item.cat_type }}</small></strong> 
+                                            <p>{{item.searchtags}}</p>
+                                            <ul class="list-inline comment-list">
+                                                <li><i class="fa fa-heart"></i> <a href="#">{{item.weight}}{{item.unit}}</a></li>
+                                                <li><i class="fa fa-comments"></i> <a href="#">{{item.searchtags}}</a></li>
+                                            </ul>
+                                        </div>    
+                                    </div>
+                                {% endfor %} 
+                <!--End Notification-->
+                            </div>
+                        </div>
+                        <!--Popular/New/Ad Items-->
+                    </div><!--/end row-->
+
+                    <!--New Items-->
+                    <div class="panel panel-profile">
+                        <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>New Items (link)</h2>
+                            <a href="profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                {% for item in NewItems %}
+                                <div class="col-sm-6">
+                                    <div class="profile-blog blog-border">
+                                        <img class="rounded-x" src="{{item.image_url}}" alt="">
+                                        <div class="name-location">
+                                            <strong>{{item.name}}</strong>
+                                            <span><i class="fa fa-map-marker"></i><a href="#"> {{item.searchtags}} </span>
+                                        </div>
+                                        <div class="clearfix margin-bottom-20"></div>    
+                                        <p>{{item.desc}}</p>
+                                        <hr>
+                                        <ul class="list-inline">
+                                            <li><i class="fa fa-bell"></i><a href="#"> addded 12 Hours Ago</a></li>
+                                            <li><i class="fa fa-group"></i><a href="#"> ShenSong Foods</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>        
+                    </div><!--/end row-->   
+                    <!--End New Items-->               
+
+
+                    <hr>
+
+                    <!--New Vendors-->
+                    <div class="table-search-v2 margin-bottom-20">
+                        <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>New Partners</h2>
+                            <a href="profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Vendor Image</th>
+                                        <th class="hidden-sm">About</th>
+                                        <th>Store Page</th>
+                                        <th>Contact Info</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for vendor in NewVendors %}
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{vendor.logo_url}}" alt="">
+                                        </td>
+                                        <td class="td-width">
+                                            <h3><a href="/vendor/{{vendor.vendor_id}}/1">{{vendor.ch_name}}</a></h3>
+                                            <p>{{vendor.name}}</p>
+                                            <small class="hex">{{vendor.district}} {{vendor.city}}</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-success" onClick="javascript:location.href='D:/Nutrifresh/NF2/chengben_vendor.php'" style="cursor:pointer">View Store</span>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline s-icons">
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="#">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="#">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="#">
+                                                    <i class="fa fa-dropbox"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="#">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <span><a href="#">{{vendor.email}}</a></span>
+                                            <span><a href="#">{{vendor.BID}}</a></span>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                    <!--End NewVendors-->
+
+                    <!--Watchlist-->
+                    <div class="table-search-v1 margin-bottom-20">
+                    
+                        <div class="table-responsive">
+                         <div class="tab-v1">
+                            <ul class="nav nav-justified nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#profile">Watchlist</a></li>
+                            </ul>
+                   		</div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="white-space:nowrap;">SearchTerm</th>
+                                        <th class="hidden-sm" width="20%">Vendor</th>
+                                        <th>Brand</th>
+                                        <th>Price <i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i></th>
+                                        <th>Last Update </th>
+                                        <th width="100">Status</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="#">萵苣菜</a>
+                                        </td>
+                                        <td > 富統食品股份有限公司 </td>
+                                        <td>
+                                             <a href="#" class="display-b" style="font-family:Meiryo; font-size:14px;">HomeGrown</a>
+                                        </td>
+                                        <td>
+                                            <p style="font-family:Meiryo; font-size:14px;">98NT / 台斤</p>
+                                        </td>
+                                        <td><button class="btn-u btn-u-red btn-block btn-u-xs"><i class="fa fa-sort-amount-desc margin-right-5"></i> Pending</button></td>
+                                        <td>
+                           <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-times"></i> 刪除 </span>
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="7">
+                                    <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+                                    </td></tr>
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                    <!--End Watchlist-->   
+                    
+                </div>
+                <!--End Profile Body-->
+            </div>
+        </div><!--/end row-->
+    </div><!--/container-->    
+    <!--=== End Profile ===-->
+
+{% endblock %}

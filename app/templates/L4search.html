@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]--><head>
+    {% if title %}
+      
+<title>{{ title }} | ChengBen</title>
+    {% else %}
+    <title>ChengBen</title>
+    {% endif %}
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-v7.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/owl-carousel/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/fancybox/source/jquery.fancybox.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+    <!--[if lt IE 9]><link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms-ie8.css') }}"><![endif]-->       
+
+    <!-- CSS Page Style -->    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/page_search.css') }}">
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/profile.css') }}">    
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    
+<style>
+
+	.itemadjust {
+	padding:0px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	}
+	
+	.price {font-size:16px;
+	font-weight:600;}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+    <!--=== Header v7 Left ===-->
+    <div class="header-v7 header-left-v7">
+        <nav class="navbar navbar-default mCustomScrollbar" role="navigation" data-mcs-theme="minimal-dark">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="menu-container">
+                <!-- Toggle get grouped for better mobile display -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- End Toggle -->
+
+                <!-- Logo -->
+                <div class="logo" style="padding:0px;">
+                    <a href="../../">
+                        <img id="logo-header" src="{{ url_for('static', filename='img/logo2.png')}} alt="Logo" style="width:inherit;">
+                    </a>
+                </div>
+                <!-- End Logo -->
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-responsive-collapse">
+                <div class="menu-container">
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li>
+                            <a href="javascript:void(0);">
+                                Home
+                            </a>
+                        </li>
+                        <!-- End Home -->
+
+                        <!-- About Pages -->                        
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Brands
+                            </a>
+                            <ul class="dropdown-menu">
+                            {% for brand in brands %}
+                                <li><a href="page_about2.html">{{ brand }} </a></li>
+                            {% endfor %}
+                            </ul>
+                        </li>
+                        <!-- End About Pages -->
+
+                        <!-- Blog -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Stores
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog_large_right_sidebar1.html">Right Sidebar</a></li>
+                                <li><a href="blog_large_left_sidebar1.html">Left Sidebar</a></li>
+                            </ul>
+                        </li>
+                        <!-- End Blog -->
+
+                        <!-- Contacts -->
+                    <li>
+                        <i class="search fa fa-search search-btn"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search" id="search_name">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>    
+                    </li>                
+                        <!-- End Contacts -->
+
+                    </ul>
+
+                    <ul class="list-inline header-socials">
+                        <li><a href="'#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="'#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="'#"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                    <p class="copyright-text">&copy; 2015 Unify. All Rights Reserved.</p>
+                    <form action="" method="post" id="sky-form" class="sky-form">
+                        <input type="text" id="keyword" {%if keyword%}value="{{keyword}}"{%endif%} disabled>
+                        <label class="input changeinput">
+                            <input type="text" name="name" id="item_id" placeholder="Item ID" required style="width:170px;" autocomplete=off disabled>
+                        </label>
+                        <label class="input changeinput">
+                            <input type="text" name="name" id="item_cat" placeholder="Cat_Type" required style="width:170px;" autocomplete=off>
+                        </label>
+                        <label class="input changeinput">
+                            <input type="text" name="name" id="item_searchtags" placeholder="searchtags" required style="width:170px;" autocomplete=off>
+                        </label>
+                        <label class="textarea changeinput">
+                            <textarea id="item_image" placeholder="item_image" style="width:170px;height:130px;" autocomplete=off></textarea>
+                        </label>
+                        <label class="textarea changeinput">
+                            <textarea id="item_url" placeholder="item_url" style="width:170px;height:130px;" autocomplete=off></textarea>
+                        </label>
+                    
+                    </form>
+                </div>  
+            </div>
+            <!-- End Navbar Collapse -->
+        </nav>
+    </div>    
+    <!--=== End Header v7 Left ===-->
+
+    <!--=== Content Side Right ===-->
+    <div class="content-side-right">
+        <!-- Interactive Slider -->
+    <div class="search-block parallaxBg" style="height:15px;padding:0px;">
+        <div class="container">
+        </div>    
+    </div><!--/container-->
+  <!-- End Interactive Slider -->
+
+      <!--Profile Blog-->
+        <div class="bg-color-light">
+          <div class="container content-sm profile" style="padding:5px; margin:0px;width:100%;">
+            <div class="row" style="margin:0px;">
+                <div class="profile-body" style="padding:0px;">                    
+                    <div class="panel panel-profile">
+                        <div class="panel-heading overflow-h">
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>{%if admin%}{{ admin.menu_name }}{%endif%} : ({{ count }})
+                        <label class="input changeinputa">
+                            <input type="text" name="menu_id" id="menu_id" style="width:170px;" value="{{admin.menu_id}}" autocomplete=off disabled>
+                        </label>
+                        <label class="input changeinputa">
+                            <input type="text" name="menu_keyword" id="menu_keyword" style="width:170px;" value="{{admin.keyword}}" autocomplete=off>
+                        </label>
+                        </h2>
+                            <a href="page_profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                        </div>
+                        <div class="panel-body" id="results">
+                                {% for item in items %}
+                                    {% for v in vendors %}
+                                        {% if v.vendor_id == item.vendor %}
+                                <div class="col-lg-4 col-md-6 itemadjust">
+                                    <div class="profile-blog blog-border" onclick="change({{item.idItemData}}, '{{item.cat_type}}','{{item.searchtags}}', '{{item.image_url}}','{{item.web_url}}')">
+                                        <img class="img-responsive" src="{{ item.image_url }}" alt="" style="width:150px;height:150px;">
+                                        <div class="name-location">
+                                            <strong>{{ item.name }}</strong>   
+                                            <span><i class="fa fa-map-marker"></i>
+                                                <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}?ref={{item.idItemData}}"> {{ v.ch_name }}
+                                            </a></span>
+                                        </div>
+                                        {% if item.gen_cat %}
+                                            <span style="margin-left: 20px; color:#555;">{{item.vendorcat}}: {{ item.gen_cat }}</span>
+                                            <br/>
+                                        {% endif %}
+                                        <span style="margin-left: 20px; color:#555;">{{item.cat_type}}: {{item.searchtags}}</span>                                        <div class="clearfix margin-bottom-20"></div>    
+                                        <div style="height: 40px; overflow:hidden;">
+                                        <p>{{ item.desc }}</p>
+                            			</div>
+                                        <hr>
+                                        <ul class="list-inline share-list" style="white-space:nowrap">
+                                            <li class="price"><i class="fa fa-bell"></i>
+                                            {% if item.price %}
+                                                {{ item.price }}NT
+                                                {% if item.weight %} ({{item.weight}}{{item.unit}})  {% endif %}
+                                            {%else%}
+                                                <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}?ref={{item.idItemData}}">聯絡報價</a>
+                                            {%endif%}
+                                            </li>
+                                            <li><i class="fa fa-group"></i>
+                                                <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}?ref={{item.idItemData}}">{{ v.phone1[:5] }}
+                                            ..聯絡</a></li>
+                                            <li><i class="fa fa-twitter"></i><a href="{{ item.web_url }}?ref={{item.idItemData}}">Follow</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}                        
+                        </div>        
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    
+    </div><!--content side right -->
+</div><!--/wrapper-->
+
+<!-- JS Global Compulsory -->			
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-appear.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/smoothScroll.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.parallax.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/waypoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/jquery.counterup.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/owl-carousel/owl-carousel/owl.carousel.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<!-- JS Customization -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/custom.js') }}"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/fancy-box.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/progress-bar.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/owl-carousel.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+      	App.init();
+        App.initCounter();
+        App.initParallaxBg();
+        App.initScrollBar();
+        FancyBox.initFancybox();        
+        App.initAnimateDropdown();
+        OwlCarousel.initOwlCarousel();
+        ProgressBar.initProgressBarHorizontal();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/placeholder-IE-fixes.js') }}"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+function change(idItemData, cat, searchtags, image, url)
+{
+    if (cat != 'None') {document.getElementById("item_cat").value = cat;}
+        else if (cat == 'None') {document.getElementById("item_cat").value = '';}
+    if (searchtags != 'None') {document.getElementById("item_searchtags").value = searchtags;}
+        else if (searchtags == 'None') {document.getElementById("item_searchtags").value = '';}
+    if (image != 'None') {document.getElementById("item_image").value = image;}
+        else if (image == 'None') {document.getElementById("item_image").value = '';}
+    if (url != 'None') {document.getElementById("item_url").value = url;}
+        else if (url == 'None') {document.getElementById("item_url").value = '';}
+    document.getElementById("item_id").value = idItemData;
+}
+
+var loadPage = window.history.state;
+window.onpopstate = function(event) {
+    if (loadPage) {location.reload();}
+};
+
+$("#search_name").change(function() {
+    $.ajax({
+        url: "/L4quicksearch/",
+        type: "get",
+        data: {keyword: document.getElementById("search_name").value},
+        success: function(response) {
+            search_parm = '/L4/' + document.getElementById("menu_id").value + '/?keyword=' + document.getElementById("search_name").value;
+            document.getElementById("keyword").value = document.getElementById("search_name").value
+            window.history.pushState( {} , {} , search_parm );
+            loadPage = true;
+            $("#results").html(response);}
+    })  
+});
+
+$(".changeinput").change(function() {
+    $.ajax({
+        url: "/L4quicksave/",
+        type: "get",
+        data: {item_id: document.getElementById("item_id").value,
+               item_cat: document.getElementById("item_cat").value,
+               item_searchtags: document.getElementById("item_searchtags").value,
+               item_image: document.getElementById("item_image").value,
+               item_url: document.getElementById("item_url").value,
+               keyword: document.getElementById("keyword").value
+               },
+        success: function(response) {
+            $("#results").html(response);}
+    })
+});
+
+$(".changeinputa").change(function() {
+    $.ajax({
+        url: "/L4quicksave/",
+        type: "get",
+        data: {menu_id: document.getElementById("menu_id").value,
+               menu_keyword: document.getElementById("menu_keyword").value,
+               keyword: document.getElementById("keyword").value
+               },
+        success: function(response) {
+            search_parm = '/L4/' + document.getElementById("menu_id").value + '/?keyword=' + document.getElementById("menu_keyword").value;
+            document.getElementById("keyword").value = document.getElementById("menu_keyword").value
+            window.history.pushState( {} , {} , search_parm );
+            loadPage = true;
+            $("#results").html(response);}            
+    })
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<table style="vertical-align:top; margin-left:20px; width:100%; table-layout:fixed;" border="2">
+    <tr>
+        <td style="vertical-align:top; width:90%" ondrop="drop(event, '')" ondragover="allowDrop(event)" id="">
+            Unsorted Column
+            
+            {% for t in trans %}
+                {% if (t.table == '') or (not t.table) %}
+                <div style="font-family:Meiryo; font-size:14px;" draggable=true ondragstart="drag(event, '{{t.booking_id}}', '{{t.name}}',
+                    '{{t.phone}}', '{{t.seats}}', '{{t.timev}}', '{{t.notes}}', '{{t.status}}')" id="{{t.booking_id}}"
+                    onclick="edit_booking('{{t.booking_id}}', '{{t.name}}',
+                    '{{t.phone}}', '{{t.seats}}', '{{t.timev}}', '{{t.notes}}', '{{t.status}}', '{{t.start_date}}', '{{t.table}}' )">
+                    {{t.name}}
+                    {% if t.seats %} ({{t.seats}}) {%endif%}
+                    {{t.timev}}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </td>
+        {% for i in tablenames %}
+        <td style="vertical-align:top; width:100%" ondrop="drop(event, '{{i.tablename}}')" ondragover="allowDrop(event)" id="{{i.tablename}}">
+            {{i.tablename}}
+            {% if trans %}
+                {% for t in trans %}
+                    {% if t.table == i.tablename %}
+                    <div style="font-family:Meiryo; font-size:14px;" draggable=true ondragstart="drag(event, '{{t.booking_id}}',
+                        '{{t.name}}','{{t.phone}}', '{{t.seats}}', '{{t.timev}}', '{{t.notes}}', '{{t.status}}' )" id="{{t.booking_id}}"
+                        onclick="edit_booking('{{t.booking_id}}', '{{t.name}}',
+                        '{{t.phone}}', '{{t.seats}}', '{{t.timev}}', '{{t.notes}}', '{{t.status}}', '{{t.start_date}}', '{{t.table}}' )">
+                        {{t.name}}
+                        {% if t.seats %} ({{t.seats}}) {%endif%}
+                        {{t.timev}}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+</table>

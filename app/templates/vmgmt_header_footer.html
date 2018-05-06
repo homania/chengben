@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>CB_V.Mgmt</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">    
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/profile.css') }}">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>	
+
+<body>
+
+<div class="wrapper">
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div>
+            <a class="navbar-brand" href="index.html">
+                <img id="logo-header" src="../static/img/logos/logo2.png" alt="Logo">
+            </a>
+            </div>
+            <!-- End Logo -->
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active">
+                                <a href="/">Index</a> 
+                            </li>
+                            <li><a href="/customer/">Customer</a></li>
+                            <li><a href="#">Vendor <i class="fa fa-check"></i></a></a></li>
+                            <li><a href="/metrics/">Admin</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_faq.html">Help</a></li>  
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_login.html">Login</a></li>   
+                </ul>
+                <!-- End Topbar Navigation -->
+            </div>
+        </div>
+        <!-- End Topbar -->
+    
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" style="padding-top:25px;">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <!-- Home -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Option 1: Default Page</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Home -->
+
+                    <!-- Search Block -->
+                    <li>
+                        <i class="search fa fa-search search-btn"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>    
+                    </li>
+                    <!-- End Search Block -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+            </div>    
+        </div>            
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===-->
+
+    <!--=== Profile ===-->
+    <div class="profile container content" style="width:90%">
+    	<div class="row">
+            <!--Left Sidebar-->
+            <div class="col-md-2 md-margin-bottom-40">
+                <img class="img-responsive profile-img margin-bottom-20" src="http://www.dyfood.com.tw/images/BannerLeft.png" alt="" width=100% style="max-width:270px">
+
+                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                    <li class="list-group-item active">
+                        <a href="profile.html"><i class="fa fa-bar-chart-o"></i> Overall</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="admin_metrics.php"><i class="fa fa-user"></i> Metrics 客服</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="admin_items.php"><i class="fa fa-group"></i> Items 食品</a>
+                    </li>                                        
+                    <li class="list-group-item">
+                        <a href="admin_pay.php"><i class="fa fa-comments"></i> Account History/ Pay</a>
+                    </li>  
+                 	<li class="list-group-item">
+                        <a href="customer_settings.php"><i class="fa fa-cog"></i> Account Settings</a>
+                    </li>                                                                            
+                </ul>   
+
+                <!--Datepicker-->
+                <form action="" id="sky-form2" class="sky-form">
+                    <div id="inline-start"></div>
+                </form> 
+                <!--End Datepicker-->
+            </div>
+            <!--End Left Sidebar-->
+            
+            <div class="col-md-7 md-margin-bottom-40">
+                <!--Profile Body-->
+                <div class="profile-body">
+
+                    <!--Table Search v2-->
+                    
+                    <div class="table-search-v2 margin-bottom-20">
+                        <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>New Items</h2>
+
+			    <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">View Recent</a>
+                           
+                            <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">Add Item<i class="glyphicon glyphicon-plus" style="font-size:16px;margin-left:5px;"></i></a>
+            				
+                            <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="">Search Items <i class="search fa fa-search search-btn pull-right" style="font-size:16px;margin-top:-6px;margin-left:5px;"></i></a>                
+                             
+                        </div>
+                    
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center">Image</th>
+                                        <th width="35%">About</th>
+                                        <th width="20%">Contact</th>
+                                        <th width="5%">Links</th>
+                                        <th width="25%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for x in range (0,27) %}
+                                    <tr onclick = "change('{{vendors[x].vendor_id}}', '{{vendors[x].name}}', '{{vendors[x].ch_name}}', '{{vendors[x].address}}', '{{vendors[x].district}}', '{{vendors[x].city}}', '{{vendors[x].country}}', '{{vendors[x].contact}}', '{{vendors[x].phone1}}', '{{vendors[x].phone2}}', '{{vendors[x].fax}}', '{{vendors[x].email}}', '{{vendors[x].BID}}', '{{vendors[x].logo_url}}', '{{vendors[x].website}}', '{{vendors[x].CPC}}', '{{vendors[x].active}}')">
+                                        <td>
+                                            {% if links[x].image_check == 1 %}
+                                                <img class="rounded-x" src="{{vendors[x].logo_url}}" alt="">
+                                            {% else %}
+                                                <img class="rounded-x" src="https://cdn4.iconfinder.com/data/icons/web-links/512/40-64.png" alt="">
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <h3>{{vendors[x].name}}</h3>
+                                            <p>{{vendors[x].ch_name}}</p>
+                                            {{vendors[x].address}} {{vendors[x].district}} {{vendors[x].city}}
+                                            {% if vendors[x].create_date %}
+                                                <small class="hex">Submitted on {{vendors[x].create_date}}</small>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                        <span>{{vendors[x].contact}}</span><br>
+                                        <span>{{vendors[x].phone1}} <br>
+                                        <span>{{vendors[x].email}}</span><br>
+                                        </td>
+                                        <td>
+                                            <span class="label label-success" onClick="javascript:location.href='#'" style="cursor:pointer;margin-top:10px;">Visible</span>
+                                            <div style="margin-top:5px;">
+                                                
+                                                {% if vendors[x].website %}
+                                                    <a href="{{vendors[x].website}}" target="_blank">
+                                                {% endif %}
+                                                
+                                                    {% if links[x].web_check == 1 %}
+                                                        <i class="glyphicon glyphicon-ok-circle color-green" style="font-size:30px;"></i>
+                                                    {% else %}
+                                                        <i class="glyphicon glyphicon-remove-circle color-red" style="font-size:30px;"></i>
+                                                    {% endif %}
+                                                {% if vendors[x].website %}
+                                                    </a>
+                                                {% endif %}
+                                                 
+                                                {% if vendors[x].logo_url %}
+                                                    <a href="{{vendors[x].logo_url}}" target="_blank">
+                                                {% endif %}
+                                                 
+                                                    {% if links[x].image_check == 1 %}
+                                                        <i class="glyphicon glyphicon-ok-circle color-green" style="font-size:30px;"></i>
+                                                    {% else %}
+                                                        <i class="glyphicon glyphicon-remove-circle color-red" style="font-size:30px;"></i>
+                                                    {% endif %}
+                                                {% if vendors[x].logo_url %}
+                                                    </a>
+                                                {% endif %}                                          
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span>{{vendors[x].BID}}</span><br>
+                                            <span>電話2: {{vendors[x].phone2}} <br>
+                                            <span>fax: {{vendors[x].fax}}</span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                    <!--End Table Search v2--> 
+                    
+                </div>
+                <!--End Profile Body-->
+            </div>
+            
+            <!--=== RIGHT ===-->
+            <div class="col-md-3 md-margin-bottom-40"> 
+                <div style="position:fixed; height:100%; top:70px;background-color:white;">
+                    <div style="margin-top: 20px;">
+                        <form action="" method="post" id="sky-form" class="sky-form">
+                        {{form.hidden_tag()}}
+                        <h3 style="padding-left:100px;">
+                            Vendor Editor <span id="item_id">{{fitem.vendor_id}}</span>
+                        </h3>
+                        <input type="hidden" name="vendor_id" id="vendor_id" style="width:80px;height:100%" autocomplete=off value="{{fitem.vendor_id}}">
+                        
+                        <div style="margin-left:10px;">
+                        <table border="1" style="padding:5px;">
+                        <tr>
+                            <td style="padding:5px;">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="name" id="name" placeholder="ENG 名字" required style="width:170px;" autocomplete=off>
+                            </label>
+                            </td>
+                            <td style="padding:5px;">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="ch_name" id="ch_name" placeholder="CH 名字" required style="width:170px;" autocomplete=off>
+                            </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:5px;">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="address" id="address" placeholder="地址" required style="width:170px;" autocomplete=off>
+                            </label>
+                            </td>
+                            <td style="padding:5px;">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="district" id="district" placeholder="地區" required style="width:170px;" autocomplete=off>
+                            </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:5px;">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="city" id="city" placeholder="城市" required style="width:170px;" autocomplete=off>
+                            </label>
+                            </td>
+                            <td style="padding:5px;">                
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="country" id="country" placeholder="國家" required style="width:170px;" autocomplete=off>
+                            </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:5px;">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="contact" id="contact" placeholder="聯絡人" required style="width:170px;" autocomplete=off>
+                            </label>
+                            </td>
+                            <td style="padding:5px;">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="email" id="email" placeholder="@email" required style="width:170px;" autocomplete=off>
+                            </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:5px;">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="phone1" id="phone1" placeholder="電話1" required style="width:170px;" autocomplete=off>
+                                </label>
+                            </td>
+                            <td style="padding:5px;">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="phone2" id="phone2" placeholder="電話2" required style="width:170px;" autocomplete=off>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:5px;">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="fax" id="fax" placeholder="傳真" required style="width:170px;" autocomplete=off>
+                                </label>
+                            </td>
+                            <td style="padding:5px;">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="number" name="BID" id="BID" placeholder="BID" required style="width:170px;" autocomplete=off>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:5px;">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="logo_url" id="logo_url" placeholder="logo_url" required style="width:170px;" autocomplete=off>
+                                </label>
+                            </td>
+                            <td style="padding:5px;">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="website" id="website" placeholder="website" required style="width:170px;" autocomplete=off>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:5px;">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="number" name="CPC" id="CPC" placeholder="CPC" required style="width:170px;" autocomplete=off>
+                                </label>
+                            </td>
+                            <td style="padding:5px;">
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input type="number" name="active" id="active" placeholder="active" required style="width:170px;" autocomplete=off>
+                                </label>
+                            </td>
+                        </tr>                 
+                            </table>
+                            <br>
+                            <input type="submit" value="Save Changes">
+                            <br>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!--=== RIGHT ===-->
+    
+        </div><!--/end row-->
+    </div><!--/container-->    
+    <!--=== End Profile ===-->
+
+    <!--=== Copyright ===-->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">                     
+                    <p>
+                        2014 &copy; Unify. ALL Rights Reserved. 
+                        <a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                    </p>
+                </div>
+                <div class="col-md-6">  
+                    <a href="index.html">
+                        <img class="pull-right" id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png') }}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div> 
+    </div><!--/copyright--> 
+    <!--=== End Copyright ===-->
+
+
+</div><!--/wrapper-->
+
+
+<!-- JS Global Compulsory -->           
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-1.10.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js') }}"></script> 
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/smoothScroll.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/waypoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/jquery.counterup.min.js') }}"></script> 
+<!-- Datepicker Form -->
+<script src="{{ url_for('static', filename='plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js') }}"></script>
+<!-- Scrollbar -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/datepicker.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initCounter();
+        App.initScrollBar();
+        Datepicker.initDatepicker();
+    });
+</script>
+
+<script type="text/javascript">
+function change(vendor_id, name, ch_name, address, district, city, country, contact, phone1, phone2, fax, email, BID, logo_url, website, CPC, active)
+{
+    if (name != 'None') {document.getElementById("name").value = name;}
+        else if (name == 'None') {document.getElementById("name").value = '';}
+    if (ch_name != 'None') {document.getElementById("ch_name").value = ch_name;}
+        else if (ch_name == 'None') {document.getElementById("ch_name").value = '';}
+    if (address != 'None') {document.getElementById("address").value = address;}
+        else if (address == 'None') {document.getElementById("address").value = '';}
+    if (district != 'None') {document.getElementById("district").value = district;}
+        else if (district == 'None') {document.getElementById("district").value = '';}
+    if (city != 'None') {document.getElementById("city").value = city;}
+        else if (city == 'None') {document.getElementById("city").value = '';}
+    if (country != 'None') {document.getElementById("country").value = country;}
+        else if (country == 'None') {document.getElementById("country").value = '';}
+    if (contact != 'None') {document.getElementById("contact").value = contact;}
+        else if (contact == 'None') {document.getElementById("contact").value = '';}
+    if (phone1 != 'None') {document.getElementById("phone1").value = phone1;}
+        else if (phone1 == 'None') {document.getElementById("phone1").value = '';}
+    if (phone2 != 'None') {document.getElementById("phone2").value = phone2;}
+        else if (phone2 == 'None') {document.getElementById("phone2").value = '';}
+    if (fax != 'None') {document.getElementById("fax").value = fax;}
+        else if (fax == 'None') {document.getElementById("fax").value = '';}
+    if (email != 'None') {document.getElementById("email").value = email;}
+        else if (email == 'None') {document.getElementById("email").value = '';}
+    if (BID != 'None') {document.getElementById("BID").value = BID;}
+        else if (BID == 'None') {document.getElementById("BID").value = '';}
+    if (logo_url != 'None') {document.getElementById("logo_url").value = logo_url;}
+        else if (logo_url == 'None') {document.getElementById("logo_url").value = '';}
+    if (website != 'None') {document.getElementById("website").value = website;}
+        else if (website == 'None') {document.getElementById("website").value = '';}
+    if (CPC != 'None') {document.getElementById("CPC").value = CPC;}
+        else if (CPC == 'None') {document.getElementById("CPC").value = '';}
+    if (active != 'None') {document.getElementById("active").value = active;}
+        else if (active == 'None') {document.getElementById("active").value = '';}
+    
+    document.getElementById("vendor_id").value = vendor_id;
+    document.getElementById('item_id').innerHTML = vendor_id;
+
+}
+	  
+
+</script>
+
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js') }}"></script>
+<![endif]-->
+
+</body>
+</html>	    

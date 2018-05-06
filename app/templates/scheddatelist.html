@@ -1,0 +1,31 @@
+{% for t in trans %}
+    <tr style="background-color:{{t.color}}">
+        <td>
+            <a href="javascript:void(0)" onclick="single_view('{{t.name}}','{{t.datef}}')" style="font-family:Meiryo; font-size:14px;">
+            {{t.name}}</a>
+        </td>
+        <td>
+            <span style="font-family:Meiryo; font-size:14px;">
+                 {{t.dept}} 
+            {% if t.team %}
+                -{{t.team}}
+            {% endif %}
+            </span>
+        </td>
+        <td>
+             <span style="font-family:Meiryo; font-size:14px;">{{t.datef}}</span>
+        </td>
+        <td>
+            <span style="font-family:Meiryo; font-size:14px;">{{t.start_time}}-{{t.end_time}}</span>
+        </td>
+        <td>
+           <span style="font-family:Meiryo; font-size:14px;">{{t.notes}}</span>
+        </td>
+        <td>
+            <span style="font-family:Meiryo; font-size:14px;">{{t.phone}}</span>
+        </td>
+    </tr>                                    
+    {% endfor %}
+<tr><td colspan="6">
+<button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+</td></tr>

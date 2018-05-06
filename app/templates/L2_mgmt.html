@@ -1,0 +1,101 @@
+{% extends "baseL2.html" %}
+{% block content %}
+<div style="float:left;width:90%">
+    {% include 'headerv7leftL2.html' %}
+
+    <!--=== Content Side Right ===-->
+    <div class="content-side-right">
+        <!-- Interactive Slider -->
+        <div class="search-block parallaxBg" style="height:15px;padding:0px;">
+            <div class="container">
+            </div>    
+        </div><!--/container-->
+  <!-- End Interactive Slider -->
+
+      <!--Profile Blog-->
+    <div id="computers-and-parts" style="-webkit-column-count: 4;-moz-column-count: 6;column-count: 6;column-gap:1em;">     	
+            {% for item in l1menu %}       
+              {% if item.parent_id == page %} 
+                <div>
+                  <h2>{{item.menu_id}}.{{ item.menu_name }}</h2>	
+                    <ul>
+                {% for items in l2menu %}
+                    {% if items.parent_id == item.menu_id %}        		
+                        <li>
+                            <a href="/L4/{{ items.menu_id }}/?keyword={{ items.keyword }}" target="_blank">
+                                <img src="{{ url_for('static', filename='img/icons/edit.png')}}" style="height:15px;width:15px;margin-top:-3px;">
+                            </a>
+                            <span onClick="change('{{ items.menu_name }}', {{items.menu_id}}, {{items.tier}},{{items.menu_order}},{{items.parent_id}},'{{items.keyword}}')" style="cursor:pointer;">
+                                    {{items.menu_order}}.{{ items.menu_name }}
+                                    {% if items.sub_count != 0 %}
+                                        ({{ items.sub_count }})
+                                    {% endif %}
+                            </span>
+                        </li>                        
+                    {% endif %}
+                {% endfor %}
+                    </ul>
+                </div>
+              {% endif %}
+            {% endfor %} 
+
+    </div> <!-- end computers-and-parts-->
+    {% include 'owlL2.html' %}
+    </div><!--content side -->
+</div> <!--=== LEFT ===-->
+
+<div style="float:right;width:15%;height:100%;background-color:white;"> <!--=== RIGHT ===-->
+    <div style="position:fixed; width: 150px;height:100%; top:0px;background-color:white;">
+        <div style="margin-top: 100px;">
+            <h3 style="text-align:center;">
+                Menu Builder
+            </h3>
+            <form action="" method="post">
+            {{form.hidden_tag()}}
+            <div style="margin-left:10px;">
+                <p> Category Name:
+                    <input type="text" name="cat_name" id="cat_name" style="width:170px" autocomplete=off>
+                </p>
+                <p> Menu_id: <input type="number" name="menu_id" id="menu_id" style="width:170px" autocomplete=off>
+                </p>
+                <p> Tier: (1-4)
+                    <input type="number" name="tier" id="tier" style="width:170px" autocomplete=off>
+                </p>
+                <p> Order: 1-xxx
+                    <input type="number" name="order" id="order" style="width:170px" autocomplete=off>
+                </p>
+                <p> Parent: 1-xxx
+                    <input type="number" name="parent" id="parent" style="width:170px" autocomplete=off>
+                </p>
+                <p style="margin-bottom: 30px;"> Keyword/ Tags
+                    <input type="text" name="keyword" id="keyword" style="width:170px" autocomplete=off>
+                </p>
+                <input type="submit" value="Save Changes">
+                <br>
+                <br>
+                {% if category != None %}
+                    {{ form.cat_name }}<br>
+                    {{ form.menu_id }}<br>
+                    {{ form.tier }}<br>
+                    {{ form.order }}<br>
+                    {{ form.parent }}<br>
+                    {{ form.keyword }}
+                    {{ form.test}}
+                {% endif %}
+            </div>
+            </form>
+        </div>
+    </div>
+</div> <!--=== RIGHT ===-->
+<script type="text/javascript">
+function change(cat_name, menu_id, tier, order, parent, keyword)
+{
+     document.getElementById("cat_name").value = cat_name;
+     document.getElementById("menu_id").value = menu_id;
+     document.getElementById("tier").value = tier;
+     document.getElementById("order").value = order;
+     document.getElementById("parent").value = parent;
+     document.getElementById("keyword").value = keyword; 
+}
+</script>    
+{% endblock %}

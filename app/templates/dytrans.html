@@ -1,0 +1,23 @@
+{% for t in trans %}
+<tr onclick="change('{{t.vendor}}','{{t.trans_type}}','{{t.desc}}','{{t.amount}}','{{t.scheduled_date}}','{{t.trans_date}}',
+'{{t.trans_person}}','{{t.trans_method}}','{{t.trans_receipt}}','{{t.notes}}','{{t.recur}}','{{t.interval}}','{{t.int_number}}',
+'{{t.create_date}}','{{t.trans_id}}')">
+    <td>
+        <a href="#" style="font-family:Meiryo; font-size:14px;">{{t.vendor}}</a>
+    </td>
+    <td> <a href="#" style="font-family:Meiryo; font-size:14px;">
+         {{t.trans_type}} </a></td>
+    <td>
+         <span style="font-family:Meiryo; font-size:14px;">{{t.scheduled_date}}</span>
+    </td>
+    <td>
+        <span style="font-family:Meiryo; font-size:14px;">{{t.amount}}</span>
+    </td>
+    <td> {{t.trans_method}} </td>
+    <td>
+       <span style="color:#666666;float:left;margin-right:5px;"> <i class="fa fa-print"></i> Invoice </span>
+       <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-envelope"></i> Email </span>
+       <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-ban"></i> Suspend </span>
+    </td>
+</tr>                                    
+{% endfor %}

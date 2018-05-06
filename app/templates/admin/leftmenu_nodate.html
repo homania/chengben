@@ -1,0 +1,125 @@
+            <!--Left Sidebar-->
+            <div class="col-md-3 md-margin-bottom-40">
+                <img class="img-responsive profile-img margin-bottom-20" src="../../static/img/custom/NFprofile.jpg" alt="">
+
+                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                    <li class="list-group-item active">
+                        <a href="profile.html"><i class="fa fa-bar-chart-o"></i> Overall</a>
+                    </li>
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-metrics" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i>  Metrics 客服</a>
+                        <ul id="collapse-content-metrics" class="collapse in">
+                             {% set nav_list = [
+                                 ('/metrics/', 'metrics', 'fa fa-cog', 'Clicks/ Site Performance', '<span class="badge badge-u">OK!</span>'),
+                                 ('/metrics_items/', 'items', 'fa fa-align-center', 'Items 食品', '<span class="badge badge-u">OK!</span>'),
+                                 ('javascript:void(0);', 'brands', 'fa fa-align-center', 'Brands 品牌', '<span class="badge badge-red">INC</span>'),
+                                 ('javascript:void(0);', 'vmgmt', 'fa fa-align-center', 'Vendors 商業/場商', '<span class="badge badge-red">INC</span>'),
+                                 ('/customer_watchlist/', 'customerwatchlist', 'fa fa-align-center', 'Watchlists 會員', '<span class="badge badge-u">OK!</span>'),
+                                  ] -%}{% include 'admin/active.html' %}
+                        </ul>
+                    </li>                      
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-items" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i> Item Mgmt 食品管理</a>
+                        <ul id="collapse-content-items" class="collapse in">
+                             {% set nav_list = [
+                                 ('/itemdashboard/', 'item_mgmt', 'fa fa-cog', 'Items 食品', '<span class="badge badge-u">OK!</span>'),
+                                 ('javascript:void(0);', 'brands', 'fa fa-align-center', 'Brands 品牌', '<span class="badge badge-red">INC</span>'),
+                                 ('/vmgmt/', 'vmgmt', 'fa fa-align-center', 'Vendors 商業/場商', '<span class="badge badge-u">OK!</span>'),
+                                 ('javascript:void(0);', 'vdailybudget', 'fa fa-align-center', 'Vendor-Daily Budget', '<span class="badge badge-red">INC</span>'),
+                                 ('/umgmt/', 'umgmt', 'fa fa-align-center', 'Members 會員', '<span class="badge badge-u">OK!</span>'),
+                                  ] -%}{% include 'admin/active.html' %}
+                        </ul>
+                    </li>                         
+                    
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-cats" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i>  Category Mgmt </a>
+                        <ul id="collapse-content-cats" class="collapse in">
+                             {% set nav_list = [
+                                 ('/l1mgmt/', 'l1mgmt', 'fa fa-cog', 'L1 Mgmt', '<span class="badge badge-u">OK!</span>'),
+                                 ('/l2mgmt/2', 'l2mgmt', 'fa fa-align-center', 'L2 Mgmt', '<span class="badge badge-u">OK!</span>'),
+                                 ('javascript:void(0);', 'itemsearchtags', 'fa fa-align-center', 'Items/ SearchTags', '<span class="badge badge-red">INC</span>'),
+                                 ('javascript:void(0);', 'vendorsubcat', 'fa fa-align-center', 'Vendors SubCats 商業/場商', '<span class="badge badge-red">INC</span>'),
+                                  ] -%}{% include 'admin/active.html' %}
+                        </ul>
+                    </li>
+                    
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-receive" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i>  Accounting 快計</a>
+                        <ul id="collapse-content-receive" class="collapse in">
+                             {% set nav_list = [
+                                 ('/accounting/', 'l1mgmt', 'fa fa-cog', 'General Accounting', '<span class="badge badge-u">OK!</span>'),
+                                 ('javascript:void(0);', 'l2mgmt', 'fa fa-align-center', 'Past Due/ Warn/ PickUpPay', '<span class="badge badge-red">INC</span>'),
+                                 ('javascript:void(0);', 'itemsearchtags', 'fa fa-align-center', 'Account Receivables (IN)', '<span class="badge badge-red">INC</span>'),
+                                 ('/receipt/', 'receipts', 'fa fa-align-center', 'Accounts Payables (OUT)', '<span class="badge badge-u">OK!</span>'),
+                                  ] -%}{% include 'admin/active.html' %}                        
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Invoice Re-Print/Email</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Vendors Acct Suspend 商業/場商</a></li>
+                            <li><span class="badge badge-red">Later</span>  <a href="#"><i class="fa fa-align-center"></i> Tax/ Insur (report)</a></li> 
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Daily/Monthly Revenue Chart</a></li>
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Gross/ Net Profit Chart(report)</a></li>
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Outstanding Unscheduled</a></li>
+                        </ul>
+                    </li>                        
+
+                    <li class="list-group-item list-toggle active"><span class="badge badge-red">Later</span>            
+                        <a class="accordion-toggle" href="#collapse-content-hr" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i>  HR 人手管理</a>
+                        <ul id="collapse-content-hr" class="collapse in">
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0);"><i class="fa fa-cog"></i> Vacation/Interview Calendar </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0);"><i class="fa fa-align-center"></i> Vacation Request Entry </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0);"><i class="fa fa-align-center"></i> New Employee Entry </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0);"><i class="fa fa-align-center"></i> Employee Lookbook </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0);"><i class="fa fa-align-center"></i> Employee Leaving Form </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0);"><i class="fa fa-align-center"></i> Interview Scheduling</a></li>
+                            <li><span class="badge badge-u">OK!</span><a href="/hr_scheduling/" target="_new"><i class="fa fa-align-center"></i> PT Scheduling TimeEntry</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0);"><i class="fa fa-align-center"></i> Employment Contracts/ Forms</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0);"><i class="fa fa-align-center"></i> 1111, Yes123 Link</a></li>
+                        </ul>
+                    </li>  
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-mrkting" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i> Marketing Documents 文件管理</a>
+                        <ul id="collapse-content-mrkting" class="collapse in">
+                            <li><a href="#"><i class="fa fa-cog"></i> New Vendor Intro Packet </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> New Restaurant Sales Flier </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Monthly Restaurant Sales Flier </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Business Card Design </a></li>
+                        </ul>
+                    </li> 
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-invest" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i>  Investors</a>
+                        <ul id="collapse-content-invest" class="collapse in">
+                            <li><a href="#"><i class="fa fa-align-center"></i> Financial Forecasts</a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Business Plan </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Monthly Analysis .doc</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Internal Goals & Discuss</a></li>
+                        </ul>
+                    </li>                     
+                    
+                    <li class="list-group-item list-toggle active"> <span class="badge badge-red">Later</span>               
+                        <a class="accordion-toggle" href="#collapse-content-ads" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i>  Advertising </a>
+                        <ul id="collapse-content-ads" class="collapse">
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Marketing Calendar </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> Google Adwords/ Adsense</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Facebook Ads </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Partnership Ads </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> MailChimp NewsLetter(?) </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="#"><i class="fa fa-align-center"></i> Ad Cost/ InFlow Analysis </a></li>
+                            <li><a href="#"><i class="fa fa-align-center"></i> PriceTicker Alerts </a></li>
+                        </ul>
+                    <li class="list-group-item list-toggle active"> <span class="badge badge-red">Later</span>               
+                        <a class="accordion-toggle" href="#collapse-content-ads" data-toggle="collapse" style="background:#717984;"><i class="fa fa-cubes"></i>  Functions </a>
+                        <ul id="collapse-content-ads" class="collapse in">
+                            <li><span class="badge badge-u">OK!</span><a href="/charged/" target="_new"><i class="fa fa-align-center"></i> Calculate Charged Clicks </a></li>
+                            <li><span class="badge badge-u">OK!</span><a href="/add_charges/" target="_new"><i class="fa fa-align-center"></i> Add Charges </a></li>
+                            <li><span class="badge badge-u">OK!</span><a href="/parser/" target="_new"><i class="fa fa-align-center"></i> Parse 20</a></li>
+                            <li><span class="badge badge-u">OK!</span><a href="/dummy_back/" target="_new"><i class="fa fa-align-center"></i> DummyBack </a></li>
+                            <li><span class="badge badge-u">OK!</span><a href="/dummy_forward/" target="_new"><i class="fa fa-align-center"></i> DummyFor </a></li>
+                            <li><span class="badge badge-u">Careful</span><a href="/parserall/" target="_new"><i class="fa fa-align-center"></i> ParseAll </a></li>
+                        </ul>                        
+                    </li>                                                                
+                </ul>   
+            </div>
+            <!--End Left Sidebar-->

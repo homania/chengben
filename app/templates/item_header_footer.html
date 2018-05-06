@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>CB_ItemDash</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">    
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/profile.css') }}">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>	
+
+<body>
+
+<div class="wrapper" style="float:left;width:50%; width:100px;">
+    <!--=== Header ===-->    
+    <div class="header" style="padding-left:100px;background:none;padding-bottom:50px;">
+        <div class="container">
+            <!-- Logo -->
+            <div style="padding-left:80px;">
+            <a class="navbar-brand" href="index.html">
+                <img id="logo-header" src="../static/img/logos/logo2.png" alt="Logo">
+            </a>
+            </div>
+            <!-- End Logo -->
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active">
+                                <a href="/">Index</a> 
+                            </li>
+                            <li><a href="/customer/">Customer</a></li>
+                            <li><a href="#">Vendor <i class="fa fa-check"></i></a></a></li>
+                            <li><a href="/metrics/">Admin</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_faq.html">Help</a></li>  
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_login.html">Login</a></li>   
+                </ul>
+                <!-- End Topbar Navigation -->
+            </div>
+        </div>
+        <!-- End Topbar -->
+    
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" style="padding-top:25px;padding-bottom:50px;">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <!-- Home -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Option 1: Default Page</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Home -->
+
+                    <!-- Search Block -->
+                    <li>
+                        <i class="search fa fa-search search-btn"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>    
+                    </li>
+                    <!-- End Search Block -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+            </div>    
+        </div>            
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===-->
+
+{% block content %}{% endblock %}
+
+    <!--=== Copyright ===-->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">                     
+                    <p>
+                        2014 &copy; Unify. ALL Rights Reserved. 
+                        <a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                    </p>
+                </div>
+                <div class="col-md-6">  
+                    <a href="index.html">
+                        <img class="pull-right" id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png') }}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div> 
+    </div><!--/copyright--> 
+    <!--=== End Copyright ===-->
+</div><!--/wrapper-->
+
+<div style="float:right;width:23%;height:100%;background-color:white;"> <!--=== RIGHT ===-->
+    <div style="position:fixed; width: 450px;height:100%; top:0px;background-color:white;">
+        <div style="margin-top: 20px;">
+            <form action="" method="post" id="sky-form" class="sky-form">
+            {{form.hidden_tag()}}
+            <h3 style="padding-left:100px;">
+                Item Editor <span id="item_id">{{fitem.idItemData}}</span>
+            </h3>
+            <input type="hidden" name="idItemData" id="idItemData" style="width:80px;height:100%" autocomplete=off value="{{fitem.idItemData}}">
+            
+            <div style="margin-left:10px;">
+            <table border="1" style="padding:5px;">
+            <tr>
+                <td style="padding:5px;">
+                    <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="name" id="name" placeholder="Item Name" required style="width:170px;" autocomplete=off value="{{fitem.name}}">
+                    </label>
+                </td>
+                <td style="padding:5px;">
+                    <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="brand" id="brand" placeholder="Brand" style="width:170px;" autocomplete=off value="{{fitem.brand}}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px;">
+                   <label class="select changeinput">
+                        <select name="cat_type" id="cat_type" placeholder="Category:" required style="width:170px;" autocomplete=off value="{{fitem.cat_type}}">
+                            <option value="" selected disabled style="display:none">Category:</option>
+                            <option value="Meat">Meat</option>
+                            <option value="NonMeat">NonMeat</option>
+                            <option value="FishMeat">FishMeat</option>
+                            <option value="Shellfish">Shellfish</option>
+                            <option value="NonFish">NonFish</option>
+                            <option value="DryGood">DryGood</option>
+                            <option value="Processed">Processed</option>
+                            <option value="Supplies">Supplies</option>
+                            <option value="Equipment">Equipment</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Vegetable">Vegetable</option>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Dish">Dish</option>
+                            <option value="Pastry">Pastry</option>
+                        </select>
+                        <i></i>
+                    </label>
+
+                </td>            
+                <td style="padding:5px;">
+                    <label class="textarea changeinput">
+                        <textarea name="searchtags" id="searchtags" style="width:170px;height:70px" autocomplete=off>{{fitem.searchtags}}</textarea>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px;">
+                   <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="weight" id="weight" placeholder="Weight(#amt)" style="width:170px;" autocomplete=off value="{{fitem.weight}}">
+                    </label>                 
+                </td>           
+                <td style="padding:5px;">                    
+                     <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="unit" id="unit" placeholder="Unit(g/kg/L/..)" style="width:170px;" autocomplete=off value="{{fitem.unit}}">
+                     </label>
+                </td>
+            </tr>
+            <tr>                
+                <td style="padding:5px;">
+                    <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="pack" id="pack" placeholder="Pack (包/盒/箱/..)" style="width:170px;" autocomplete=off value="{{fitem.pack}}">
+                    </label>
+                </td style="padding:5px;">
+                <td style="padding:5px;">                
+                    <label class="input">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="vendor" id="vendor" placeholder="VendorID" style="width:170px;" autocomplete=off value="{{fitem.vendor}}">
+                    </label>
+                </td>                
+            </tr>
+            <tr>                
+                <td style="padding:5px;">                    
+                     <label class="textarea changeinput">
+                        <textarea name="web_url" id="web_url" placeholder="Web_Url:" style="width:170px;height:150px;" autocomplete=off>{{fitem.web_url}}</textarea>
+                     </label>
+                </td>
+                <td style="padding:5px;">
+                    <label class="textarea changeinput">
+                        <textarea name="image_url" id="image_url" placeholder="image_url:" style="width:170px;height:150px;" autocomplete=off>{{fitem.image_url}}</textarea>
+                    </label>
+                </td>
+            </tr>
+            <tr>                
+                <td style="padding:5px;">                
+                    <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="vendorcat" id="vendorcat" placeholder="V MajorCat:" style="width:170px;" autocomplete=off value="{{fitem.vendorcat}}">
+                    </label>
+                </td>
+                <td style="padding:5px;">
+                    <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="gen_cat" id="gen_cat" placeholder="V MinCat:" style="width:170px;" autocomplete=off value="{{fitem.gen_cat}}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px;">
+                    <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="active" id="active" placeholder="Active:" style="width:170px;" autocomplete=off value="{{fitem.active}}">
+                    </label>
+                </td>
+                <td style="padding:5px;">                    
+                    <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="confirmed" id="confirmed" placeholder="Confirmed(0/1/2):" style="width:170px;" autocomplete=off value="{{fitem.confirmed}}">
+                    </label>
+                </td>
+            <tr>
+            </tr>
+                <td style="padding:5px;">
+                    <label class="textarea changeinput">
+                        <textarea name="desc" id="desc" style="width:170px;height:70px" autocomplete=off>{{fitem.desc}}</textarea>
+                    </label>
+                </td>
+                <td style="padding:5px;">
+                    <label class="input changeinput">
+                        <i class="icon-append fa fa-user"></i>
+                        <input type="text" name="price" id="price" placeholder="Price:" style="width:170px;" autocomplete=off value="{{fitem.price}}">
+                    </label>
+                </td>
+            </tr>                    
+                </table>
+                <br>
+                <input type="submit" value="Save Changes">
+                <br>
+            </div>
+            </form>
+        </div>
+    </div>
+</div> <!--=== RIGHT ===-->
+
+
+<!-- JS Global Compulsory -->           
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-1.10.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js') }}"></script> 
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/smoothScroll.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/waypoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/jquery.counterup.min.js') }}"></script> 
+<!-- Datepicker Form -->
+<script src="{{ url_for('static', filename='plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js') }}"></script>
+<!-- Scrollbar -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/datepicker.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initCounter();
+        App.initScrollBar();
+        Datepicker.initDatepicker();
+    });
+</script>
+
+<script type="text/javascript">
+$(".changeinput").change(function() {
+    $.ajax({
+        url: "/itemquicksave/",
+        type: "get",
+        data: {item_id: document.getElementById("idItemData").value,
+               name: document.getElementById("name").value,
+               brand: document.getElementById("brand").value,
+               item_cat: document.getElementById("cat_type").value,
+               item_searchtags: document.getElementById("searchtags").value,
+               weight: document.getElementById("weight").value,
+               unit: document.getElementById("unit").value,
+               pack: document.getElementById("pack").value,
+               vendor: document.getElementById("vendor").value,
+               web_url: document.getElementById("web_url").value,
+               image_url: document.getElementById("image_url").value,
+               vendorcat: document.getElementById("vendorcat").value,
+               gen_cat: document.getElementById("gen_cat").value,
+               active: document.getElementById("active").value,
+               confirmed: document.getElementById("confirmed").value,
+               desc: document.getElementById("desc").value,
+               price: document.getElementById("price").value,
+               },
+        success: function(response) {
+            $("#results").html(response);}
+    })
+});
+</script>
+
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js') }}"></script>
+<![endif]-->
+
+</body>
+</html>	    

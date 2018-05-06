@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]--><head>
+    {% if title %}
+      
+<title>{{ title }} | ChengBen</title>
+    {% else %}
+    <title>ChengBen</title>
+    {% endif %}
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/owl-carousel/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/fancybox/source/jquery.fancybox.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+    <!--[if lt IE 9]><link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms-ie8.css') }}"><![endif]-->       
+
+    <!-- CSS Page Style -->    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/page_search.css') }}">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    
+<style>
+
+#computers-and-parts li a{
+font-family:open sans, segoe ui, arial, sans-serif; 
+font-size:13px; 
+margin-left:-40px;
+text-decoration:none;
+color:#555;
+
+}
+#computers-and-parts li a:hover{background-color:#f2f2f2}
+#computers-and-parts ol, ul {list-style: none;margin-bottom:0px;}
+#computers-and-parts{
+ width:100%;
+ margin-top:20px;
+ line-height:21px;
+
+}
+
+#computers-and-parts div{
+	display:inline-block; 
+	width:100%; 
+	margin: 0 0 1em;
+ 	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;}
+
+#computers-and-parts h2{color:#000;display:block;font-size:17px;font-family:open sans, segoe ui, arial, sans-serif;
+font-weight:normal;margin-bottom:0px;text-shadow: 1px 1px 2px #ddd;}	
+
+
+</style>
+</head>
+<body class="boxed-layout container">
+<div class="wrapper">
+
+    {% block content %}{% endblock %}
+    
+</div><!--/wrapper-->
+
+<!-- JS Global Compulsory -->			
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-appear.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/smoothScroll.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.parallax.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/waypoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/jquery.counterup.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/owl-carousel/owl-carousel/owl.carousel.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<!-- JS Customization -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/custom.js') }}"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/fancy-box.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/progress-bar.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/owl-carousel.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+      	App.init();
+        App.initCounter();
+        App.initParallaxBg();
+        App.initScrollBar();
+        FancyBox.initFancybox();        
+        App.initAnimateDropdown();
+        OwlCarousel.initOwlCarousel();
+        ProgressBar.initProgressBarHorizontal();
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/placeholder-IE-fixes.js') }}"></script>
+<![endif]-->
+
+</body>
+</html>

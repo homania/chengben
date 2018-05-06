@@ -1,0 +1,103 @@
+    <!--=== Header v7 Left ===-->
+    <div class="header-v7 header-left-v7">
+        <nav class="navbar navbar-default mCustomScrollbar" role="navigation" data-mcs-theme="minimal-dark">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="menu-container">
+                <!-- Toggle get grouped for better mobile display -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- End Toggle -->
+
+                <!-- Logo -->
+                <div class="logo" style="padding:0px; margin-top:-10px;">
+                    <a href="{{ url_for("vendor", vendorid=vendorid, page=page) }}">
+                        <img id="logo-header" src={{ logo }} alt="Logo" style="width:100%;">
+                    </a>
+                </div>
+                <!-- End Logo -->
+            </div>
+            <div style="margin-left:20px; color:#555;"> {{admin.ch_name}} <br>
+            {{admin.district}}{{admin.address}}<br>
+            {% if admin.phone1_img %}
+                <img src ='../../static/{{admin.phone1_img}}'><br>
+            {% endif %}
+            {% if admin.phone2_img %}
+                <img src ='../../static/{{admin.phone2_img}}'><br>
+            {% endif %}
+            {% if admin.fax_img %}
+                <img src ='../../static/{{admin.fax_img}}'>
+                <br>
+            {% endif %}
+            {% if admin.email_img %}
+                <img src ='../../static/{{admin.email_img}}'>
+            {% endif %}
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-responsive-collapse">
+                <div class="menu-container">
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li>
+                            <a href="{{ url_for('index') }} ">
+                                Home
+                            </a>
+                        </li>
+                        <!-- End Home -->
+
+                        <!-- About Pages -->                        
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                SubCategories
+                            </a>
+                            <ul class="dropdown-menu">
+                            {% for brand in brands %}
+                                <li><a href="page_about2.html">{{ brand }} </a></li>
+                            {% endfor %}
+                            </ul>
+                        </li>
+                        <!-- End About Pages -->
+
+                        <!-- Blog -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                Stores
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog_large_right_sidebar1.html">Right Sidebar</a></li>
+                                <li><a href="blog_large_left_sidebar1.html">Left Sidebar</a></li>
+                            </ul>
+                        </li>
+                        <!-- End Blog -->
+
+                        <!-- Contacts -->
+                    <li>
+                        <i class="search fa fa-search search-btn"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>    
+                    </li>                
+                        <!-- End Contacts -->
+
+                    </ul>
+
+                    <ul class="list-inline header-socials">
+                        <li><a href="'#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="'#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="'#"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                    <p class="copyright-text">&copy; 2015 Unify. All Rights Reserved.</p>
+                </div>  
+            </div>
+            <!-- End Navbar Collapse -->
+        </nav>
+    </div>    
+    <!--=== End Header v7 Left ===-->

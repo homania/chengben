@@ -1,0 +1,57 @@
+{% extends "base2.html" %}
+{% block content %}
+    {% include 'headerv7left.html' %}
+
+    <!--=== Content Side Right ===-->
+    <div class="content-side-right">
+        <!-- Interactive Slider -->
+    <div class="search-block parallaxBg" style="height:15px;padding:0px;">
+        <div class="container">
+        </div>    
+    </div><!--/container-->
+  <!-- End Interactive Slider -->
+
+      <!--Profile Blog-->
+        <div class="bg-color-light">
+          <div class="container content-sm profile" style="padding:5px; margin:0px;width:100%;">
+            <div class="row" style="margin:0px;">
+                <div class="profile-body" style="padding:0px;">                    
+                    <div class="panel panel-profile">
+                        <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>Items</h2>
+                            <a href="page_profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                        </div>
+                        <div class="panel-body">
+                                {% for item in items %}
+                                <div class="col-lg-4 col-md-6 itemadjust">
+                                    <div class="profile-blog blog-border">
+                                        <img class="img-responsive" src="{{ item.image_url }}" alt="">
+                                        <div class="name-location">
+                                            <strong>{{ item.name }}</strong>
+                                            <span><i class="fa fa-map-marker"></i><a href="#">富統食品股份有限公司</a></span>
+                                        </div>
+                                        <div class="clearfix margin-bottom-20"></div>    
+                                        <div style="height: 40px; overflow:hidden;">
+                                        <p>{{ item.desc }}</p>
+                            			</div>
+                                        <hr>
+                                        <ul class="list-inline share-list">
+                                            <li class="price"><i class="fa fa-bell"></i><a href="#">63NT / 包</a></li>
+                                            <li><i class="fa fa-group"></i><a href="#">電話:(08)77-..聯絡</a></li>
+                                            <li><i class="fa fa-twitter"></i><a href="{{ item.web_url }}">Follow</a></li>
+                                        </ul>
+                                    </div>
+                                </div>    
+                                {% endfor %}                        
+                        </div>        
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    {% include 'pagenum.html' %}
+
+    {% include 'owl.html' %}
+    
+    </div><!--content side right -->
+{% endblock %}

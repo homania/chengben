@@ -1,0 +1,98 @@
+{% extends "base3.html" %}
+{% block content %}
+
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <a class="logo" style="height:75px;">
+            </a>
+            <!-- End Logo -->
+            
+<!-- Topbar -->
+{% include 'loginbar.html' %}
+<!-- End Topbar -->
+        </div><!--/end container-->
+    </div>
+
+    <!--=== Search Block ===-->
+    <div class="search-block parallaxBg">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <h1><span style="font-family:'Microsoft JhengHei'">CHENGBEN.COM.TW </span><span style="font-family:'Microsoft JhengHei'">來省成本</span></h1>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="{{ g.sid }}">
+                    <span class="input-group-btn">
+                        <button class="btn-u btn-u-lg" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+
+                <form action="" class="sky-form page-search-form">
+                    <div class="inline-group">                    
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline" checked><i></i>Recent</label>
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Related</label>
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Popular</label>
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Most Common</label>
+                    </div>
+                </form>    
+            </div>
+        </div>    
+    </div><!--/container-->  
+    <!--=== End Search Block ===-->
+
+    <!--=== Content ===-->
+    <div class="container content" style="height:800px;width:90%">
+        <!--=== Pricewatch Code ===-->
+        <div style="padding:10px;">    
+            <div style="width:100%;height:40px;padding:0px;margin-top:-50px;border-bottom:5px solid orange">
+                    <h1 style="font-size:25px;font-weight:normal;font-family:open sans, arial;">Restaurant Supply & Foodstuffs</h1>
+            </div>
+            <div id="computers-and-parts" style="-webkit-column-count: 6;-moz-column-count: 6;column-count: 6;;column-gap:1em;">
+                            
+                    {% for item in l1menu %}       
+                    <div class="cp">
+                      <h2>{{ item.menu_name }}</h2>	
+                            <ul>
+                        {% for items in l2menu %}
+                            {% if items.parent_id == item.menu_id %}        		
+                                <li><a href="/L2/{{ items.menu_id }}">{{ items.menu_name }} 
+                                {% if items.sub_count != 0 %}
+                                    ({{ items.sub_count }})
+                                {% endif %}
+                                </a></li>
+                            {% endif %}
+                        {% endfor %}
+                            </ul>
+                    </div>
+                            {% endfor %} 
+                    </div>        
+
+            </div> <!-- end computers-and-parts-->
+            
+        </div>    <!--=== End Pricewatch Code ===-->
+    </div>                 
+    <!--=== Container Part ===-->
+
+    <!--=== Footer Version 1 ===-->
+    <div class="footer-v1">        
+        <!--=== Copyright ===-->
+        <div class="copyright" style="height:40px;padding:0;margin:0;background:#3e4753">
+            <div class="container" style="height:40px;padding:10;margin:0;">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            2016 &copy; ChengBen. ALL Rights Reserved. 
+                            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">  
+                    </div>
+                </div>
+            </div> 
+        </div><!--/copyright--> 
+        <!--=== End Copyright ===-->
+    </div>     
+    <!--=== End Footer Version 1 ===-->
+    
+{% endblock %}

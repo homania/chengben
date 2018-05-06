@@ -1,0 +1,7 @@
+<span style="margin-bottom:10px;font-weight:700;color:#b3b3b3">Store Suggestions </span><br>
+{{store_var}}
+{% if final_store %}
+    {% for f in final_store %}
+        {{f}} <br>
+    {% endfor %}
+{% endif %}

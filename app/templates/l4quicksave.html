@@ -1,0 +1,40 @@
+{% for item in items %}
+    {% for v in vendors %}
+        {% if v.vendor_id == item.vendor %}
+            <div class="col-lg-4 col-md-6 itemadjust">
+                <div class="profile-blog blog-border" onclick="change({{item.idItemData}}, '{{item.cat_type}}','{{item.searchtags}}', '{{item.image_url}}','{{item.web_url}}')">
+                    <img class="img-responsive" src="{{ item.image_url }}" alt="" style="width:150px;height:150px;">
+                    <div class="name-location">
+                        <strong>{{ item.name }}</strong>   
+                        <span><i class="fa fa-map-marker"></i>
+                            <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}?ref={{item.idItemData}}"> {{ v.ch_name }}
+                        </a></span>
+                    </div>
+                    {% if item.gen_cat %}
+                        <span style="margin-left: 20px; color:#555;">{{item.vendorcat}}: {{ item.gen_cat }}</span>
+                        <br/>
+                    {% endif %}
+                    <span style="margin-left: 20px; color:#555;">{{item.cat_type}}: {{item.searchtags}}</span>                                        <div class="clearfix margin-bottom-20"></div>    
+                    <div style="height: 40px; overflow:hidden;">
+                    <p>{{ item.desc }}</p>
+                            </div>
+                    <hr>
+                    <ul class="list-inline share-list" style="white-space:nowrap">
+                        <li class="price"><i class="fa fa-bell"></i>
+                        {% if item.price %}
+                            {{ item.price }}NT
+                            {% if item.weight %} ({{item.weight}}{{item.unit}})  {% endif %}
+                        {%else%}
+                            <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}?/ref={{item.idItemData}}">聯絡報價</a>
+                        {%endif%}
+                        </li>
+                        <li><i class="fa fa-group"></i>
+                            <a href="{{ url_for("vendor", vendorid=v.vendor_id, page=1) }}?/ref={{item.idItemData}}">{{ v.phone1[:5] }}
+                        ..聯絡</a></li>
+                        <li><i class="fa fa-twitter"></i><a href="{{ item.web_url }}?/ref={{item.idItemData}}">Follow</a></li>
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}                        

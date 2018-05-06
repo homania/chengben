@@ -1,0 +1,26 @@
+    {% for t in trans %}
+    <tr>
+        <td>
+            <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;">{{t.name}}</a>
+        </td>
+        <td>
+        <span onclick="bot_rec('{{t[2]}}','{{t[1]}}','{{t[0]}}')">
+        <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;">
+             {{t.phone}} </a></td>
+        <td>
+             <span style="font-family:Meiryo; font-size:14px;">{{t.start_date}}</span>
+        </td>
+        <td>
+            <span style="font-family:Meiryo; font-size:14px;">{{t.timev}}</span>
+        </td>
+        <td>
+           <span style="font-family:Meiryo; font-size:14px;">{{t.notes}}</span>
+        </td>
+        <td>
+            <span style="font-family:Meiryo; font-size:14px;">{{t.status}}</span>
+        </td>
+    </tr>                                    
+    {% endfor %}
+<tr><td colspan="6">
+<button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+</td></tr>

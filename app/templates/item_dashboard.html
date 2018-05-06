@@ -1,0 +1,174 @@
+{% extends "item_header_footer.html" %}
+{% block content %}
+    <!--=== Profile ===-->
+    <div class="profile container content" style="padding-top:70px;">
+    	<div class="row">
+            <!--Left Sidebar-->
+            <div class="col-md-3 md-margin-bottom-40" style="width:23%;left:-130px;padding-top:30px;">
+                <img class="img-responsive profile-img margin-bottom-20" src="http://www.dyfood.com.tw/images/BannerLeft.png" alt="" width=100% style="max-width:270px">
+
+    <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+        <li class="list-group-item active" style="background:#717984;">
+            <a href="javascript:void(0);"><i class="fa fa-bar-chart-o"></i> Overall</a>
+            <ul id="collapse-content-metrics" class="collapse in">
+                {% set active_link = 'items' %}
+                {% set nav_list = [
+                     ('/ivendor/', 'metrics', 'fa fa-user', 'Metrics 分析', '<span class="badge badge-u">OK!</span>'),
+                     ('/itemdashboard/', 'items', 'fa fa-group', 'Items Mgmt 食品管理', '<span class="badge badge-u">OK!</span>'),
+                     ('/vendor/27/1', 'viewpage', 'fa fa-comments', 'View My Page', '<span class="badge badge-u">OK!</span>'),
+                     ('/vendor_pay/', 'vpay', 'fa fa-comments', 'Account Payments', '<span class="badge badge-u">OK!</span>'),
+                     ('/vendor_settings/', 'vsettings', 'fa fa-cog', 'Account Settings', '<span class="badge badge-u">OK!</span>'),
+                     ('/vendor_clicks/', 'vclicks', 'fa fa-cog', 'Clicks History', '<span class="badge badge-u">OK!</span>'),
+                     ('javascript:void(0);', 'vorders', 'fa fa-cog', 'Customer Orders/ Inquiries', '<span class="badge badge-red">INC</span>'),
+                     ('javascript:void(0);', 'vfeedback', 'fa fa-cog', 'Customer Reviews/ Feedback', '<span class="badge badge-red">INC</span>'),
+                      ] -%}{% include 'admin/vactive.py' %}    
+            </ul>
+        </li>
+    </ul>    
+
+                <!--Datepicker-->
+                <form action="" id="sky-form2" class="sky-form">
+                    <div id="inline-start"></div>
+                </form> 
+                <!--End Datepicker-->
+            </div>
+            <!--End Left Sidebar-->
+            
+            <div class="col-md-9" style="width:77%;left:-130px;">
+                <!--Profile Body-->
+                <div class="profile-body">
+
+                    <!--Table Search v2-->
+                    
+                    <div class="table-search-v2 margin-bottom-20">
+                        <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>New Items</h2>
+
+			    <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">View Recent</a>
+                           
+                            <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">Add Item<i class="glyphicon glyphicon-plus" style="font-size:16px;margin-left:5px;"></i></a>
+            				
+                            <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="">Search Items <i class="search fa fa-search search-btn pull-right" style="font-size:16px;margin-top:-6px;margin-left:5px;"></i></a>                
+                             
+                        </div>
+                    
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center">Image</th>
+                                        <th width="35%">About</th>
+                                        <th> Other </th>
+                                        <th width="15%">Status</th>
+                                        <th width="20%">Search Terms</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="results">
+                                    {% for x in range (0,20) %}
+                                    <tr onclick = "change({{items[x].idItemData}}, '{{items[x].name}}', '{{items[x].brand}}', '{{items[x].desc}}', '{{items[x].price}}', '{{items[x].weight}}',
+                                        '{{items[x].unit}}', '{{items[x].pack}}', '{{items[x].web_url}}', '{{items[x].image_url}}', '{{items[x].searchtags}}', '{{items[x].cat_type}}',
+                                        '{{items[x].vendorcat}}','{{items[x].gen_cat}}', '{{items[x].active}}','{{items[x].vendor}}', '{{items[x].confirmed}}')">
+                                        <td>
+                                            {% if links[x].image_check == 1 %}
+                                                <img class="rounded-x" src="{{items[x].image_url}}" alt="">
+                                            {% else %}
+                                                <img class="rounded-x" src="https://cdn4.iconfinder.com/data/icons/web-links/512/40-64.png" alt="">
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <h3>{{items[x].name}}</h3>
+                                            <p>{{items[x].desc}}</p>
+                                            {% if items[x].create_date %}
+                                                <small class="hex">Submitted on {{items[x].create_date}}</small>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                        <span>品牌: {%if items[x].brand%}{{items[x].brand}}{%endif%}</span><br>
+                                        <span>價格: {%if items[x].price%}{{items[x].price}}{%endif%}元/{%if items[x].pack%}{{items[x].pack}}{%endif%}</span><br>
+                                        <span>重兩: {%if items[x].weight%}{{items[x].weight}}{%endif%}{%if items[x].unit%}{{items[x].unit}}{%endif%}</span>
+                                        </td>
+                                        <td>
+                                            <span class="label label-success" onClick="javascript:location.href='#'" style="cursor:pointer;margin-top:10px;">Visible</span>
+                                            <div style="margin-top:5px;">
+                                                <a href="{{items[x].web_url}}" target="_new">
+                                                    {% if links[x].web_check == 1 %}
+                                                        <i class="glyphicon glyphicon-ok-circle color-green" style="font-size:30px;cursor:pointer;"></i>
+                                                    {% else %}
+                                                        <i class="glyphicon glyphicon-remove-circle color-red" style="font-size:30px;cursor:pointer;"></i>
+                                                    {% endif %}
+                                                </a>
+                                                 <a href="{{items[x].image_url}}" target="_new">
+                                                    {% if links[x].image_check == 1 %}
+                                                        <i class="glyphicon glyphicon-ok-circle color-green" style="font-size:30px;cursor:pointer;"></i>
+                                                    {% else %}
+                                                        <i class="glyphicon glyphicon-remove-circle color-red" style="font-size:30px;cursor:pointer;"></i>
+                                                    {% endif %}
+                                                 </a>
+                                            </div>
+                                        </td>
+                                        <td>    <h3>{{items[x].cat_type}}</h3>
+                                                <i class="fa fa-pencil color-green"></i> {{items[x].searchtags}}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                    <!--End Table Search v2--> 
+                    
+                </div>
+                <!--End Profile Body-->
+            </div>
+        </div><!--/end row-->
+    </div><!--/container-->    
+    <!--=== End Profile ===-->
+    
+<script type="text/javascript">
+function change(idItemData, name, brand, desc, price, weight, unit, pack, web_url, image_url, searchtags, cat_type, vendorcat, gen_cat, active, vendor, confirmed)
+{
+    if (price != 'None') {document.getElementById("price").value = price;}
+        else if (price == 'None') {document.getElementById("price").value = '';}
+    if (brand != 'None') {document.getElementById("brand").value = brand;}
+        else if (brand == 'None') {document.getElementById("brand").value = '';}
+    if (desc != 'None') {document.getElementById("desc").value = desc;}
+        if (desc == 'None') {document.getElementById("desc").value = '';}
+    if (weight != 'None') {document.getElementById("weight").value = weight;}
+        else if (weight == 'None') {document.getElementById("weight").value = '';}
+    if (unit != 'None') {document.getElementById("unit").value = unit;}
+        else if (unit == 'None') {document.getElementById("unit").value = '';}
+    if (pack != 'None') {document.getElementById("pack").value = pack;}
+        else if (pack == 'None') {document.getElementById("pack").value = '';}
+    if (web_url != 'None') {document.getElementById('web_url').value = web_url;}
+        else if (web_url == 'None') {document.getElementById("web_url").value = '';}
+    if (image_url != 'None') {document.getElementById("image_url").value = image_url;}
+        else if (image_url == 'None') {document.getElementById("image_url").value = '';}
+    if (searchtags != 'None') {document.getElementById("searchtags").value = searchtags;}
+        else if (searchtags == 'None') {document.getElementById("searchtags").value = '';}
+    if (cat_type != 'None') {document.getElementById("cat_type").value = cat_type;}
+        else if (cat_type == 'None') {document.getElementById("cat_type").value = '';}
+    if (vendorcat != 'None') {document.getElementById("vendorcat").value = vendorcat;}
+        else if (vendorcat != 'None') {document.getElementById("vendorcat").value = '';}
+    if (gen_cat != 'None') {document.getElementById("gen_cat").value = gen_cat;}
+        else if (gen_cat == 'None') {document.getElementById("gen_cat").value = '';}
+    if (active != 'None') {document.getElementById("active").value = active;}
+        else if (active == 'None') {document.getElementById("active").value = ''}
+    if (vendor != 'None') {document.getElementById("vendor").value = vendor;}
+        else if (vendor == 'None') {document.getElementById("vendor").value = '';}
+    if (confirmed != 'None') {document.getElementById("confirmed").value = confirmed;}
+        else if (confirmed == 'None') {document.getElementById("confirmed").value = '';}
+    document.getElementById("idItemData").value = idItemData;
+    document.getElementById('item_id').innerHTML = idItemData;
+    if (name != 'None') {document.getElementById('name').value = name;}
+
+}
+
+function change_cat(category){
+    document.getElementById('cat_type').value = category;
+}
+
+</script>
+ 
+
+{% endblock %}

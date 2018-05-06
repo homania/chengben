@@ -1,0 +1,47 @@
+{% for x in range (0,20) %}
+    <tr onclick = "change({{items[x].idItemData}}, '{{items[x].name}}', '{{items[x].brand}}', '{{items[x].desc}}', '{{items[x].price}}', '{{items[x].weight}}',
+        '{{items[x].unit}}', '{{items[x].pack}}', '{{items[x].web_url}}', '{{items[x].image_url}}', '{{items[x].searchtags}}', '{{items[x].cat_type}}',
+        '{{items[x].vendorcat}}','{{items[x].gen_cat}}', '{{items[x].active}}','{{items[x].vendor}}', '{{items[x].confirmed}}')">
+        <td>
+            {% if links[x].image_check == 1 %}
+                <img class="rounded-x" src="{{items[x].image_url}}" alt="">
+            {% else %}
+                <img class="rounded-x" src="https://cdn4.iconfinder.com/data/icons/web-links/512/40-64.png" alt="">
+            {% endif %}
+        </td>
+        <td>
+            <h3>{{items[x].name}}</h3>
+            <p>{{items[x].desc}}</p>
+            {% if items[x].create_date %}
+                <small class="hex">Submitted on {{items[x].create_date}}</small>
+            {% endif %}
+        </td>
+        <td>
+        <span>品牌: {%if items[x].brand%}{{items[x].brand}}{%endif%}</span><br>
+        <span>價格: {%if items[x].price%}{{items[x].price}}{%endif%}元/{%if items[x].pack%}{{items[x].pack}}{%endif%}</span><br>
+        <span>重兩: {%if items[x].weight%}{{items[x].weight}}{%endif%}{%if items[x].unit%}{{items[x].unit}}{%endif%}</span>
+        </td>
+        <td>
+            <span class="label label-success" onClick="javascript:location.href='#'" style="cursor:pointer;margin-top:10px;">Visible</span>
+            <div style="margin-top:5px;">
+                <a href="{{items[x].web_url}}" target="_new">
+                    {% if links[x].web_check == 1 %}
+                        <i class="glyphicon glyphicon-ok-circle color-green" style="font-size:30px;cursor:pointer;"></i>
+                    {% else %}
+                        <i class="glyphicon glyphicon-remove-circle color-red" style="font-size:30px;cursor:pointer;"></i>
+                    {% endif %}
+                </a>
+                 <a href="{{items[x].image_url}}" target="_new">
+                    {% if links[x].image_check == 1 %}
+                        <i class="glyphicon glyphicon-ok-circle color-green" style="font-size:30px;cursor:pointer;"></i>
+                    {% else %}
+                        <i class="glyphicon glyphicon-remove-circle color-red" style="font-size:30px;cursor:pointer;"></i>
+                    {% endif %}
+                 </a>
+            </div>
+        </td>
+        <td>    <h3>{{items[x].cat_type}}</h3>
+                <i class="fa fa-pencil color-green"></i> {{items[x].searchtags}}
+        </td>
+    </tr>
+{% endfor %}

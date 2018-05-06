@@ -1,0 +1,177 @@
+{% extends "base3.html" %}
+{% block content %}
+<div style="float:left;width:90%">
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container" style="width:100%">
+            <!-- Logo -->
+            <a class="logo" style="height:75px;">
+            </a>
+            <!-- End Logo -->
+            
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active"><a href="#">Index <i class="fa fa-check"></i></a></li>
+                            <li><a href="/customer/">Customer</a></li>
+                            <li><a href="/ivendor/">Vendor</a></li>
+                            <li><a href="/metrics/">Admin</a></li>
+                            <li><a href="/">RegMenu</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_faq.html">Help</a></li>  
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_login.html">Login</a></li>   
+                </ul>
+            </div>
+            <!-- End Topbar -->
+        </div><!--/end container-->
+    </div>
+    <!--=== End Header ===-->
+
+    <!--=== Search Block ===-->
+    <div class="search-block parallaxBg">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <h1><span style="font-family:'Microsoft JhengHei'">CHENGBEN.COM.TW </span><span style="font-family:'Microsoft JhengHei'">來省成本</span></h1>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="{{ g.sid }}">
+                    <span class="input-group-btn">
+                        <button class="btn-u btn-u-lg" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+
+                <form action="" class="sky-form page-search-form">
+                    <div class="inline-group">                    
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline" checked><i></i>Recent</label>
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Related</label>
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Popular</label>
+                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Most Common</label>
+                    </div>
+                </form>    
+            </div>
+        </div>    
+    </div><!--/container-->  
+    <!--=== End Search Block ===-->
+
+    <!--=== Content ===-->
+    <div class="container content" style="height:800px;width:100%">
+        <!--=== Pricewatch Code ===-->
+        <div style="padding:10px;">    
+            <div style="width:100%;height:40px;padding:0px;margin-top:-50px;border-bottom:5px solid orange">
+                    <h1 style="font-size:25px;font-weight:normal;font-family:open sans, arial;">Restaurant Supply & Foodstuffs</h1>
+            </div>
+            <div id="computers-and-parts" style="-webkit-column-count: 6;-moz-column-count: 6;column-count: 6;column-gap:1em;">
+                            
+                    {% for item in l1menu %}       
+                    <div class="cp">
+                      <h2>{{item.menu_id}}.{{ item.menu_name }}</h2>	
+                            <ul>
+                        {% for items in l2menu %}
+                            {% if items.parent_id == item.menu_id %}        		
+                                <li>
+                                    <a href="/l2mgmt/{{ items.menu_id }}"> 
+                                        <img src="{{ url_for('static', filename='img/icons/edit.png')}}" style="height:15px;width:15px;margin-top:-5px">
+                                    </a>
+                                    <span onClick="change('{{ items.menu_name }}', {{items.menu_id}}, {{items.tier}},{{items.menu_order}},{{items.parent_id}},'{{items.keyword}}')" style="cursor:pointer;">
+                                        {{items.menu_order}}.{{ items.menu_name }}   
+                                        {% if items.sub_count != 0 %}
+                                            ({{ items.sub_count }})
+                                        {% endif %}
+                                    </span>
+                                <div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                            </ul>
+                    </div>
+                    {% endfor %} 
+            </div> <!-- end computers-and-parts-->
+            
+        </div>    <!--=== End Pricewatch Code ===-->
+    </div>                 
+    <!--=== Container Part ===-->
+
+    <!--=== Footer Version 1 ===-->
+    <div class="footer-v1">        
+        <!--=== Copyright ===-->
+        <div class="copyright" style="height:40px;padding:0;margin:0;background:#3e4753">
+            <div class="container" style="height:40px;padding:10;margin:0;width:100%">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            2016 &copy; ChengBen. ALL Rights Reserved. 
+                            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">  
+                    </div>
+                </div>
+            </div> 
+        </div><!--/copyright--> 
+        <!--=== End Copyright ===-->
+    </div>     
+    <!--=== End Footer Version 1 ===-->
+</div> <!--=== LEFT ===-->
+
+<div style="float:right;width:10%;height:100%;background-color:white;"> <!--=== RIGHT ===-->
+    <div style="position:fixed; width: 150px;height:100%; top:0px;background-color:white;">
+        <div style="margin-top: 100px;">
+            <h3 style="text-align:center;">
+                Menu Builder
+            </h3>
+            <form action="" method="post">
+            {{form.hidden_tag()}}
+            <div style="margin-left:10px;">
+                <p> Category Name:
+                    <input type="text" name="cat_name" id="cat_name" style="width:130px" autocomplete=off>
+                </p>
+                <p> Menu_id: <input type="number" name="menu_id" id="menu_id" style="width:130px" autocomplete=off>
+                </p>
+                <p> Tier: (1-4)
+                    <input type="number" name="tier" id="tier" style="width:130px" autocomplete=off>
+                </p>
+                <p> Order: 1-xxx
+                    <input type="number" name="order" id="order" style="width:130px" autocomplete=off>
+                </p>
+                <p> Parent: 1-xxx
+                    <input type="number" name="parent" id="parent" style="width:130px" autocomplete=off>
+                </p>
+                <p style="margin-bottom: 30px;"> Keyword/ Tags
+                    <input type="text" name="keyword" id="keyword" style="width:130px" autocomplete=off>
+                </p>
+                <input type="submit" value="Save Changes">
+                <br>
+                <br>
+                {% if category != None %}
+                    {{ form.cat_name }}<br>
+                    {{ form.menu_id }}<br>
+                    {{ form.tier }}<br>
+                    {{ form.order }}<br>
+                    {{ form.parent }}<br>
+                    {{ form.keyword }}
+                    {{ form.test}}
+                {% endif %}
+            </div>
+            </form>
+        </div>
+    </div>
+</div> <!--=== RIGHT ===-->
+<script type="text/javascript">
+function change(cat_name, menu_id, tier, order, parent, keyword)
+{
+     document.getElementById("cat_name").value = cat_name;
+     document.getElementById("menu_id").value = menu_id;
+     document.getElementById("tier").value = tier;
+     document.getElementById("order").value = order;
+     document.getElementById("parent").value = parent;
+     document.getElementById("keyword").value = keyword; 
+}
+</script>
+{% endblock %}

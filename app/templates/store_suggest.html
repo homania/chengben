@@ -1,0 +1,12 @@
+<table>
+<tr><td>
+<span style="margin-bottom:10px;font-weight:700;color:#b3b3b3">Store Suggestions </span><br>
+</td>
+<tr>
+{% if final_store %}
+    {% for f in final_store %}
+    <tr onclick="change_store('{{f}}')" style="width:100px;cursor:pointer;">
+        <td>{{f}}</td>
+    </tr>
+    {% endfor %}
+{% endif %}

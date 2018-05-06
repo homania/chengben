@@ -1,0 +1,19 @@
+<!--Left Sidebar-->
+<div class="col-md-3 md-margin-bottom-40">
+    <img class="img-responsive profile-img margin-bottom-20" src="https://www.thesun.co.uk/wp-content/uploads/2017/02/nintchdbpict000177708607.jpg" alt="" width=100% style="max-width:270px">
+
+    <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+        {% set nav_list = [
+             ('/customer/', 'dashboard', 'fa fa-bar-chart-o', 'Dashboard', ''),
+             ('/customer_settings/', 'settings', 'fa fa-cog', 'Account Settings', '<span class="badge badge-u">OK!</span>'),
+             ('javascript:void(0);', 'analytics', 'fa fa-group', 'Analytics', '<span class="badge badge-red">INC</span>'),
+             ('/receipt/', 'expense', 'fa fa-group', 'Expense Tracking', '<span class="badge badge-u">OK!</span>'),
+             ('javascript:void(0);', 'articles', 'fa fa-group', 'Cost Saving Articles', '<span class="badge badge-red">INC</span>'),
+             ('/booking/', 'booking', 'fa fa-group', 'Table Booking', '<span class="badge badge-u">OK!</span>'),
+             ('/hr_scheduling/', 'scheduling', 'fa fa-group', 'Employee Scheduling (HR)', '<span class="badge badge-u">OK!</span>'),
+             ('/customer_watchlist/', 'watchlist', 'fa fa-align-center', '會員Watchlist', '<span class="badge badge-u">OK!</span>'),
+             ('/', 'back', 'fa fa-history', 'Back', ''),
+              ] -%}{% include 'admin/active_c.html' %}  
+    </ul>   
+</div>
+<!--End Left Sidebar-->
