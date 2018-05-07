@@ -1,4 +1,5 @@
-gitignore/**
-tmp/**
-whoosh_index/**
-flask/**
+assets_1/
+gitignore/
+tmp/
+whoosh_index/
+flask/
