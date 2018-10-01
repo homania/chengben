@@ -18,14 +18,21 @@
                 <div class="profile-body" style="padding:0px;">                    
                     <div class="panel panel-profile">
                         <div class="panel-heading overflow-h">
-            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>{{ admin.ch_name }} : ({{ count }}) VENDOR_REF#: {{ page }} </h2>
+            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>{{ admin.ch_name }} : ({{ count }}) VENDOR_REF#: {{ vendorid }} </h2>
                             <a href="page_profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
                         </div>
                         <div class="panel-body">
                                 {% for item in items %}
-                                <div class="col-lg-4 col-md-6 itemadjust">
-                                    <div class="profile-blog blog-border">
-                                        <img class="img-responsive" src="{{ item.image_url }}" alt="" style="width:150px;height:150px;">
+                                <div class="col-lg-3 col-md-4 itemadjust">
+                                    <div class="profile-blog blog-border"  style="min-height:176px;">
+                                        {% if item.image_url %}
+                                            <div style="max-height:150px;max-width:150px;">
+                                                <img class="img-responsive" src="{{ item.image_url }}" alt="" style="min-height:150px;width:auto;overflow:hidden;"
+                                                onerror="this.onerror=null; this.src='https://cdn4.iconfinder.com/data/icons/web-links/512/40-64.png';"/>
+                                            </div>
+                                        {%else%}
+                                            <p> display text </p>
+                                        {%endif%}
                                         <div class="name-location">
                                             <strong>{{ item.name }}</strong>
                                             {% if item.gen_cat %}
@@ -50,10 +57,12 @@
                                                 <li style="margin-left:-15px;"><i class="fa fa-twitter"></i><a href="{{ item.web_url }}">Follow</a></li>
                                             </ul>
                                         </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
+                                        <div class="clearfix margin-bottom-20"></div>  
+                                        {% if item.desc %}
                                         <div style="height: 40px; overflow:hidden;">
                                             <p>{{ item.desc }}</p>
                             		</div>
+                            		{% endif %}
                                     </div>
                                 </div>    
                                 {% endfor %}                        

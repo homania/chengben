@@ -1,0 +1,40 @@
+            <!--Left Sidebar-->
+            <div class="col-md-3 md-margin-bottom-40">
+                <img class="img-responsive profile-img margin-bottom-20" src="../../static/img/custom/NFprofile.jpg" alt="">
+
+                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                    <li class="list-group-item active">
+                        <a href="profile.html"><i class="fa fa-bar-chart-o"></i> Overall</a>
+                    </li>
+
+                    <!--{% for item in l1menu %}
+                        <li class="list-group-item list-toggle active">
+                            <a class="accordion-toggle" href="#collapse-content-{{item.writingid}}" data-toggle="collapse" style="background:#717984;"
+                                ondrop="drop(event, '{{item.writingid}}')" ondragover="allowDrop(event)" id="row{{item.writingid}}"
+                                onclick="edit_sched('{{item.writingid}}', '{{item.tier}}', '{{item.order}}', '{{item.parent}}', '{{item.title}}',
+                                            '{{item.category}}', '{{item.searchtags}}', '{{item.content}}', '{{item.datef}}' )">
+                                            <i class="fa fa-cubes"></i> [{{item.writingid}}] {{item.title}}</a>
+                            <ul id="collapse-content-{{item.writingid}}" class="collapse in">
+                                {% for sub in l2menu %}
+                                    {% if sub.parent == item.writingid %}      
+                                     <li>
+                                        <div style="cursor:pointer; padding:5px;padding-left:35px;" id='{{sub.writingid}}' draggable=true
+                                            ondrop="drop(event, '{{sub.parent}}', '{{sub.order}}', '{{sub.writingid}}' )" ondragover="allowDrop(event)" id="row{{item.writingid}}"
+                                            ondragstart="drag(event, '{{sub.writingid}}', '{{sub.parent}}' )" 
+                                            onclick="edit_sched('{{sub.writingid}}', '{{sub.tier}}', '{{sub.order}}', '{{sub.parent}}', '{{sub.title}}',
+                                            '{{sub.category}}', '{{sub.searchtags}}', '{{sub.content}}', '{{sub.datef}}' )">
+                                            [{{sub.order}}] {{sub.title}}
+                                        </div>
+                                     </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li> 
+                    {% endfor %}
+                    {% for items in final_list %}
+                        [-{{items.order}}-] {{items.title}} {{items.writingid}} <br>
+                    {% endfor %}
+                    -->
+                </ul>   
+            </div>
+            <!--End Left Sidebar-->

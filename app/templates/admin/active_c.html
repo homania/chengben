@@ -1,5 +1,5 @@
 {%- for href, id, icon, caption, badge in nav_list -%}
-      <li class='list-group-item{%if id == active_link%} active{%endif%}'>
+      <li class='list-group-item{%if id == active_link%} active{%endif%}{%if id == 'dashboard'%} active{%endif%}'>
       {%if badge !=''%}{{badge|safe}}{%-endif-%}
       <a href={%if id == active_link%}'javascript:void(0);'{%else%}'{{href|e}}'{%endif%} target="_new">
       <i class='{{icon}}'></i> {{caption}}</a></li>

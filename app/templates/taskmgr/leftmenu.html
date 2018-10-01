@@ -1,0 +1,42 @@
+            <!--Left Sidebar-->
+            <div class="col-md-3 md-margin-bottom-40">
+                <img class="img-responsive profile-img margin-bottom-20" src="../../static/img/custom/NFprofile.jpg" alt="">
+
+                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                    <li class="list-group-item active">
+                        <a href="profile.html"><i class="fa fa-bar-chart-o"></i> Task Goals</a>
+                    </li>
+                    
+                    {% set active_link = ['Scratchbox', 'Uncategorized'] %}
+                    {% for item in l1menu %}
+                        <li class="list-group-item list-toggle active">
+                            <a class="accordion-toggle" href="#collapse-content-{{item[1]}}" data-toggle="collapse" style="background:#717984;">
+                                            <i class="fa fa-cubes"></i> [{{item[0]}}] {{item[1]}}</a>
+                            <ul id="collapse-content-{{item[1]}}" class="collapse {%if item[1] in active_link %}in{%endif%}">
+                                {% for sub in l2menu %}
+                                    {% if sub.category == item[1] %}      
+                                     <li>
+                                        <div style="cursor:pointer; padding:5px;padding-left:35px;" id='{{sub.taskid}}' draggable=true
+                                            ondragstart="drag(event, '{{sub.taskid}}')" 
+                                            {% if sub.category != 'Scratchbox' %}
+                                                onclick="edit_sched('{{sub.taskid}}', '{{sub.category}}', '{{sub.entry_type}}', '{{sub.description}}', '{{sub.timef}}', '{{sub.datef}}' )">
+                                            {% else %}
+                                                onclick="edit_sched('{{sub.taskid}}', '{{sub.category}}', '{{sub.entry_type}}', '{{sub.description}}', '{{sub.timef}}', '{{sub.datef}}' )">
+                                            {% endif %}
+                                                    [{{sub.category}}] {{sub.description}}
+                                        </div>
+        <script type='text/javascript'>
+            var otext = '{{sub.description}}'
+            otext = otext.replace(/&lt;/g, '<');
+            otext = otext.replace(/&gt;/g, '>');
+            document.getElementById("{{sub.taskid}}").innerHTML=otext;
+        </script>                                        
+                                     </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li> 
+                    {% endfor %}
+                </ul>   
+            </div>
+            <!--End Left Sidebar-->

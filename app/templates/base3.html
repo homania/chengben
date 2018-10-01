@@ -42,6 +42,8 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal-login.css') }}">
     
 <style>
 
@@ -95,6 +97,8 @@ font-weight:normal;margin-bottom:0px;text-shadow: 1px 1px 2px #ddd;}
     
 </div><!--/wrapper-->
 
+{% include 'admin/modal_login.html' %}
+
 <!-- JS Global Compulsory -->			
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js') }}"></script>
@@ -116,6 +120,7 @@ font-weight:normal;margin-bottom:0px;text-shadow: 1px 1px 2px #ddd;}
 <script type="text/javascript" src="{{ url_for('static', filename='js/plugins/fancy-box.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/plugins/progress-bar.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/plugins/owl-carousel.js') }}"></script>
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
       	App.init();

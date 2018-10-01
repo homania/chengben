@@ -3,10 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date, timedelta
 from app import app, db, models
 from .models import User, itemdata, menutable, vendortable, analytics, dictionary, averagedb, uniquedb, chargedb, ratesdb
-from .models import usersdb, linkcheck, accounting, receiptdb, watchlistdb, tabledb, booking_tablenamesdb, hr_sched_views, hr_scheddb
+from .models import usersdb, linkcheck, accounting, receiptdb, watchlistdb, tabledb, booking_tablenamesdb, hr_sched_views, hr_scheddb, taskdb
 from .forms import MenuData, ItemEdit, ReceiptEdit, BookingEdit, SchedEdit, SignupForm
 from config import ITEMS_PER_PAGE, WHOOSH_BASE, SECRET_KEY
-import flask_whooshalchemy as whooshalchemy
 import PIL, uuid, requests, re
 from PIL import ImageFont, Image, ImageDraw
 from sqlalchemy import func, create_engine, distinct, or_
@@ -67,24 +66,20 @@ def login():
     form = SignupForm()
     uemail = request.args.get('email')
     upass = request.args.get('password')    
-    if g.user is not None and g.user.is_authenticated:
-        text_line = user.email + ' (' + str(user.acct_type) + ')'
-        return text_line
+    if uemail is None:
+        return render_template('login_div.html', form=form, user=g.user, uemail=uemail)
     else:
-        if uemail is None:
-            return render_template('login_div.html', form=form, user=g.user, uemail=uemail)
-        else:
-            user=usersdb.query.filter_by(email=uemail).first()
-            if user:
-                if user.password == upass:
-                    login_user(user)
-                    return render_template('login_div.html', form=form, user=g.user, uemail=uemail)
-                else:
-                    message = ' Wrong Password '
-                    return render_template('login_div.html', form=form, user=g.user, message=message, uemail=uemail)
+        user=usersdb.query.filter_by(email=uemail).first()
+        if user:
+            if user.password == upass:
+                login_user(user)
+                return render_template('login_div.html', form=form, user=g.user, uemail=uemail)
             else:
-                message = ' User Doesn''t Exist. '
-                return render_template('login_div.html', form=form, user=g.user, message=message, uemail=uemail)               
+                message = ' Wrong Password '
+                return render_template('login_div.html', form=form, user=g.user, message=message, uemail=uemail)
+        else:
+            message = ' User Doesn''t Exist. '
+            return render_template('login_div.html', form=form, user=g.user, message=message, uemail=uemail)               
         
 @app.route('/protected')
 @login_required(role=0)
@@ -212,7 +207,59 @@ def customer():
 
 @app.route('/customer_settings/', methods=['GET', 'POST'])
 def customer_settings():
-    return render_template("customer_settings.html", user=current_user)
+    user_id = 1
+    user_prof = usersdb.query.filter(usersdb.userid == user_id).first()
+    return render_template("customer_settings.html", user=current_user, user_prof = user_prof)
+
+@app.route('/cs_update/', methods=['GET', 'POST'])
+def cs_update():
+    userid = request.args.get('userid')
+    name = request.args.get('name')
+    if name == '':
+        name = None
+    nickname = request.args.get('nickname')
+    if nickname == '':
+        nickname = None
+    ch_name = request.args.get('ch_name')
+    if ch_name == '':
+        ch_name = None
+    profilepic = request.args.get('profilepic')
+    if profilepic == '':
+        profilepic = None
+    address = request.args.get('address')
+    if address == '':
+        address = None
+    district = request.args.get('district')
+    if district == '':
+        district = None
+    city = request.args.get('city')
+    if city == '':
+        city = None
+    country = request.args.get('country')
+    if country == '':
+        country = None
+    phone1 = request.args.get('phone1')
+    if phone1 == '':
+        phone1 = None
+    phone2 = request.args.get('phone2')
+    if phone2 == '':
+        phone2 = None
+    email = request.args.get('email')
+    if email == '':
+        email = None
+    BID = request.args.get('BID')
+    if BID == '':
+        BID = None
+    website = request.args.get('website')
+    if website == '':
+        website = None        
+    last_update=datetime.datetime.now()
+    edit_user = usersdb(userid=userid, name=name, nickname=nickname,ch_name=ch_name,profilepic=profilepic,
+                        address=address,district=district,city=city,country=country,phone1=phone1,
+                        phone2=phone2,email=email,BID=BID,website=website, last_update=last_update)
+    db.session.merge(edit_user)
+    db.session.commit()
+    return ""
 
 @app.route('/hr_scheduling/', methods=['GET', 'POST'])
 def hr_scheduling():
@@ -774,7 +821,7 @@ def receipt():
         db.session.commit()
         return redirect('receipt')
         
-    return render_template("receipt_dash.html", trans=trans, form=form, last_rec=last_rec, whole_rec=whole_rec, subtotal=subtotal, user=current_user)
+    return render_template("expense_track.html", trans=trans, form=form, last_rec=last_rec, whole_rec=whole_rec, subtotal=subtotal, user=current_user)
 
 @app.route('/rec_update/')
 def rec_update():
@@ -937,28 +984,22 @@ def ivendor():
     vendor = 1
     searchstring = '/vendor/' + str(vendor) + '/'
 
-    #Recent Clicks
-    engine = create_engine('mysql://root:sh030780@localhost/chengben?charset=utf8')
-    Sessions = sessionmaker(bind=engine)
-    Sessions.configure(bind=engine)
-    session = Sessions()      
-    #clicks_qty = session.query(analytics.sid, func.count(analytics.url.contains(searchstring))).group_by(analytics.sid).order_by(func.count(analytics.url.contains(searchstring)).desc()).all()
-    itemsall = analytics.query.filter(analytics.url.contains(searchstring))
+    nowDate = datetime.datetime.now()
+    weekDate = datetime.datetime.now() - timedelta(days=30)
+
+    itemsall = analytics.query.filter(analytics.url.contains(searchstring)).filter(analytics.timestamp >= weekDate)
     
     unique_first = []
+    unique = []
     for y in itemsall:
         if searchstring in y.url:     
-            if (y.sid[0:10], searchstring) not in unique_first:
-                stringvar = (y.sid[0:10], searchstring)
+            if (y.sid, searchstring) not in unique_first:
+                stringvar = (y.sid, searchstring)
+                count_var = itemsall.filter(analytics.sid.contains(y.sid)).count()
+                if count_var > 1:
+                    stringvar2 = (y.sid, count_var)
+                    unique.append(stringvar2)
                 unique_first.append(stringvar)
-    unique = []
-    for u in unique_first:
-        clicks = 0
-        for y in itemsall:
-            if y.sid[0:10] in u[0]:
-                clicks = clicks + 1
-        stringvar = (u[0], clicks)
-        unique.append(stringvar)
 
     #top_list = sorted(top_list, key=itemgetter(0), reverse=True)
     unique = sorted(unique, key=itemgetter(1), reverse=True)
@@ -1346,6 +1387,28 @@ def L3(page):
     return render_template("L4.html",
                            title='Menus', brands=brands,
                            items=items, test=test, count=count, page=page, admin=admin, vendors=vendors, user=current_user)
+
+@app.route('/watchlist_toggle/')
+def watchlist_toggle():
+    item_id = request.args.get('item_id')
+    cid = request.args.get('customer_id')
+    action = request.args.get('action')
+    if item_id == '':
+        item_id = None
+        
+    #customer and item search 
+    if action == 'add':
+        last_item = watchlistdb.query.filter(watchlistdb.watch_id > 0).order_by(watchlistdb.watch_id.desc()).first()
+        last_item_id = last_item.watch_id + 1
+        if watchlistdb.query.filter(watchlistdb.user_id == cid).filter(watchlistdb.idItemData == item_id).count() == 0:
+            new_wlist_item = watchlistdb(watch_id=last_item_id, user_id=cid, idItemData=item_id)
+            db.session.add(new_wlist_item)
+            db.session.commit()
+    elif action == 'del':
+        if watchlistdb.query.filter(watchlistdb.user_id == cid).filter(watchlistdb.idItemData == item_id).count() != 0:
+            del_items = watchlistdb.query.filter(watchlistdb.user_id == cid).filter(watchlistdb.idItemData == item_id).delete()
+            db.session.commit()
+    return ""
 
 @app.route('/L4quicksearch/', methods=['GET', 'POST'])
 def L4quicksearch():
@@ -1823,6 +1886,8 @@ def L2_MenuMgmt(page):
                                  keyword=form.keyword.data, sub_count=0, clicks=0, active=1)
             db.session.merge(edit_new)
             db.session.commit()
+        #return redirect('L2_MenuMgmt')
+        return redirect(url_for('L2_MenuMgmt', page = page))
 
     return render_template("L2_mgmt.html",
                            title='L2Menus',

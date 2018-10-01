@@ -1,0 +1,31 @@
+{% for t in trans %}
+    <tr style="background-color:{{t.color}}">
+        <td>
+            <a href="javascript:void(0)" onclick="single_view('{{t.category}}','{{t.datef}}')" style="font-family:Meiryo; font-size:14px;">{{t.category}}</a>
+        </td>
+        <td>
+            <span style="font-family:Meiryo; font-size:14px;">
+            {% if t.entry_type %}
+                {{t.entry_type}}
+            {% endif %}
+            </span>
+        </td>
+        <td><div id='bottom{{t.taskid}}'> blah</div>
+        <script type='text/javascript'>
+            var otext = '{{t.description}}'
+            otext = otext.replace('&lt;', '<');
+            otext = otext.replace('&gt;', '>');
+            document.getElementById("bottom{{t.taskid}}").innerHTML=otext;
+        </script>
+        </td>
+        <td>
+            <span style="font-family:Meiryo; font-size:14px;">{{t.timef}}</span>
+        </td>
+        <td>
+           <span style="font-family:Meiryo; font-size:14px;">{{t.datef}}</span>
+        </td>
+    </tr>                                    
+{% endfor %}
+<tr><td colspan="6">
+<button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+</td></tr>

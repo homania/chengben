@@ -4,7 +4,6 @@ from datetime import datetime
 from app import app, db, models
 from .models import User, itemdata, menutable, vendortable, analytics, averagedb, uniquedb
 from config import ITEMS_PER_PAGE, WHOOSH_BASE, SECRET_KEY
-import flask.ext.whooshalchemy as whooshalchemy
 import PIL, uuid, requests, re
 from PIL import ImageFont, Image, ImageDraw
 from sqlalchemy import func, create_engine, distinct

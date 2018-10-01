@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>CB_Customer</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+        <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">  
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/src/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/profile.css') }}">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+ 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal-login.css') }}">
+
+<style>
+
+</style>
+    
+</head>	
+
+<body>
+
+<div class="wrapper">
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <a class="logo" href="/">
+                <img src="{{ url_for('static', filename='img/logos/logo2.png') }}" alt="Logo" style="margin-bottom:-20px;margin-left:50px;">
+            </a>
+            <!-- End Logo -->
+            <!-- Topbar -->
+                {% include 'loginbar.html' %}
+            <!-- End Topbar Navigation -->
+        </div>
+        <!-- End Topbar -->
+            <!-- Toggle get grouped for better mobile display -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-bars"></span>
+            </button>
+            <!-- End Toggle -->          
+    
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <!-- Home -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Option 1: Default Page</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Home -->
+
+                    <!-- Search Block -->
+                    <li>
+                        <i class="search fa fa-search search-btn"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>    
+                    </li>
+                    <!-- End Search Block -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+            </div>    
+        </div>            
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===-->
+
+{% block content %}{% endblock %}
+    <div class="footer-v1">
+
+        <!--=== Copyright ===-->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            2014 &copy; Unify. ALL Rights Reserved. 
+                            <a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">  
+                        <a href="index.html">
+                            <img class="pull-right" id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div> 
+        </div><!--/copyright--> 
+        <!--=== End Copyright ===-->
+    </div>
+</div><!--/wrapper-->
+
+<div class="cd-signin-modal js-signin-modal mlbody" id="modal_form"> 
+    <div class="cd-signin-modal__container"> 
+        <ul class="cd-signin-modal__switcher js-signin-modal-switcher js-signin-modal-trigger" style="list-style:none;">
+            <li><a href="#0" data-signin="login" data-type="login">Sign in</a></li>
+            <li><a href="#0" data-signin="signup" data-type="signup">New account</a></li>
+        </ul>
+        <div class="cd-signin-modal__block js-signin-modal-block" data-type="login"> 
+            <form class="cd-signin-modal__form">
+                <p class="cd-signin-modal__fieldset">
+                    <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-email">E-mail</label>
+                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-email" type="email" placeholder="E-mail">
+                    <span class="cd-signin-modal__error">Error message here!</span>
+                </p>
+                <p class="cd-signin-modal__fieldset">
+                    <label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signin-password">Password</label>
+                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="password" placeholder="Password">
+                    <a href="#0" class="cd-signin-modal__hide-password js-hide-password">Show</a>
+                    <span class="cd-signin-modal__error">Error message here!</span>
+                </p>
+                <p class="cd-signin-modal__fieldset">
+                    <input type="checkbox" id="remember-me" checked class="cd-signin-modal__input ">
+                    <label for="remember-me">Remember me</label>
+                </p>
+                <p class="cd-signin-modal__fieldset">
+                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width button_submit" type="submit" value="Login">
+                </p>
+            </form>
+            <p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="reset">Forgot your password?</a></p>
+        </div> 
+        <div class="cd-signin-modal__block js-signin-modal-block" data-type="signup"> 
+            <form class="cd-signin-modal__form">
+                <p class="cd-signin-modal__fieldset">
+                    <label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Username</label>
+                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Username">
+                    <span class="cd-signin-modal__error">Error message here!</span>
+                </p>
+                <p class="cd-signin-modal__fieldset">
+                    <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
+                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="E-mail">
+                    <span class="cd-signin-modal__error">Error message here!</span>
+                </p>
+                <p class="cd-signin-modal__fieldset">
+                    <label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Password</label>
+                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text" placeholder="Password">
+                    <a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+                    <span class="cd-signin-modal__error">Error message here!</span>
+                </p>
+                <p class="cd-signin-modal__fieldset">
+                    <input type="checkbox" id="accept-terms" class="cd-signin-modal__input ">
+                    <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+                </p>
+                <p class="cd-signin-modal__fieldset">
+                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Create account">
+                </p>
+            </form>
+        </div> 
+        <div class="cd-signin-modal__block js-signin-modal-block" data-type="reset"> 
+            <p class="cd-signin-modal__message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+            <form class="cd-signin-modal__form">
+            <p class="cd-signin-modal__fieldset">
+                <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="reset-email">E-mail</label>
+                <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="reset-email" type="email" placeholder="E-mail">
+                <span class="cd-signin-modal__error">Error message here!</span>
+            </p>
+            <p class="cd-signin-modal__fieldset">
+                <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Reset password">
+            </p>
+            </form>
+            <p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="login">Back to log-in</a></p>
+        </div> 
+        <a href="#0" class="cd-signin-modal__close js-close">Close</a>
+    </div> 
+</div>
+
+<!-- Modal Login -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-1.10.2.min.js') }}"></script>
+<script type="text/javascript">
+$(function () {
+    $("#login_link").on('click', function() {
+        $.ajax({
+          url: "/login",
+          type: "get",
+          success: function(response) {
+            $("#login_sec").html(response);}
+          })
+    });   
+
+    $("#modal_form").on('click', '.button_submit', function () {
+        if ((document.getElementById("signin-email").value != "") && (document.getElementById("signin-password").value != "")){
+            $.ajax({
+              url: "/login",
+              type: "get",
+              data: {email: document.getElementById("signin-email").value,
+                     password: document.getElementById("signin-password").value
+                     },          
+              success: function(response) {
+                location.reload();}
+              })
+            document.getElementById("hid_email").value=document.getElementById("signin-email").value
+        }
+        else {alert('Please Enter Email/Pass');}
+    });
+
+    $("#login_sec").on('click', '#logout_link', function () {
+        $.ajax({
+          url: "/logout",
+          type: "get",
+          data: {email: document.getElementById("hid_email").value
+                 },             
+          success: function(response) {
+            location.reload();}
+          })
+    });
+});
+</script>
+<!-- Login -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/modal-login.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/modal-placeholders.min.js') }}"></script>
+<!-- End Modal Login -->
+
+<!-- JS Global Compulsory -->           
+
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-migrate-1.2.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js') }}"></script> 
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/waypoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/counter/jquery.counterup.min.js') }}"></script> 
+<!-- Datepicker Form -->
+<script src="{{ url_for('static', filename='plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js') }}"></script>
+<!-- Scrollbar -->
+<script src="{{ url_for('static', filename='plugins/scrollbar/src/jquery.mousewheel.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/scrollbar/src/perfect-scrollbar.js') }}"></script>
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/datepicker.js') }}"></script>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initCounter();
+        Datepicker.initDatepicker();
+    });
+</script>
+<script>
+    jQuery(document).ready(function ($) {
+        "use strict";
+        $('.contentHolder').perfectScrollbar();
+    });
+</script>
+
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js') }}"></script>
+<![endif]-->
+
+</body>
+</html>	    

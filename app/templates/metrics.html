@@ -6,29 +6,11 @@
         <div class="container">
             <!-- Logo -->
             <a class="logo" href="/">
-                <img src="../../static/img/logo1-default.png" alt="Logo">
+                <img src="{{ url_for('static', filename='img/logos/logo2.png') }}" alt="Logo" style="margin-bottom:-20px;margin-left:75px;">
             </a>
             <!-- End Logo -->        
             <!-- Topbar -->
-            <div class="topbar">
-                <ul class="loginbar pull-right">
-                    <li class="hoverSelector">
-                        <i class="fa fa-globe"></i>
-                        <a>Panels</a>
-                        <ul class="languages hoverSelectorBlock">
-                        	<li class="active">
-                                <a href="/">Index</a>                            </li>
-                            <li><a href="/customer/">Customer</a></li>
-                            <li><a href="/ivendor/">Vendor</a></li>
-                            <li><a href="/metrics/">Admin <i class="fa fa-check"></i></a></li>
-                        </ul>
-                    </li>
-                    <li class="topbar-devider"></li>   
-                    <li><a href="page_faq.html">Help</a></li>  
-                    <li class="topbar-devider"></li>   
-                    <li><a href="page_login.html">Login</a></li>   
-                </ul>
-            </div>
+                {% include 'loginbar.html' %}
             <!-- End Topbar -->      
             <!-- Toggle get grouped for better mobile display -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -38,9 +20,9 @@
             <!-- End Toggle -->                  
         </div><!--/end container-->
 
-    <!--=== Beg NavBar ===-->
-	{% include 'admin/navbar.html' %}
-    <!--=== End NavBar ===-->
+        <!--=== Beg NavBar ===-->
+            {% include 'admin/navbar.html' %}
+        <!--=== End NavBar ===-->
         
     </div>
     <!--=== End Header ===-->
@@ -60,7 +42,7 @@
                     {% include 'admin/L2L4.html' %}
                 </div><!--End Profile Body-->
             </div><!--End Right Body -->
-		</div>
+	</div>
     </div>                 
     <!--=== Container Part ===-->
 

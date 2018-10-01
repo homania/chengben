@@ -1,0 +1,50 @@
+{% if user.is_anonymous == True %}
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active"><a href="/">Index <i class="fa fa-check"></i></a></li>
+                            <li><a href="/customer/">Customer</a></li>
+                            <li><a href="/ivendor/">Vendor</a></li>
+                            <li><a href="/metrics/">Admin</a></li>
+                            <li><a href="/l1mgmt/">MenuMgmt</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>
+                    {% if user.is_anonymous != True %}
+                        <li><a id="logout_link" href="javascript:void(0)">logout</a></li>
+                    {% else %}
+                        <li><a href="javascript:void(0)">Help</a></li>
+                    {% endif %}
+                    <li class="topbar-devider"></li>
+    {% if message %}
+        <span style="color:red; margin-right:5px; float:left;"> {{message}}</span>
+    {% endif %}
+    <li>
+    {% if uemail %}
+        <input type="text" id="email" name="email" placeholder="Email" autocomplete="on" required style="width:100px;height:25px;" value='{{uemail}}'></li>
+    {% else %}
+        <input type="text" id="email" name="email" placeholder="Email" autocomplete="on" required style="width:100px;height:25px;">
+    {% endif %}
+    </li>
+    <li>
+        <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" required style="width:100px;height:25px;">
+    </li>
+        <input class="button_submit" type="button" id="login_submit" value="Submit" style="margin-left:5px;">  
+{% else %}
+    <li class="hoverSelector">
+        <i class="fa fa-globe"></i>
+        <a>Panels</a>
+        <ul class="languages hoverSelectorBlock">
+            <li class="active"><a href="/">Index <i class="fa fa-check"></i></a></li>
+            <li><a href="/customer/">Customer</a></li>
+            <li><a href="/ivendor/">Vendor</a></li>
+            <li><a href="/metrics/">Admin</a></li>
+            <li><a href="/l1mgmt/">MenuMgmt</a></li>
+        </ul>
+    </li>
+    <li class="topbar-devider"></li>
+    <li><a id="logout_link" href="javascript:void(0)">logout</a></li>  
+    <li class="topbar-devider"></li>   
+    <li> {{user.email}} ({{user.acct_type}}) </li> 
+{% endif %}

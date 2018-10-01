@@ -1,0 +1,18 @@
+<table style="vertical-align:top; margin-left:20px; width:950px; table-layout:fixed;" border="2">
+    <tr>
+        {% for i in dayviews %}
+        <td style="vertical-align:top; width:100%; background-color:{{i.color}}" ondrop="drop(event, '{{i.date_field}}')" ondragover="allowDrop(event)" id="{{i.dayname}}">
+            <a href="javascript:void(0)" style="font-family:Meiryo; font-size:13px;padding-left:3px;" onclick="day_view('{{i.date_field}}')"> {{i.dayname}} </a>
+                {% for t in trans %}
+                    {% if t.dayvar == i.dayname %}
+                        <div style="font-size:12px; white-space:nowrap;overflow:hidden; padding-left:3px;text-overflow: ellipsis;" id='{{t.taskid}}' draggable=true 
+                        ondragstart="drag(event, '{{t.taskid}}')" 
+                        onclick="edit_sched('{{t.taskid}}', '{{t.category}}', '{{t.entry_type}}', '{{t.description}}', '{{t.timef}}', '{{t.datef}}' )">
+                            {{t.timef}} {{t.category}} {{t.entry_type}}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+        </td>
+        {% endfor %}
+    </tr>
+</table>

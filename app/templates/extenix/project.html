@@ -1,0 +1,55 @@
+<div class="cbp-l-project-title">World Clock</div>
+<div class="cbp-l-project-subtitle">by Paul Flavius Nechita</div>
+
+<div class="cbp-slider" style="max-width: 800px">
+    <ul class="cbp-slider-wrap">
+        <li class="cbp-slider-item">
+            <a href="{{item.lg_img_link}}" class="cbp-lightbox">
+                <img src="{{item.lg_img_link}}" alt="" style="max-height:300px;width:auto;margin-left:15%">
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="cbp-l-project-container" style="max-width: 800px">
+    <div class="cbp-l-project-desc">
+        <div class="cbp-l-project-desc-text">{{item.description}}</div>
+    </div>
+    <div class="cbp-l-project-details">
+        <ul class="cbp-l-project-details-list">
+            <li><strong>Client</strong>{{item.name}}</li>
+            <li><strong>Date</strong>22 July 2015</li>
+            <li><strong>Categories</strong>{{item.tags}}</li>
+        </ul>
+    </div>
+</div>
+
+<div class="cbp-l-project-container" style="max-width: 800px">
+    <div class="cbp-l-project-related">
+        <div class="cbp-l-project-desc-title"><span>Related Projects</span></div>
+
+        <ul class="cbp-l-project-related-wrap">
+            <li class="cbp-l-project-related-item">
+                <a href="../../static/unify251/templates/project.html" class="cbp-singlePage cbp-l-project-related-link" rel="nofollow" onclick="more_info('{{rel1.item_id}}')">
+                    <img src="{{rel1.md_img_link}}" alt="">
+                    <div class="cbp-l-project-related-title">{{rel1.tags}}</div>
+                </a>
+            </li>
+            <li class="cbp-l-project-related-item">
+                <a href="../../static/unify251/templates/project.html" class="cbp-singlePage cbp-l-project-related-link" rel="nofollow" onclick="more_info('{{rel2.item_id}}')">
+                    <img src="{{rel2.md_img_link}}" alt="">
+                    <div class="cbp-l-project-related-title">{{rel2.tags}}</div>
+                </a>
+            </li>
+            <li class="cbp-l-project-related-item">
+                <a href="../../static/unify251/templates/project.html" class="cbp-singlePage cbp-l-project-related-link" rel="nofollow" onclick="more_info('{{rel3.item_id}}')">
+                    <img src="{{rel3.md_img_link}}" alt="">
+                    <div class="cbp-l-project-related-title">{{rel3.tags}}</div>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<br><br><br>

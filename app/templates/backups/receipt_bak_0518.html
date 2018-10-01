@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>Expense Manager</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">     
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css')}}">
+<style>
+
+.INclass a {
+    font-weight:bold;
+    color:green;
+}
+
+.OUTclass a {
+    font-weight:bold;
+    color:red;
+}
+
+.BOTHclass a {
+    font-weight:bold;
+    color:blue;
+}
+
+</style>
+
+</head>	
+
+<body>
+
+
+<div class="wrapper">
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div>
+            <a class="navbar-brand" href="index.html">
+                <img id="logo-header" src="../static/img/logos/logo2.png" alt="Logo">
+            </a>
+            </div>
+            <!-- End Logo -->
+            <!-- Topbar -->
+            <div class="topbar">
+                <ul class="loginbar pull-right">
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Panels</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active">
+                                <a href="/">Index</a> 
+                            </li>
+                            <li><a href="/customer/">Customer</a></li>
+                            <li><a href="javascript:void(0)">Vendor <i class="fa fa-check"></i></a></a></li>
+                            <li><a href="/metrics/">Admin</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_faq.html">Help</a></li>  
+                    <li class="topbar-devider"></li>   
+                    <li><a href="page_login.html">Login</a></li>   
+                </ul>
+                <!-- End Topbar Navigation -->
+            </div>
+        </div>
+        <!-- End Topbar -->
+    
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" style="padding-top:25px;">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <!-- Home -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Option 1: Default Page</a></li>
+                        </ul>
+                    </li>
+                    <!-- End Home -->
+
+                    <!-- Search Block -->
+                    <li>
+                        <i class="search fa fa-search search-btn"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>    
+                    </li>
+                    <!-- End Search Block -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+            </div>    
+        </div>            
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===-->   
+
+    <!--=== Profile ===-->
+    <div class="profile container content">
+    	<div class="row">
+            <!--Left Sidebar-->
+            <div class="col-md-3 md-margin-bottom-40">
+                <img class="img-responsive profile-img margin-bottom-20"  src="{{ url_for('static', filename='img/custom/NFprofile.jpg')}}" alt="">
+
+                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                    <li class="list-group-item active">
+                        <a href="profile.html"><i class="fa fa-bar-chart-o"></i> Overall</a>
+                    </li>
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-metrics" data-toggle="collapse"><i class="fa fa-cubes"></i>  Metrics 客服</a>
+                        <ul id="collapse-content-metrics" class="collapse in">
+                            <li>                           
+                                <a href="admin_metrics.php"><i class="fa fa-cog"></i> Clicks/ Site Performance</a>
+                            </li>
+                            <li><a href="admin_metrics.php"><i class="fa fa-align-center"></i> Items 食品</a></li>
+                            <li><a href="admin_metrics.php"><i class="fa fa-align-center"></i> Brands 品牌</a></li>
+                            <li><a href="admin_metrics.php"><i class="fa fa-align-center"></i> Vendors 商業/場商</a></li>
+                            <li><a href="admin_metrics.php"><i class="fa fa-align-center"></i> Members 會員</a></li>
+                        </ul>
+                    </li>                      
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-items" data-toggle="collapse"><i class="fa fa-cubes"></i> Item Mgmt 食品管理</a>
+                        <ul id="collapse-content-items" class="collapse in">
+                            <li>
+                                <span class="badge badge-u">New</span>                            
+                                <a href="admin_items.php"><i class="fa fa-cog"></i> Items 食品</a>
+                            </li>
+                            <li><a href="admin_items.php"><i class="fa fa-align-center"></i> Brands 品牌</a></li>
+                            <li><a href="admin_items.php"><i class="fa fa-align-center"></i> Vendors 商業/場商</a></li>
+                            <li><span class="badge badge-red">Later</span> <a href="admin_items.php"><i class="fa fa-align-center"></i> Vendor-Daily Budget</a></li>
+                            <li><a href="admin_items.php"><i class="fa fa-align-center"></i> Members 會員</a></li>
+                        </ul>
+                    </li>                         
+                    
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-cats" data-toggle="collapse"><i class="fa fa-cubes"></i>  Category Mgmt </a>
+                        <ul id="collapse-content-cats" class="collapse in">
+                            <li><a href="javascript:void(0)"><i class="fa fa-cog"></i> MainPage </a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> SubCategories</a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Items/ SearchTags</a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Vendors SubCats 商業/場商</a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Members 會員</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-receive" data-toggle="collapse"><i class="fa fa-cubes"></i>  Accounts Receivables 快計收款</a>
+                        <ul id="collapse-content-receive" class="collapse in">
+                            <li><a href="admin_receive.php"><i class="fa fa-cog"></i> Due this Month </a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-cog"></i> Receivables Calendar </a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Receivables Entry</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Past Due/ Warn/ Schedule PickUp</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Invoice Re-Print/Email</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Vendors Acct Suspend 商業/場商</a></li>
+                            <li><a href="admin_receive.php"><i class="fa fa-align-center"></i> Daily/Monthly Revenue Chart</a></li>
+                        </ul>
+                    </li>                        
+                                     
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-pay" data-toggle="collapse"><i class="fa fa-cubes"></i>  Accounts Payables 快計收款</a>
+                        <ul id="collapse-content-pay" class="collapse in">
+                            <li><a href="admin_pay.php"><i class="fa fa-cog"></i> Payments Calendar </a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Payment Entry (Sing/Recur)</a></li>
+                            <li><span class="badge badge-red">Later</span>  <a href="javascript:void(0)"><i class="fa fa-align-center"></i> Tax/ Insurance</a></li> 
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Expense Entry</a></li>
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Daily/Monthly Payables List</a></li>
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Gross/ Net Profit Chart</a></li>
+                            <li><a href="admin_pay.php"><i class="fa fa-align-center"></i> Outstanding Unscheduled</a></li>
+                        </ul>
+                    </li>  
+
+                    <li class="list-group-item list-toggle active"><span class="badge badge-red">Later</span>            
+                        <a class="accordion-toggle" href="#collapse-content-hr" data-toggle="collapse"><i class="fa fa-cubes"></i>  HR 人手管理</a>
+                        <ul id="collapse-content-hr" class="collapse">
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-cog"></i> Vacation/Interview Calendar </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Vacation Request Entry </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> New Employee Entry </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Employee Lookbook </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Employee Leaving Form </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Interview Scheduling</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> PT Scheduling TimeEntry</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Employment Contracts/ Forms</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> 1111, Yes123 Link</a></li>
+                        </ul>
+                    </li>  
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-mrkting" data-toggle="collapse"><i class="fa fa-cubes"></i> Marketing Documents 文件管理</a>
+                        <ul id="collapse-content-mrkting" class="collapse in">
+                            <li><a href="javascript:void(0)"><i class="fa fa-cog"></i> New Vendor Intro Packet </a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> New Restaurant Sales Flier </a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Monthly Restaurant Sales Flier </a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Business Card Design </a></li>
+                        </ul>
+                    </li> 
+
+                    <li class="list-group-item list-toggle active">                   
+                        <a class="accordion-toggle" href="#collapse-content-invest" data-toggle="collapse"><i class="fa fa-cubes"></i>  Investors</a>
+                        <ul id="collapse-content-invest" class="collapse in">
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Financial Forecasts</a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Business Plan </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Monthly Analysis .doc</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Internal Goals & Discuss</a></li>
+                        </ul>
+                    </li>                     
+                    
+                    <li class="list-group-item list-toggle active"> <span class="badge badge-red">Later</span>               
+                        <a class="accordion-toggle" href="#collapse-content-ads" data-toggle="collapse"><i class="fa fa-cubes"></i>  Advertising </a>
+                        <ul id="collapse-content-ads" class="collapse">
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Marketing Calendar </a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Google Adwords/ Adsense</a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Facebook Ads </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Partnership Ads </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> MailChimp NewsLetter(?) </a></li>
+                            <li><span class="badge badge-red">Later</span><a href="javascript:void(0)"><i class="fa fa-align-center"></i> Ad Cost/ InFlow Analysis </a></li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-align-center"></i> PriceTicker Alerts </a></li>
+                        </ul>
+                    </li>                                                                
+                </ul>   
+
+            </div>
+            <!--End Left Sidebar-->
+            
+            <div class="col-md-9">
+                <!--Profile Body-->
+                <div class="profile-body">
+                    <!--Service Block v3-->
+                    <div class="row margin-bottom-10">
+                        <form action="" id="sky-form2" class="sky-form" method="post">
+                        {{form.hidden_tag()}}
+                        <div class="col-sm-6 sm-margin-bottom-20">
+                            <!--Datepicker-->
+                                <div id="inline-start" >
+                                    <input type="text" name="datef" id="datef" value="{{last_rec.datef}}" required/>
+                                    <input type="number" name="receipt_id" id="receipt_id" disabled style="width:40px;">
+                                </div>
+                            <!--End Datepicker-->
+                        </div>
+                        
+                        <div class="col-sm-6">              
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    {% if last_rec.ref_id %}
+                                                        <input type="text" id="ref_id" name="ref_id" placeholder="REF #" value="{{last_rec.ref_id}}" required>
+                                                    {% else %}
+                                                        <input type="text" id="ref_id" name="ref_id" placeholder="REF #" value="" required>
+                                                    {% endif %}
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-external-link" onclick="manual_store()"></i>
+                                                    <input type="text" id="store_name" name="store_name" placeholder="Store/ Vendor" value="{{last_rec.store_name}}" required>
+                                                </label>                            
+                                            </section>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-external-link" onclick="manual_item()"></i>
+                                                    <input type="text" id="item_name" name="item_name" placeholder="Item Name" autocomplete="on" required>
+                                                </label>   
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="number" id="price" name="price" placeholder="Price" required>
+                                                </label>   
+                                            </section>
+                                         </div>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="number" id="net_weight" name="net_weight" placeholder="Net Weight" >
+                                                </label>   
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="number" id="unit_weight" name="unit_weight" placeholder="Unit Weight">
+                                                </label>   
+                                            </section>
+                                         </div>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="text" id="unit" name="unit" placeholder="Measure Unit">
+                                                </label>   
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="number" id="quantity" name="quantity" placeholder="Quantity" value=1>
+                                                </label>   
+                                            </section>
+                                         </div>
+                                        <div class="row panel-heading overflow-h">
+                                            <section class="col col-6">
+                            <input type="submit" Value="Save iChanges" style="color:#666; margin-left:-15px;">
+                            <a id="new_item" href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="color:#555;">New
+                            <i class="glyphicon glyphicon-fire" style="font-size:16px;margin-left:5px;"></i></a>
+                                            </section>
+                                            <section class="col col-6">
+                            <a id="add_item" href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="color:#555;">Add
+                            <i class="glyphicon glyphicon-plus" style="font-size:16px;margin-left:5px;"></i></a> &nbsp;
+    <a id="del_item" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="color:#555; margin-right:10px;">Del
+                            <i class="glyphicon glyphicon-remove" style="font-size:16px;margin-left:5px;"></i></a>
+                                            </section>
+                                         </div>  
+                        
+                        </div>
+                        </form>
+                    </div><!--/end row-->
+                    <!--End Service Block v3-->
+    <div style="container";>
+        <div class="row">
+            <!--Left Sidebar-->
+            <div id="rec_items">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <h3 onclick="edit_item('{{last_rec.datef}}','', '{{last_rec.ref_id}}', '{{last_rec.store_name}}',
+                        '','','', '','','1')">
+                        {{last_rec.ref_id}}: {{subtotal}}<h3>
+                    <h3>{{last_rec.store_name}}<h3>
+                    <h3>{{last_rec.datef}}<h3>
+                </div>
+                <div class="col-md-4 md-margin-bottom-40">
+                    <table>
+                        {% if whole_rec %}
+                            {% for t in whole_rec %}
+                            <tr onclick="edit_item('{{t.datef}}','{{t.receipt_id}}', '{{t.ref_id}}', '{{t.store_name}}','{{t.item_name}}','{{t.price}}',
+                                '{{t.net_weight}}', '{{t.unit_weight}}','{{t.unit}}','{{t.quantity}}')">
+                                
+                                <td width="20px"> <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;text-decoration: none;">{{t.quantity}}</a></td>
+                                <td cellpadding="10"><a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;text-decoration: none;">{{t.item_name}}</a></td>
+                                <td width="50px" style="text-align:right"> <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;text-decoration: none;">{{t.price}}</a></td>
+                            </tr>                                    
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3 md-margin-bottom-40">
+            <span id="suggest">
+            </span>
+            </div>
+        </div>
+    </div>
+    
+<hr style="margin:0px; margin-bottom: 20px;">
+                <div class="wrapper">
+                    <div class="panel-heading overflow-h" style="color:#555;">
+                        <h2 class="panel-title heading-sm pull-left" style="color:#555;"><i class="fa fa-tasks"></i>Payables Calendar </h2>
+                        <a id="reset" href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">View All</a>
+                        
+<a href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">Add Receive<i class="glyphicon glyphicon-plus" style="font-size:16px;margin-left:5px;"></i></a>
+                        
+<a href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="">Search Receive <i class="search fa fa-search search-btn pull-right" style="font-size:16px;margin-top:-6px;margin-left:5px;"></i></a>                                   
+                        
+                    </div>
+
+                    <!--Table Search v1-->
+                    <div class="table-search-v1">
+                    
+                        <div class="table-responsive">
+                         <div class="tab-v1">
+                            <ul class="nav nav-justified nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#profile">Payables/ Receivables</a></li>
+                                <li><a data-toggle="tab" href="#payment">Add Item</a></li>
+                            </ul>
+                   		</div>
+                   	    <div class="tab-content">
+                                <div id="profile" class="profile-edit tab-pane fade in active">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="white-space:nowrap;" width="15%">Store</th>
+                                                <th width="15%">RefID</th>
+                                                <th width="15%">date</th>
+                                                <th width="10%">Amount?</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="changebody">
+                                                {% for t in trans %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;">{{t[0]}}</a>
+                                                    </td>
+                                                    <td>
+                                                    <span onclick="bot_rec('{{t[2]}}','{{t[1]}}','{{t[0]}}')">
+                                                    <a href="javascript:void(0)" style="font-family:Meiryo; font-size:14px;">
+                                                         {{t[1]}} </a></td>
+                                                    <td>
+                                                         <span style="font-family:Meiryo; font-size:14px;">{{t[2]}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span style="font-family:Meiryo; font-size:14px;">{{t[3]}}</span>
+                                                    </td>
+                                                    <td>
+                                                       <span style="color:#666666;float:left;margin-right:5px;"> <i class="fa fa-print"></i> Invoice </span>
+                                                       <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-envelope"></i> Email </span>
+                                                       <span style="color:#666666;float:left;margin-right:5px;"><i class="fa fa-ban"></i> Suspend </span>
+                                                    </td>
+                                                </tr>                                    
+                                                {% endfor %}
+                                            <tr><td colspan="6">
+                                            <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
+                                            </td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="payment" class="profile-edit tab-pane fade">
+            
+                                    <form action="../test/php/formmail.php" method="post" name="OrderForm" id="sky-form" class="sky-form">
+                                        <fieldset>                  
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-search"></i>
+                                                    <input type="text" name="FullName" placeholder="Vendor" required>
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="email" name="EmailAddr" placeholder="BUS ID/ TRANSACTION REF# HISTORY">
+                                                </label>                            
+                                            </section>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="email" name="EmailAddr" placeholder="Description i.e. Phone/ Salaries">
+                                                </label>   
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="email" name="EmailAddr" placeholder="Due Date">
+                                                </label>   
+                                            </section>
+                                         </div>
+                                                                <div class="row">
+                                            <section class="col col-6">
+                                                <label class="select">
+                                                    <select name="L1Cate">
+                                                        <option value="none" selected disabled style="display:none">Payable Type</option>
+                                                        <option value="">Single</option>
+                                                        <option value="" disabled>Recur</option>
+                                                        <option value="">-- Weekly </option>
+                                                        <option value="">-- Monthly </option>
+                                                        <option value="">-- Bi-Monthly </option>
+                                                    </select>
+                                                    <i></i>
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="text" name="Price" placeholder="Price (NTD)">
+                                                </label>  
+                                            </section>
+                                         </div>
+                                         
+                                         <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="text" name="Price" placeholder="Payment Date">
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="select">
+                                                    <select name="L1Cate">
+                                                        <option value="none" selected disabled style="display:none">PaymentType</option>
+                                                        <option value="">CASH</option>
+                                                        <option value="">DIRECT DEPOSIT</option>
+                                                        <option value="">CREDIT CARD</option>
+                                                        <option value="">WAIVED</option>
+                                                    </select>
+                                                    <i></i>
+                                                </label>                            
+
+                                            </section>
+                                         </div>
+
+                                         <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="text" name="Price" placeholder="RECEIPT ISSUED NUMBER 發票/收據號碼">
+                                                </label>
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <input type="text" name="Price" placeholder="CASH: WHO誰收 DD: ACCT#, CC: REFER#">
+                                                </label>                          
+
+                                            </section>
+                                         </div>
+                                                                <div class="row">
+                                                    <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Save Item</button>
+                                        </div>                                               
+                                                                  
+                                        </fieldset>
+                                      </form>
+                      
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                    <!--End Table Search v1-->
+                        
+                     <hr style="margin:0px; margin-bottom: 20px;">
+
+                    <!--Table Search v2-->
+                    <div class="table-search-v2 margin-bottom-20">
+                       <div class="panel-heading overflow-h">
+                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>Outstanding Payable</h2>
+                            <a href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">View All</a>
+                            
+<a href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">Add Receive<i class="glyphicon glyphicon-plus" style="font-size:16px;margin-left:5px;"></i></a>                            
+                            
+<a href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="">Search Receive <i class="search fa fa-search search-btn pull-right" style="font-size:16px;margin-top:-6px;margin-left:5px;"></i></a>                                   
+                            
+                        </div>   
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Vendor</th>
+                                        <th>About</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{ url_for('static', filename='img/testimonials/img1.jpg') }}" alt="">
+                                        </td>
+                                        <td class="td-width">
+                                            <h3><a href="javascript:void(0)">Jason Bourne - Salary</a></h3>
+                                            <p>BALANCE: 20,583NT CASH</p>
+                                            <small class="hex">Due Date January 20th, 2016 (16 days past due)</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-success">History</span>
+                                        </td>
+                                        <td>
+						   <span style="color:#666666;margin-right:5px;"> <i class="fa fa-print"></i> Invoice </span>
+                           <span style="color:#666666;margin-right:5px;"><i class="fa fa-envelope"></i> Email </span>
+                           <span style="color:#666666;margin-right:5px;"><i class="fa fa-ban"></i> Suspend </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{ url_for('static', filename='img/testimonials/img2.jpg')}}" alt="">
+                                        </td>
+                                        <td>
+                                            <h3><a href="javascript:void(0)">CHT - Landline</a></h3>
+                                            <p>BALANCE: 3,583NT CASH</p>
+                                            <small class="hex">Due Date January 20th, 2016 (4 days past due)</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-info"> Pending</span>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline s-icons">
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="javascript:void(0)">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="javascript:void(0)">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="javascript:void(0)">
+                                                    <i class="fa fa-dropbox"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="javascript:void(0)">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <span><a href="javascript:void(0)">info@example.com</a></span>
+                                            <span><a href="javascript:void(0)">www.htmlstream.com</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{ url_for('static', filename='img/testimonials/img3.jpg')}}" alt="">
+                                        </td>
+                                        <td>
+                                            <h3><a href="javascript:void(0)">Pellentesque semper tempus vehicula</a></h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo lacus. Fusce non malesuada ante. Donec vel arcu.</p>
+                                            <small class="hex">Joined March 3, 2014</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-warning">Expiring</span>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline s-icons">
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="javascript:void(0)">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="javascript:void(0)">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="javascript:void(0)">
+                                                    <i class="fa fa-dropbox"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="javascript:void(0)">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <span><a href="javascript:void(0)">info@example.com</a></span>
+                                            <span><a href="javascript:void(0)">www.htmlstream.com</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-x" src="{{ url_for('static', filename='img/testimonials/img4.jpg')}}" alt="">
+                                        </td>
+                                        <td>
+                                            <h3><a href="javascript:void(0)">Alesuada fames ac turpis egestas</a></h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id commodo lacus. Fusce non malesuada ante. Donec vel arcu.</p>
+                                            <small class="hex">Joined March 4, 2014</small>
+                                        </td>
+                                        <td>
+                                            <span class="label label-danger">Error!</span>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline s-icons">
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Facebook" href="javascript:void(0)">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Twitter" href="javascript:void(0)">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Dropbox" href="javascript:void(0)">
+                                                    <i class="fa fa-dropbox"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-placement="top" data-toggle="tooltip" class="tooltips" data-original-title="Linkedin" href="javascript:void(0)">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <span><a href="javascript:void(0)">info@example.com</a></span>
+                                            <span><a href="javascript:void(0)">www.htmlstream.com</a></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                    <!--End Table Search v2-->
+                </div>
+                <!--End Profile Body-->
+            </div>
+        </div><!--/end row-->
+    </div><!--/container-->    
+    <!--=== End Profile ===-->
+    <div class="footer-v1">
+        <!--=== Copyright ===-->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            2014 &copy; Unify. ALL Rights Reserved. 
+                            <a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="javascript:void(0)">Privacy Policy</a> | <a href="javascript:void(0)">Terms of Service</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">  
+                        <a href="index.html">
+                            <img class="pull-right" id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png')}} " alt="">
+                        </a>
+                    </div>
+                </div>
+            </div> 
+        </div><!--/copyright--> 
+        <!--=== End Copyright ===-->
+    </div>
+</div><!--/wrapper-->
+
+<!-- JS Global Compulsory -->           
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js')}}"></script> 
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/smoothScroll.js')}}"></script>
+<script src="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js')}}"></script>
+<!-- JS Customization -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/custom.js')}}"></script>
+
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/datepicker.js')}}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        Datepicker.initDatepicker();
+    });
+</script>
+        
+<script type="text/javascript">
+
+var eventDates = {};
+{% for t in trans %}
+    eventDates[ new Date( '{{t[2].month}}/{{t[2].day}}/{{t[2].year}}' )] = new Date( '{{t[2].month}}/{{t[2].day}}/{{t[2].year}}' ).toString();
+{% endfor %}
+
+$('#inline-start').datepicker({
+    beforeShowDay: function(date) {
+        var highlight = eventDates[date];
+        if (highlight)
+            {return [true, "OUTclass", highlight];}
+        else {return [true, '', ''];}
+        },
+    onSelect: function(dateText, inst)
+    { 
+      var dateAsString = dateText; //the first parameter of this function
+      var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+
+      document.getElementById("datef").value = dateAsString.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+
+      $.ajax({
+          url: "/rectrans/",
+          type: "get",
+          data: {jsdata: dateText},
+          success: function(response) {
+            $("#changebody").html(response);}
+          })
+      $.ajax({
+          url: "/bot_rec_update_date/",
+          type: "get",
+          data: {dateg: dateText},
+          success: function(response) {
+            $("#rec_items").html(response);}
+          })
+        document.getElementById("price").value="";
+        document.getElementById("item_name").value="";
+        document.getElementById("unit_weight").value="";
+        document.getElementById("net_weight").value="";
+        document.getElementById("unit").value="";
+        document.getElementById("quantity").value="1";
+        document.getElementById("receipt_id").value="";
+    }
+});
+
+$(document).ready(function() {
+    $("#add_item").click(function() {
+         if ((document.getElementById("item_name").value != "") && (document.getElementById("price").value != ""))
+            {
+
+                $.ajax({
+                  url: "/rec_update/",
+                  type: "get",
+                  data: {ref: document.getElementById("ref_id").value,
+                         item: document.getElementById("item_name").value,
+                         store: document.getElementById("store_name").value,
+                         uw: document.getElementById("unit_weight").value,
+                         net: document.getElementById("net_weight").value,
+                         unit: document.getElementById("unit").value,
+                         qty: document.getElementById("quantity").value,
+                         price: document.getElementById("price").value,
+                         dateg: document.getElementById("datef").value,
+                         rid: document.getElementById("receipt_id").value
+                         },
+                  success: function(response) {
+                    $("#rec_items").html(response);}
+                  })
+                document.getElementById("price").value="";
+                document.getElementById("item_name").value="";
+                document.getElementById("unit_weight").value="";
+                document.getElementById("net_weight").value="";
+                document.getElementById("unit").value="";
+                document.getElementById("quantity").value="1";
+                document.getElementById("receipt_id").value="";
+            }
+         else {alert('Please Fill in Fields');}
+    });
+
+    $("#del_item").click(function() {
+         if ((document.getElementById("receipt_id").value != "") && (document.getElementById("ref_id").value != ""))
+            {
+                if (confirm("Confirm Delete?")){
+                    $.ajax({
+                      url: "/item_del/",
+                      type: "get",
+                      data: {ref: document.getElementById("ref_id").value,
+                             rid: document.getElementById("receipt_id").value
+                             },
+                      success: function(response) {
+                        $("#rec_items").html(response);}
+                      })
+                    document.getElementById("price").value="";
+                    document.getElementById("item_name").value="";
+                    document.getElementById("unit_weight").value="";
+                    document.getElementById("net_weight").value="";
+                    document.getElementById("unit").value="";
+                    document.getElementById("quantity").value="1";
+                    document.getElementById("receipt_id").value="";
+                }
+            }
+         else {alert('No Item to Delete');}
+    });
+
+    $("#new_item").click(function() {
+        document.getElementById("price").value="";
+        document.getElementById("item_name").value="";
+        document.getElementById("unit_weight").value="";
+        document.getElementById("net_weight").value="";
+        document.getElementById("unit").value="";
+        document.getElementById("quantity").value="1";
+        document.getElementById("receipt_id").value="";        
+    });   
+    
+    $("#reset").click(function() {
+        $.ajax({
+          url: "/rectrans/",
+          type: "get",
+          success: function(response) {
+            $("#changebody").html(response);}
+          })
+    });    
+});
+
+function bot_rec(date,ref,store){
+    document.getElementById("datef").value=date;
+    document.getElementById("ref_id").value=ref;
+    document.getElementById("store_name").value=store;
+    document.getElementById("item_name").value='';
+    document.getElementById("price").value='';
+    document.getElementById("net_weight").value='';
+    document.getElementById("unit_weight").value='';
+    document.getElementById("unit").value='';
+    document.getElementById("receipt_id").value='';
+    $.ajax({
+        url: "/bot_rec_update/",
+        type: "get",
+        data: {ref: ref},
+        success: function(response) {
+            $("#rec_items").html(response);}
+    })
+    var new_date = date.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+    $("#inline-start").datepicker("setDate", new_date);
+}
+
+function manual_store(){
+    $.ajax({
+        url: "/store_suggest/",
+        type: "get",
+        data: {store: '',
+               dateg: document.getElementById("datef").value},
+        success: function(response) {
+            $("#suggest").html(response);}
+    })
+}
+
+$("#store_name").keyup(function() {
+    $.ajax({
+        url: "/store_suggest/",
+        type: "get",
+        data: {store: document.getElementById("store_name").value,
+               dateg: document.getElementById("datef").value},
+        success: function(response) {
+            $("#suggest").html(response);}
+    })
+});
+
+function manual_item(){
+    $.ajax({
+        url: "/item_suggest/",
+        type: "get",
+        data: {store: document.getElementById("store_name").value,
+               item: '',
+               dateg: document.getElementById("datef").value},
+        success: function(response) {
+            $("#suggest").html(response);}
+    })
+}
+
+$("#item_name").keyup(function() {
+    $.ajax({
+        url: "/item_suggest/",
+        type: "get",
+        data: {store: document.getElementById("store_name").value,
+               item: document.getElementById("item_name").value,
+               dateg: document.getElementById("datef").value},
+        success: function(response) {
+            $("#suggest").html(response);}
+    })
+});
+
+
+function change_item(item, price){
+    document.getElementById("item_name").value = item;
+    document.getElementById("price").value = price;
+}
+
+function change_store(store){
+    document.getElementById("store_name").value = store;
+}
+
+function edit_item(dateg, rid, ref_id, store_name, item_name, price, net_weight, unit_weight, unit, quantity){
+    document.getElementById("datef").value = dateg;
+    document.getElementById("receipt_id").value = rid;
+    if (ref_id != 'None') {document.getElementById("ref_id").value = ref_id;}
+        else if (ref_id == 'None') {document.getElementById("ref_id").value = '';}
+    if (store_name != 'None') {document.getElementById("store_name").value = store_name;}
+        else if (store_name == 'None') {document.getElementById("store_name").value = '';}
+    if (item_name != 'None') {document.getElementById("item_name").value = item_name;}
+        else if (item_name == 'None') {document.getElementById("item_name").value = '';}
+    if (price != 'None') {document.getElementById("price").value = price;}
+        else if (price == 'None') {document.getElementById("price").value = '';}
+    if (net_weight != 'None') {document.getElementById("net_weight").value = net_weight;}
+        else if (net_weight == 'None') {document.getElementById("net_weight").value = '';}
+    if (unit_weight != 'None') {document.getElementById("unit_weight").value = unit_weight;}
+        else if (unit_weight == 'None') {document.getElementById("unit_weight").value = '';}
+    if (unit != 'None') {document.getElementById("unit").value = unit;}
+        else if (unit == 'None') {document.getElementById("unit").value = '';}
+    if (quantity != 'None') {document.getElementById("quantity").value = quantity;}
+        else if (quantity == 'None') {document.getElementById("quantity").value = '';}
+}
+
+</script> 
+ 
+
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js')}}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js')}}"></script>
+<![endif]-->
+
+</body>
+</html>	

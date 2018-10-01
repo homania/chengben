@@ -1,6 +1,7 @@
 {% extends "baseL2.html" %}
 {% block content %}
 <div style="float:left;width:90%">
+    {% set menu_mgmt = 1 %}
     {% include 'headerv7leftL2.html' %}
 
     <!--=== Content Side Right ===-->
@@ -17,7 +18,9 @@
             {% for item in l1menu %}       
               {% if item.parent_id == page %} 
                 <div>
-                  <h2>{{item.menu_id}}.{{ item.menu_name }}</h2>	
+                  <span onClick="change('{{ item.menu_name }}', {{item.menu_id}}, {{item.tier}},{{item.menu_order}},{{item.parent_id}},'{{item.keyword}}')" style="cursor:pointer;">
+                      <h2>{{item.menu_id}}.{{ item.menu_name }}</h2>
+                  </span>
                     <ul>
                 {% for items in l2menu %}
                     {% if items.parent_id == item.menu_id %}        		

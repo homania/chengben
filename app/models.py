@@ -2,7 +2,6 @@ from hashlib import md5
 from app import db
 from app import app
 from flask_sqlalchemy import SQLAlchemy
-from flask_whooshalchemyplus import index_all
 
 class User(db.Model):
     __table_args__ = {'extend_existing': True} #test field
@@ -22,6 +21,7 @@ class usersdb(db.Model):
     nickname = db.Column(db.String(50))
     password = db.Column(db.String(50))
     acct_type = db.Column(db.Integer)
+    ch_name = db.Column(db.String(50))
     profilepic = db.Column(db.String(200))
     address = db.Column(db.String(50))
     district = db.Column(db.String(50))
@@ -38,11 +38,11 @@ class usersdb(db.Model):
     last_update = db.Column(db.DateTime)
     active = db.Column(db.Integer)
     
-    def __init__(self, email, password):
-        self.email = email
-        self.password = password
-    def __repr__(self):
-        return '<User %r>' % self.email
+    #def __init__(self, email, password):
+    #    self.email = email
+    #    self.password = password
+    #def __repr__(self):
+    #    return '<User %r>' % self.email
     def is_authenticated(self):
         return True
     def is_active(self):
@@ -280,3 +280,45 @@ class ratesdb(db.Model):
     timestamp = db.Column(db.DateTime)
     rate = db.Column(db.String(50))
     acct_type = db.Column(db.String(50))
+
+class taskdb(db.Model):
+    __tablename__ = 'taskdb'
+    taskid = db.Column(db.Integer, primary_key=True)
+    userid = db.Column(db.Integer)
+    entry_type = db.Column(db.String(50))
+    category = db.Column(db.String(50))
+    description = db.Column(db.String(500))
+    timef = db.Column(db.Time)
+    datef = db.Column(db.String(50))
+    modified = db.Column(db.String(50))
+    autosave = db.Column(db.Integer)
+    scratchbox = db.Column(db.Text)
+
+class writingdb(db.Model):
+    __tablename__ = 'writingdb'
+    writingid = db.Column(db.Integer, primary_key=True)
+    tier = db.Column(db.Integer)
+    order = db.Column(db.Integer)
+    parent = db.Column(db.Integer)    
+    title = db.Column(db.String(50))
+    category = db.Column(db.String(50))
+    searchtags = db.Column(db.String(50))
+    content = db.Column(db.Text)
+    datef = db.Column(db.String(50))
+    timef = db.Column(db.Time)
+    modified = db.Column(db.DateTime)    
+
+class extenixdb(db.Model):
+    __tablename__ = 'extenix'
+    item_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    description = db.Column(db.String(500))
+    sm_img_link = db.Column(db.String(200))
+    md_img_link = db.Column(db.String(200))
+    lg_img_link = db.Column(db.String(200))
+    img_link = db.Column(db.String(200))
+    tags = db.Column(db.String(200))
+    related_1 = db.Column(db.String(200))
+    related_2 = db.Column(db.String(200))
+    related_3 = db.Column(db.String(200))
+    visible = db.Column(db.String(200))

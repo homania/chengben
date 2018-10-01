@@ -13,6 +13,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css') }}">
@@ -36,18 +37,24 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+ 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal-login.css') }}">
+
+<style>
+
+</style>
+    
 </head>	
 
 <body>
-
 
 <div class="wrapper">
     <!--=== Header ===-->    
     <div class="header">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" href="index.html">
-                <img id="logo-header" src="../static/img/logos/logo2.png" alt="Logo">
+            <a class="logo" href="/">
+                <img src="{{ url_for('static', filename='img/logos/logo2.png') }}" alt="Logo" style="margin-bottom:-20px;margin-left:50px;">
             </a>
             <!-- End Logo -->
             <!-- Topbar -->
@@ -55,9 +62,15 @@
             <!-- End Topbar Navigation -->
         </div>
         <!-- End Topbar -->
+            <!-- Toggle get grouped for better mobile display -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-bars"></span>
+            </button>
+            <!-- End Toggle -->          
     
         <!-- Navbar -->
-        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" style="padding-top:25px">
+        <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
             <div class="container">
                 <ul class="nav navbar-nav">
                     <!-- Home -->
@@ -117,6 +130,8 @@
     </div>
 </div><!--/wrapper-->
 
+{% include 'admin/modal_login.html' %}
+
 <!-- JS Global Compulsory -->           
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-1.10.2.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-migrate-1.2.1.min.js') }}"></script>
@@ -133,6 +148,8 @@
 <!-- JS Page Level -->           
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/plugins/datepicker.js') }}"></script>
+
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
@@ -146,6 +163,7 @@
         $('.contentHolder').perfectScrollbar();
     });
 </script>
+
 <!--[if lt IE 9]>
     <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>
     <script src="{{ url_for('static', filename='plugins/html5shiv.js') }}"></script>

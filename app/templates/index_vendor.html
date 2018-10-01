@@ -79,7 +79,7 @@
                         <div class="col-sm-6">
                             <div class="panel panel-profile no-bg">
                                 <div class="panel-heading overflow-h">
-                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-list-ul"></i>Recent Clicks</h2>
+                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-list-ul"></i>Last 30 Days Clicks</h2>
                                     <a href="#"><i class="fa fa-cog pull-right"></i></a>
                                 </div>
                 <div class="table-responsive">
@@ -91,12 +91,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for x in range (0,4) %}
+                                    {% for items in unique %}
                                     <tr>
                                         <td>
-                                            {{unique[x][0]|truncate(15)}}
+                                            {{items[0]|truncate(15)}}
                                         </td>
-                                        <td >{{unique[x][1]}}</td>
+                                        <td >{{items[1]}}</td>
                                     </tr>
                                     {% endfor %}
                                     <tr><td colspan="6">

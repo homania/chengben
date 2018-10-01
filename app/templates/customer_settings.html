@@ -15,7 +15,7 @@
                         <div class="tab-v1">
                             <ul class="nav nav-justified nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#profile">Business Profile</a></li>
-                                <li><a data-toggle="tab" href="#payment">Other Contact</a></li>
+                                <li><a data-toggle="tab" href="#payment">Primary Contact</a></li>
                                 <li><a data-toggle="tab" href="#password">Change Password</a></li>
                                 <li><a data-toggle="tab" href="#settings">Notification Settings</a></li>
                             </ul>
@@ -27,11 +27,21 @@
                                     </br>
                                     <dl class="dl-horizontal">
                                         
+                                        <dt><strong>Your Name </strong></dt>
+                                        <dd>
+                                            <label class="input" style="width: 305px;">
+                                                <i class="icon-append fa fa-user"></i>
+                                                <input type="text" placeholder="i.e. Sam Smith" id="name"
+                                                    {%if user_prof.name%} value="{{user_prof.name}}" {%endif%}>
+                                            </label>
+                                        </dd>
+                                        <hr style="margin:0px; margin-bottom:5px;">
                                         <dt><strong>Business Name </strong></dt>
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="i.e. McDonalds" name="username">
+                                                <input type="text" placeholder="i.e. McDonalds" id="nickname"
+                                                    {%if user_prof.nickname%} value="{{user_prof.nickname}}" {%endif%}>
                                             </label>
                                         </dd>
                                         <hr style="margin:0px; margin-bottom:5px;">
@@ -39,7 +49,8 @@
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="登記公司名字" name="username">
+                                                <input type="text" placeholder="登記公司名字" id="ch_name"
+                                                    {%if user_prof.ch_name%} value="{{user_prof.ch_name}}" {%endif%}>
                                             </label>
                                         </dd>
                                         <hr style="margin:0px; margin-bottom:5px;">
@@ -47,7 +58,8 @@
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="統編號碼" name="username">
+                                                <input type="text" placeholder="統編號碼" id="BID"
+                                                    {%if user_prof.BID%} value="{{user_prof.BID}}" {%endif%}>
                                             </label>
                                         </dd>
                                         <hr style="margin:0px; margin-bottom:5px;">
@@ -55,7 +67,8 @@
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="公司市內" name="username">
+                                                <input type="text" placeholder="公司市內電話" id="phone1"
+                                                    {%if user_prof.phone1%} value="{{user_prof.phone1}}" {%endif%}>
                                             </label>
                                         </dd>
                                         <hr style="margin:0px; margin-bottom:5px;">
@@ -63,19 +76,23 @@
                                         <dd>
                                                     <label class="input" style="width: 305px;">
                                                         <i class="icon-append fa fa-user"></i>
-                                                        <input type="text" placeholder="地址" name="username">
+                                                        <input type="text" placeholder="地址" id="address"
+                                                            {%if user_prof.address%} value="{{user_prof.address}}" {%endif%}>
                                                     </label>
                                                     <label class="input" style="width: 100px;float:left;">
                                                         <i class="icon-append fa fa-user"></i>
-                                                        <input type="text" placeholder="地區" name="username">
+                                                        <input type="text" placeholder="地區" id="district"
+                                                            {%if user_prof.district%} value="{{user_prof.district}}" {%endif%}>
                                                     </label>
                                                     <label class="input" style="width: 100px;float:left; margin-left: 5px;">
                                                         <i class="icon-append fa fa-user"></i>
-                                                        <input type="text" placeholder="城市" name="username">
+                                                        <input type="text" placeholder="城市" id="city"
+                                                            {%if user_prof.city%} value="{{user_prof.city}}" {%endif%}>
                                                     </label>
                                                     <label class="input" style="width: 100px;float:left; margin-left: 5px;">
                                                         <i class="icon-append fa fa-user"></i>
-                                                        <input type="text" placeholder="國家" name="username">
+                                                        <input type="text" placeholder="國家" id="country"
+                                                            {%if user_prof.country%} value="{{user_prof.country}}" {%endif%}>
                                                     </label>
                                         </dd>
                                         
@@ -84,7 +101,8 @@
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="LOGO 圖片" name="username">
+                                                <input type="text" placeholder="LOGO 圖片" id="profilepic"
+                                                    {%if user_prof.profilepic%} value="{{user_prof.profilepic}}" {%endif%}>
                                             </label>
                                         </dd>
                                         <hr style="margin:0px; margin-bottom:5px;">
@@ -92,14 +110,16 @@
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="網站/FB/etc" name="username">
+                                                <input type="text" placeholder="網站/FB/etc" id="website"
+                                                    {%if user_prof.website%} value="{{user_prof.website}}" {%endif%}>
                                             </label>
                                         </dd>
                                         
                                         <hr style="margin:0px; margin-bottom:5px;">
                                     </dl>
                                     <button type="button" class="btn-u btn-u-default">Cancel</button>
-                                    <button type="button" class="btn-u">Save Changes</button>
+                                    <button type="button" class="btn-u save_changes">Save Changes</button>
+                                        <div class="change_msg" style="margin-top:5px; margin-left:80px;"> </div>
                                 </div>
                                 
                                 <div id="payment" class="profile-edit tab-pane fade">
@@ -111,7 +131,8 @@
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="名字" name="username">
+                                                <input type="text" placeholder="名字" id="name2"
+                                                    {%if user_prof.name%} value="{{user_prof.name}}" {%endif%}>
                                             </label>
                                         </dd>
                                         
@@ -120,7 +141,8 @@
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="地址" name="username">
+                                                <input type="text" placeholder="地址" id="email"
+                                                    {%if user_prof.email%} value="{{user_prof.email}}" {%endif%}>
                                             </label>
                                         </dd>
                                         <hr style="margin:0px; margin-bottom:5px;">
@@ -128,13 +150,15 @@
                                         <dd>
                                             <label class="input" style="width: 305px;">
                                                 <i class="icon-append fa fa-user"></i>
-                                                <input type="text" placeholder="電話" name="username">
+                                                <input type="text" placeholder="電話" id="phone2"
+                                                    {%if user_prof.phone2%} value="{{user_prof.phone2}}" {%endif%}>
                                             </label>
                                         </dd>
                                         <hr style="margin:0px; margin-bottom:5px;">
                                     </dl>
                                         <button type="button" class="btn-u btn-u-default">Cancel</button>
-                                        <button class="btn-u" type="submit">Save Changes</button>
+                                        <button type="button" class="btn-u save_changes">Save Changes</button>
+                                            <div class="change_msg" style="margin-top:5px; margin-left:80px;"> </div>
                                         <!--End Checkout-Form-->   
                                 </div>                                
 
@@ -144,22 +168,12 @@
                                     </br>
                                    
                                         <dl class="dl-horizontal">
-                                            <dt>Username</dt>
-                                            <dd>
-                                                <section>
-                                                    <label class="input">
-                                                        <i class="icon-append fa fa-user"></i>
-                                                        <input type="text" placeholder="Username" name="username">
-                                                        <b class="tooltip tooltip-bottom-right">Needed to enter the website</b>
-                                                    </label>
-                                                </section>
-                                            </dd>
-                                            <dt>Email address</dt>
+                                            <dt>Confirm Email address</dt>
                                             <dd>
                                                 <section>
                                                     <label class="input">
                                                         <i class="icon-append fa fa-envelope"></i>
-                                                        <input type="email" placeholder="Email address" name="email">
+                                                        <input type="email" placeholder="Email address" id="p_email">
                                                         <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
                                                     </label>
                                                 </section>
@@ -169,7 +183,7 @@
                                                 <section>
                                                     <label class="input">
                                                         <i class="icon-append fa fa-lock"></i>
-                                                        <input type="password" id="password" placeholder="Password" name="password">
+                                                        <input type="password" id="password" placeholder="Password" id="password">
                                                         <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
                                                     </label>
                                                 </section>
@@ -179,19 +193,17 @@
                                                 <section>
                                                     <label class="input">
                                                         <i class="icon-append fa fa-lock"></i>
-                                                        <input type="password" placeholder="Confirm password" name="passwordConfirm">
+                                                        <input type="password" placeholder="Confirm password" id="passwordConfirm">
                                                         <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
                                                     </label>
                                                 </section>
                                             </dd>    
                                         </dl>
-                                        <label class="toggle toggle-change"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Remember password</label>
+                                        <label class="toggle toggle-change"><input type="checkbox" checked="" id="checkbox-toggle-1"><i></i>Remember password</label>
                                         </br>
-                                        <section>
-                                            <label class="checkbox"><input type="checkbox" id="terms" name="terms"><i></i><a href="#">I agree with the Terms and Conditions</a></label>
-                                        </section>
                                         <button type="button" class="btn-u btn-u-default">Cancel</button>
-                                        <button class="btn-u" type="submit">Save Changes</button>
+                                        <button type="button" class="btn-u save_changes">Save Changes</button>
+                                            <div class="change_msg" style="margin-top:5px; margin-left:80px;"> </div>
                                       
                                 </div>
 
@@ -199,16 +211,17 @@
                                     <h2 class="heading-md">Manage your Notifications.</h2>
                                     <p>Below are the notifications you may manage.</p>
                                     </br>
-                                        <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Email notification</label>
+                                        <label class="toggle"><input type="checkbox" checked="" id="email_notify"><i></i>Email notification</label>
                                         <hr>
-                                        <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Send me email notification for watchlist updates</label>
+                                        <label class="toggle"><input type="checkbox" checked="" id="watchlist_notify"><i></i>Send me email notification for watchlist updates</label>
                                         <hr>
-                                        <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Allow vendors to contact me directly with sales and promotions</label>
+                                        <label class="toggle"><input type="checkbox" checked="" id="vendor_notify"><i></i>Allow vendors to contact me directly with sales and promotions</label>
                                         <hr>
-                                        <label class="toggle"><input type="checkbox" checked="" name="checkbox-toggle-1"><i></i>Receive our monthly newsletter</label>
+                                        <label class="toggle"><input type="checkbox" checked="" id="newsletter_notify"><i></i>Receive our monthly newsletter</label>
                                         <hr>    
                                         <button type="button" class="btn-u btn-u-default">Reset</button>
-                                        <button class="btn-u" type="submit">Save Changes</button>
+                                        <button type="button" class="btn-u save_changes">Save Changes</button>
+                                            <div class="change_msg" style="margin-top:5px; margin-left:80px;"> </div>
                                 </div>
                             </div>
                             </form>
@@ -220,5 +233,32 @@
         </div><!--/container-->    
     </div>      
     <!--=== End Profile ===-->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-1.10.2.min.js') }}"></script>    
+<script type="text/javascript">
+$(".save_changes").click(function() {
+    $.ajax({
+      url: "/cs_update/",
+      type: "get",
+      data: {userid: {{user_prof.userid}},
+             name: document.getElementById("name").value,
+             nickname: document.getElementById("nickname").value,
+             ch_name: document.getElementById("ch_name").value,
+             profilepic: document.getElementById("profilepic").value,
+             address: document.getElementById("address").value,
+             district: document.getElementById("district").value,
+             city: document.getElementById("city").value,
+             country: document.getElementById("country").value,
+             phone1: document.getElementById("phone1").value,
+             phone2: document.getElementById("phone2").value,
+             email: document.getElementById("email").value,
+             BID: document.getElementById("BID").value,
+             website: document.getElementById("website").value                 
+             },
+      success: function(response) {
+          $(".change_msg").html("<p style='color:#72c02c;font-weight:500;font-size:16px;opacity:0;' class='fade-out'>Changes Saved.</p>");
+          }
+      })
+});
+</script>
 
 {% endblock %}

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Title -->
+  <title>Product Showcase | Extenix</title>
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='unify251/favicon.ico') }}">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- CSS Global Compulsory -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/bootstrap/bootstrap.min.css') }}">
+  <!-- CSS Global Icons -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/icon-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/icon-line/css/simple-line-icons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/icon-etlinefont/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/icon-line-pro/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/icon-hs/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/animate.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/dzsparallaxer/dzsparallaxer.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/dzsparallaxer/dzsscroller/scroller.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/dzsparallaxer/advancedscroller/plugin.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/slick-carousel/slick/slick.css') }}">
+  <link rel="stylesheet" href="http://scriptpie.com/cubeportfolio/live-preview/cubeportfolio/css/cubeportfolio.min.css">
+  <link rel="stylesheet" href="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/hs-bg-video/hs-bg-video.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/fancybox/jquery.fancybox.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/hs-megamenu/src/hs.megamenu.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/hamburgers/hamburgers.min.css') }}">
+
+  <!-- CSS Unify -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/css/unify-core.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/css/unify-components.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/css/unify-globals.css') }}">
+
+  <!-- CSS Customization -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='unify251/css/custom.css') }}">
+  
+
+    <!-- Revolution Slider -->
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/revolution-slider/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='unify251/vendor/revolution-slider/revolution/css/settings.css') }}">
+    <link rel="stylesheet" href="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/css/layers.css">
+    <link rel="stylesheet" href="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/css/navigation.css">
+    
+</head>
+
+<body>
+  <main>
+
+
+
+{% include 'extenix/menu_header.html' %}
+
+
+<div class='container'>
+<br><br>
+    <hr class="g-brd-gray-light-v4 my-0">    
+<br><br>
+
+    <div class="wb-grid">
+        <div class="wb-center">
+            <div class="example">
+                <h2 class="example-title g-mb-20">Sample Product Showcase</h2>
+                <div class="example-desc">
+                    <p>Cube Portfolio can easily be modified to suit your needs to display any
+                    content you want (images, text, Youtube & Vimeo video, html5 self-hosted video,
+                                      iframe content, etc.). Also, it has a built-in lightbox and
+                    full-screen modal popup (singlePage): check it by clicking on `view larger` or
+                    `more info` buttons when you mouse over the grid items below.</p>
+                    <br>
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="grid">
+                <div class="clearfix">
+                    <div id="js-filters-juicy-projects1" class="cbp-l-filters-button cbp-l-filters-left">
+                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All</div>
+                        <div data-filter=".RACK" class="cbp-filter-item">Rack Mount</div>
+                        <div data-filter=".MODULE" class="cbp-filter-item">Component</div>
+                    </div>
+
+                    <div id="js-filters-juicy-projects2" class="cbp-l-filters-button cbp-l-filters-right">
+                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All</div>
+                        <div data-filter=".USB" class="cbp-filter-item">USB/SD</div>
+                        <div data-filter=".DAB" class="cbp-filter-item">SAB+</div>
+                        <div data-filter=".FM" class="cbp-filter-item">FM Tuner</div>
+                        <div data-filter=".CD" class="cbp-filter-item">Compact Disc</div>
+                        <div data-filter=".SPEAKER" class="cbp-filter-item">Speaker</div>
+                        <div data-filter=".CASSETTE" class="cbp-filter-item">Cassette</div>
+                    </div>
+                </div>
+
+            <!--- linnnnnne -->
+
+
+                <div id="js-grid-juicy-projects" class="cbp">
+                    {% for item in items %}
+                    <div class="cbp-item {{item.tags}}">
+                        <div class="cbp-caption">
+                            <div class="cbp-caption-defaultWrap">
+                                <img src="{{item.sm_img_link}}" style="height:170px!important; width:auto!important" alt="">
+                            </div>
+                            <div class="cbp-caption-activeWrap">
+                                <div class="cbp-l-caption-alignCenter">
+                                    <div class="cbp-l-caption-body">
+<a href="../../static/unify251/templates/project.html" class="cbp-singlePage cbp-l-caption-buttonLeft" rel="nofollow" onclick="more_info('{{item.item_id}}')">
+
+                                        more info</a>
+                                        <a href="{{item.lg_img_link}}" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="Dashboard<br>by Paul Flavius Nechita">view larger</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cbp-l-grid-projects-title">{{item.name}}</div>
+                        <div class="cbp-l-grid-projects-desc">{{item.tags}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+<br><br>
+{% include 'extenix/contact_sect.html' %}
+
+    <hr class="g-brd-gray-light-v4 my-0">
+</div>
+    
+
+{% include 'extenix/footer.html' %}
+
+    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
+     "bottom": 15,
+     "right": 15
+   }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
+      <i class="hs-icon hs-icon-arrow-top"></i>
+    </a>
+  </main>
+
+  <div class="u-outer-spaces-helper"></div>
+
+
+  <!-- JS Global Compulsory -->
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/popper.min.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+
+  <!-- JS Implementing Plugins -->
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/slick-carousel/slick/slick.js"></script>
+  
+  <script src="http://scriptpie.com/cubeportfolio/live-preview/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+  <script src="{{ url_for('static', filename='unify251/vendor/cubeportfolio-full/cubeportfolio/js/juicyproject.js') }}"></script>
+  
+  <!--<script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/hs-bg-video/hs-bg-video.js"></script>-->
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/hs-bg-video/vendor/player.min.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+
+  <!-- JS Unify -->
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/hs.core.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/components/hs.header.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/helpers/hs.hamburgers.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/components/hs.tabs.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/components/hs.go-to.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/components/hs.carousel.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/components/hs.cubeportfolio.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/helpers/hs.bg-video.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/components/hs.popup.js"></script>
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/components/hs.go-to.js"></script>
+
+  <!-- JS Revolution Slider -->
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/jquery.themepunch.tools.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+  <script src="http://themenate.com/eastern/assets/plugins/rs-plugin/revolution/js/extensions/revolution.extension.video.min.js"></script>
+
+
+  <!-- JS Customization -->
+  <script src="https://htmlstream.com/preview/unify-v2.5.1/assets/js/custom.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    $(document).on('ready', function () {
+        // initialization of carousel
+        $.HSCore.components.HSCarousel.init('.js-carousel');
+
+        // initialization of tabs
+        $.HSCore.components.HSTabs.init('[role="tablist"]');
+
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+
+        // initialization of popups
+        $.HSCore.components.HSPopup.init('.js-fancybox');
+      });
+
+      $(window).on('load', function () {
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#js-header'));
+        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+        // initialization of HSMegaMenu component
+        $('.js-mega-menu').HSMegaMenu({
+          event: 'hover',
+          pageContainer: $('.container'),
+          breakpoint: 991
+        });
+
+      });
+
+      $(window).on('resize', function () {
+        setTimeout(function () {
+          $.HSCore.components.HSTabs.init('[role="tablist"]');
+        }, 200);
+      });
+
+
+    $(document).on('ready', function () {
+      // initialization of carousel
+      $.HSCore.components.HSCarousel.init('.js-carousel');
+
+      // initialization of masonry
+      $('.masonry-grid').imagesLoaded().then(function () {
+        $('.masonry-grid').masonry({
+          columnWidth: '.masonry-grid-sizer',
+          itemSelector: '.masonry-grid-item',
+          percentPosition: true
+        });
+      });
+
+      // Header
+      $.HSCore.components.HSHeader.init($('#js-header'));
+      $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+      // Initialization of HSMegaMenu plugin
+      $('.js-mega-menu').HSMegaMenu({
+        event: 'hover',
+        pageContainer: $('.container'),
+        breakpoint: 991
+      });
+    });
+
+						var tpj=jQuery;
+			
+			var revapi1078;
+			tpj(document).ready(function() {
+				if(tpj("#rev_slider_1078_1").revolution == undefined){
+					revslider_showDoubleJqueryError("#rev_slider_1078_1");
+				}else{
+					revapi1078 = tpj("#rev_slider_1078_1").show().revolution({
+						sliderType:"standard",
+jsFileLocation:"revolution/js/",
+						sliderLayout:"auto",
+						dottedOverlay:"none",
+						delay:9000,
+						navigation: {
+							keyboardNavigation:"off",
+							keyboard_direction: "horizontal",
+							mouseScrollNavigation:"off",
+ 							mouseScrollReverse:"default",
+							onHoverStop:"off",
+							touch:{
+								touchenabled:"on",
+								swipe_threshold: 75,
+								swipe_min_touches: 1,
+								swipe_direction: "horizontal",
+								drag_block_vertical: false
+							}
+							,
+							arrows: {
+								style:"zeus",
+								enable:true,
+								hide_onmobile:true,
+								hide_under:600,
+								hide_onleave:true,
+								hide_delay:200,
+								hide_delay_mobile:1200,
+								tmp:'<div class="tp-title-wrap">  	<div class="tp-arr-imgholder"></div> </div>',
+								left: {
+									h_align:"left",
+									v_align:"center",
+									h_offset:30,
+									v_offset:0
+								},
+								right: {
+									h_align:"right",
+									v_align:"center",
+									h_offset:30,
+									v_offset:0
+								}
+							}
+							,
+							bullets: {
+								enable:true,
+								hide_onmobile:true,
+								hide_under:600,
+								style:"metis",
+								hide_onleave:true,
+								hide_delay:200,
+								hide_delay_mobile:1200,
+								direction:"horizontal",
+								h_align:"center",
+								v_align:"bottom",
+								h_offset:0,
+								v_offset:30,
+								space:5,
+								tmp:'<span class="tp-bullet-img-wrap">  <span class="tp-bullet-image"></span></span><span class="tp-bullet-title">{{title}}</span>'
+							}
+						},
+						viewPort: {
+							enable:true,
+							outof:"pause",
+							visible_area:"80%",
+							presize:false
+						},
+						responsiveLevels:[1240,1024,778,480],
+						visibilityLevels:[1240,1024,778,480],
+						gridwidth:[1240,1024,778,480],
+						gridheight:[600,600,500,400],
+						lazyType:"none",
+						parallax: {
+							type:"mouse",
+							origo:"slidercenter",
+							speed:2000,
+							levels:[2,3,4,5,6,7,12,16,10,50,46,47,48,49,50,55],
+							type:"mouse",
+						},
+						shadow:0,
+						spinner:"off",
+						stopLoop:"off",
+						stopAfterLoops:-1,
+						stopAtSlide:-1,
+						shuffle:"off",
+						autoHeight:"off",
+						hideThumbsOnMobile:"off",
+						hideSliderAtLimit:0,
+						hideCaptionAtLimit:0,
+						hideAllCaptionAtLilmit:0,
+						debugMode:false,
+						fallbacks: {
+							simplifyAll:"off",
+							nextSlideOnWindowFocus:"off",
+							disableFocusListener:false,
+						}
+					});
+				}
+			});	/*ready*/
+
+function more_info(item_id){
+      $.ajax({
+          url: "/ext_info/",
+          type: "get",
+          data: {itemid: item_id},
+          success: function(response) {
+            setTimeout(function(){$(".cbp-popup-content").html(response);},750);
+            }
+          })      
+}
+			
+  </script>
+</body>
+
+</html>

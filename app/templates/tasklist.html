@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>TaskList</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers/header-default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footers/footer-v1.css') }}">     
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/line-icons/line-icons.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/css/sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-clockpicker/bootstrap-clockpicker.css')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='simditor/styles/simditor.css')}}"></script>
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css')}}">
+<style>
+
+.INclass a {
+    font-weight:bold;
+    color:white;
+    background-color: green !important;
+    border:1px solid green;    
+    height:28px;
+    width:28px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+}
+
+.OUTclass a {
+    font-weight:bold;
+    color:red;
+}
+
+.BOTHclass a {
+    font-weight:bold;
+    color:blue;
+}
+
+</style>
+
+</head>	
+
+<body>
+
+
+<div class="wrapper">
+    <!--=== Header ===-->    
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <a class="logo" href="/">
+                <img src="{{ url_for('static', filename='img/logos/logo2.png') }}" alt="Logo" style="margin-bottom:-20px;margin-left:75px;">
+            </a>
+            <!-- End Logo -->        
+            <!-- Topbar -->
+                {% include 'loginbar.html' %}
+            <!-- End Topbar -->      
+            <!-- Toggle get grouped for better mobile display -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-bars"></span>
+            </button>
+            <!-- End Toggle -->                  
+        </div><!--/end container-->
+
+        <!--=== Beg NavBar ===-->
+            {% include 'admin/navbar.html' %}
+        <!--=== End NavBar ===-->
+        
+    </div>
+    <!--=== End Header ===-->
+
+    <!--=== Profile ===-->
+    <div class="profile container content">
+    	<div class="row">
+                <div id="menu_bar">
+                    {% set active_link = ['Scratchbox', 'Uncategorized'] %}
+                    {% include 'taskmgr/leftmenu.html' %}
+                </div>
+            <div class="col-md-9">
+                <!--Profile Body-->
+                <div class="profile-body">
+                    <!--Service Block v3-->
+                    <div class="row margin-bottom-10">
+                        <form action="" id="sky-form2" class="sky-form" method="post">
+                        
+                        <div class="col-sm-6 sm-margin-bottom-20">
+                            <!--Datepicker-->
+                                <div id="inline-start" >
+                                    <input type="text" name="datef" id="datef" value="{{datevar}}" required/>
+                                    <input type="number" name="taskid" id="taskid" style="width:40px;">
+                                </div>
+                                <a id="week_button" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs" style="color:#555; margin:10px;"
+                                    onclick="toggle_view('week_button', 'icon1', 'sched_table')">Week
+                                    <i class="glyphicon glyphicon-remove" style="font-size:16px;margin-left:5px; top: 3px;" id="icon1"></i></a>
+                                    
+                                <a id="daily_button" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs" style="color:#555; margin:10px;"
+                                    onclick="toggle_view('daily_button', 'icon2', 'task_table')" >Daily
+                                    <i class="glyphicon glyphicon-remove" style="font-size:16px;margin-left:5px; top: 3px;" id="icon2"></i></a>
+                                    
+                                <a id="scratch_button" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs" style="color:#555; margin:10px;"
+                                    onclick="toggle_view('scratch_button', 'icon3', 'scratchbox')">Scratch
+                                    <i class="glyphicon glyphicon-remove" style="font-size:16px;margin-left:5px; top: 3px;" id="icon3"></i></a>
+                            <!--End Datepicker-->
+                        </div>
+                        
+                        <div class="col-sm-6">              
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="select">
+                                                    <select id="entry_type" name="entry_type" size="4" style="height:65px">
+                                                        <option value="None" selected disabled style="display:none">Entry Type</option>
+                                                        <option value="Start">Start</option>
+                                                        <option value="Check">Check</option>
+                                                        <option value="End">End</option>
+                                                    </select>
+                                                </label>                                                  
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="text" id="category" name="category" placeholder="Project Name" value="" required autocomplete="on">
+                                                </label>                            
+                                            </section>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <section class="col col-12">
+                                                <label class="textarea">
+                                                    <textarea name="description" id="description" placeholder="Task Description" style="width:410px;"></textarea>
+                                                </label>  
+                                            </section>
+                                         </div>
+                                        <div class="row">
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                                                        <input id="timef" name="timef" type="text" class="form-control" placeholder="TimeStamp">
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-time"></span>
+                                                        </span>
+                                                    </div>
+                                                </label> 
+                                            </section>
+                                            <section class="col col-6">
+                                                <label class="input">
+                                                    <input type="text" id="modified" name="modified" placeholder="Modified(Y/N)" value="">
+                                                </label>
+                                            </section>
+                                         </div>
+
+                                        <div class="row panel-heading overflow-h">
+                                            <section class="col col-6">
+
+                            <a id="check_item" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs" style="color:#555; margin-right:10px;">Now
+                            <i class="glyphicon glyphicon-check" style="font-size:16px;margin-left:2px;"></i></a>   
+                            
+                            <a id="new_item" href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs" style="color:#555;">Clear
+                            <i class="glyphicon glyphicon-fire" style="font-size:16px;margin-left:5px;"></i></a> 
+
+                         
+                                            </section>
+                                            <section class="col col-6">
+                            <a id="del_item" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs" style="color:#555; margin-right:10px;">Del
+                            <i class="glyphicon glyphicon-remove" style="font-size:16px;margin-left:5px;"></i></a>
+                            
+                            <a id="add_item" href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs" style="color:#555;">Add
+                            <i class="glyphicon glyphicon-plus" style="font-size:16px;margin-left:5px;"></i></a> &nbsp;
+                            
+
+                                            </section>
+                                         </div>  
+                        
+                        </div>
+                        </form>
+                    </div><!--/end row-->
+                    <!--End Service Block v3-->
+    <div style="container";>
+        <div class="row">
+            <!--Left Sidebar-->
+            <div id="sched_table">
+                <table style="vertical-align:top; margin-left:20px; width:950px; table-layout:fixed;" border="2">
+                    <tr>
+                        {% for i in dayviews %}
+                        <td style="vertical-align:top; width:100%; background-color:{{i.color}}" ondrop="drop(event, '{{i.date_field}}')" ondragover="allowDrop(event)" id="{{i.dayname}}">
+                            <a href="javascript:void(0)" style="font-family:Meiryo; font-size:13px;" onclick="day_view('{{i.date_field}}')"> {{i.dayname}} </a>
+                                {% for t in trans2 %}
+                                    {% if t.dayvar == i.dayname %}
+                                        <div style="font-size:12px; white-space:nowrap;overflow:hidden; padding-left:3px;text-overflow: ellipsis;" id='{{t.taskid}}' draggable=true 
+                                        ondragstart="drag(event, '{{t.taskid}}', '{{t.category}}', '{{t.entry_type}}', '{{t.description}}', '{{t.timef}}', '{{t.datef}}' )" 
+                                        onclick="edit_sched('{{t.taskid}}', '{{t.category}}', '{{t.entry_type}}', '{{t.description}}', '{{t.timef}}', '{{t.datef}}' )">
+                                            {{t.timef}} {{t.category}} {{t.entry_type}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-3 md-margin-bottom-40">
+            <span id="suggest">
+            </span>
+            </div>
+        </div>
+    </div>
+
+<hr style="margin:0px; margin-bottom: 20px;">
+                <div class="wrapper" id="task_table">
+                    <div class="panel-heading overflow-h" style="color:#555;">
+                        <h2 class="panel-title heading-sm pull-left" style="color:#555;"><i class="fa fa-tasks"></i>ListView</h2>
+                        <a id="reset" href="javascript:void(0)" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right" style="margin-left:20px;">View All</a>
+                        <form class="sky-form">
+                        <label class="select pull-right">
+                            <select id="trans_method" name="trans_method" style="width:130px;">
+                                <option value="None" selected disabled style="display:none">Emp View</option>
+                                <option value="confirmed">Table1</option>
+                                <option value="confirmed">Table2</option>
+                                <option value="cancelled">Table3</option>
+                                <option value="noshow">Table4</option>
+                            </select>
+                            <i></i>
+                        </label>
+                        </form>                        
+                        
+                    </div>
+
+                    <!--Table Search v1-->
+                    <div class="table-search-v1">
+                    
+                        <div class="table-responsive">
+                         <div class="tab-v1">
+                            <ul class="nav nav-justified nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#profile">Task Descriptions</a></li>
+                            </ul>
+                   		</div>
+                   	    <div class="tab-content">
+                                <div id="profile" class="profile-edit tab-pane fade in active">
+                                    <table class="table table-hover">
+                                            <tr>
+                                                <th style="white-space:nowrap;" width="10%">Project</th>
+                                                <th width="10%">Type</th>
+                                                <th width="50%">Description</th>
+                                                <th width="15%">Timestamp</th>
+                                                <th width="15%">Date</th>
+                                            </tr>
+                                            <tbody id='changebody'>
+                                                {% include 'taskdatelist.html' %}
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                    <!--End Table Search v1-->
+                        
+                <hr style="margin:0px; margin-bottom: 20px;">
+                <div id="scratchbox">
+                    <div class="col col-12 margin-bottom-10">
+                        <button type="button" id="edit_scratch" class="btn-u btn-u-default btn-u-sm btn-block">Edit ScratchBox</button>
+                    </div>
+                    <div class="row margin-bottom-10" id="text_input" style="padding-left: 31px;">
+                        <div class="col col-12"> 
+                            <!--Input TextArea-->
+                                <div class="row">
+                                    <section class="col col-12">
+                                        <label class="textarea">
+                                            <textarea name="content" id="content"></textarea>
+                                        </label>                    
+                                    </section>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row margin-bottom-10" id="text_display" style="padding-left: 31px; font-size: 14px;display:none; visibility: hidden;">
+                        <div class="col col-12"> 
+                            <!--Input TextArea-->
+                            <p>
+                                <div name="multiline" id="multiline"> Sample Text Here.</div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                </div>
+                <!--End Profile Body-->
+            </div>
+        </div><!--/end row-->
+    </div><!--/container-->    
+    <!--=== End Profile ===-->
+    <div class="footer-v1">
+        <!--=== Copyright ===-->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            2014 &copy; Unify. ALL Rights Reserved. 
+                            <a target="_blank" href="https://twitter.com/htmlstream">Htmlstream</a> | <a href="javascript:void(0)">Privacy Policy</a> | <a href="javascript:void(0)">Terms of Service</a>
+                        </p>
+                    </div>
+                    <div class="col-md-6">  
+                        <a href="index.html">
+                            <img class="pull-right" id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png')}} " alt="">
+                        </a>
+                    </div>
+                </div>
+            </div> 
+        </div><!--/copyright--> 
+        <!--=== End Copyright ===-->
+    </div>
+</div><!--/wrapper-->
+
+<!-- JS Global Compulsory -->           
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery/jquery-migrate.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js')}}"></script> 
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/smoothScroll.js')}}"></script>
+<script src="{{ url_for('static', filename='plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js')}}"></script>
+<!-- JS Customization -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/custom.js')}}"></script>
+
+<!-- JS Page Level -->           
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js')}}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/plugins/datepicker.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap-clockpicker/bootstrap-clockpicker.js')}}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='simditor/site/assets/scripts/module.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='simditor/site/assets/scripts/hotkeys.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='simditor/site/assets/scripts/uploader.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='simditor/site/assets/scripts/simditor.js')}}"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        Datepicker.initDatepicker();
+    });
+</script>
+        
+<script type="text/javascript">
+
+var tx = document.getElementsByTagName('textarea');;
+for (var i = 0; i < tx.length; i++) {
+  tx[i].setAttribute('style', 'height:' + (tx[i].scrollHeight) + 'px;overflow-y:hidden;' + 'width:410px');
+  tx[i].addEventListener("input", OnInput, false);
+}
+
+function OnInput() {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+}
+
+Simditor.locale = 'en-US';
+
+var editor = new Simditor({
+  textarea: $('#content')
+});
+
+var eventDates = getdates('{{ref}}');
+
+$('#inline-start').datepicker({
+    onSelect: function(dateText, inst)
+    {
+      var dateAsString = dateText; //the first parameter of this function
+      var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+
+      document.getElementById("datef").value = dateAsString.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+
+      $.ajax({
+          url: "/taskdatelist/",
+          type: "get",
+          data: {jsdata: dateText,
+                 e_date: dateText},
+          success: function(response) {
+            $("#changebody").html(response);}
+          })
+      $.ajax({
+          url: "/tasktableupdate/",
+          type: "get",
+          data: {dateg: dateText},
+          success: function(response) {
+            $("#sched_table").html(response);}
+          })
+      $.ajax({
+          url: "/date_test_task/",
+          type: "get",
+          dataType: "json",
+          data: {jsdata: dateText},
+          success: function(response)
+          {
+            var dataObject = response;
+            eventDates = {};
+            for (i=0; i < dataObject.length; i++)
+            {
+                dataObject[i] = formatDate(dataObject[i]).toString();
+                eventDates[new Date(dataObject[i])] = new Date(dataObject[i]).toString();
+            }
+            $("#inline-start").datepicker("setDate", dateText);
+          }
+        })         
+    },
+    beforeShowDay: function(date) {
+        var highlight = eventDates[date];
+        if (highlight)
+            { return [true, "INclass", highlight];
+             }
+        else {return [true, '', ''];}
+    }
+});
+
+function getdates(ref) {
+    eventDates = new Object();
+    $.ajax({
+      url: "/date_test_task/",
+      type: "get",
+      dataType: "json",
+      success: function(response)
+      {
+        var dataObject = response;
+        for (i=0; i < dataObject.length; i++)
+        {
+            dataObject[i] = formatDate(dataObject[i]).toString();
+            eventDates[new Date(dataObject[i])] = new Date(dataObject[i]).toString();
+        }
+        if (ref) {
+            var new_date = ref.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+            $("#inline-start").datepicker("setDate", new_date);
+            }
+        else {
+            $("#inline-start").datepicker("setDate", new Date());
+            }
+      }
+    })
+    document.getElementById("datef").value = ref.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
+    return eventDates;
+}
+
+function toggle_view(button, icon, section) {
+    var button_id = document.getElementById(button),
+        icon_id = document.getElementById(icon),
+        section = document.getElementById(section);
+
+     if (section.style.display != 'none'){
+             section.style.display='none';
+             section.style.visibility='hidden';        }
+     else { section.style.display='table-row-group';
+            section.style.visibility='visible';}
+
+    if (icon_id.classList.contains('glyphicon-remove')){
+            icon_id.classList.remove('glyphicon-remove');
+            icon_id.classList.add('glyphicon-search');}
+     else { icon_id.classList.remove('glyphicon-search');
+            icon_id.classList.add('glyphicon-remove');}
+}
+
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [month, day, year].join('/');
+}
+
+function clear_inputs(){
+    document.getElementById("taskid").value='';
+    document.getElementById("category").value='';
+    document.getElementById("entry_type").value='';
+    document.getElementById("description").value='';
+    document.getElementById("description").innerHTML="";
+    document.getElementById("timef").value="";
+    document.getElementById("datef").value="";
+    document.getElementById("modified").value="";
+    document.getElementById("content").innerHTML ='';
+    document.getElementById("content").value ='';
+    document.getElementById("multiline").innerHTML ='';
+    editor.setValue('');
+}
+
+$(document).ready(function() {
+    $("#add_item").click(function() {
+         if ((document.getElementById("description").value != ""))
+            {
+                $.ajax({
+                  url: "/task_add/",
+                  type: "get",
+                  data: {taskid: document.getElementById("taskid").value,
+                         category: document.getElementById("category").value,
+                         entry_type: document.getElementById("entry_type").value,
+                         description: document.getElementById("description").value,
+                         timef: document.getElementById("timef").value,
+                         datef: document.getElementById("datef").value,
+                         scratchbox: document.getElementById("content").value,
+                         },
+                  success: function(response) {
+                    $("#sched_table").html(response);}
+                  })
+                
+                var new_date = document.getElementById("datef").value.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+                $.ajax({
+                      url: "/taskdatelist/",
+                      type: "get",
+                      data: {jsdata: new_date,
+                             e_date: document.getElementById("datef").value},
+                      success: function(response) {
+                        $("#changebody").html(response);}
+                      })
+                $.ajax({
+                  url: "/taskmenuupdate/",
+                  type: "get",
+                  success: function(response) {
+                    $("#menu_bar").html(response);}
+                  })
+                $.ajax({
+                      url: "/date_test_task/",
+                      type: "get",
+                      dataType: "json",
+                      data: {jsdata: document.getElementById("datef").value},
+                      success: function(response)
+                      {
+                        var dataObject = response;
+                        eventDates = {};
+                        for (i=0; i < dataObject.length; i++)
+                        {
+                            dataObject[i] = formatDate(dataObject[i]).toString();
+                            eventDates[new Date(dataObject[i])] = new Date(dataObject[i]).toString();
+                        }
+                        var new_date = document.getElementById("datef").value.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+                        $("#inline-start").datepicker("setDate", new_date);}
+                      })
+                clear_inputs();
+            }
+         else {alert('Please Fill in Fields');}
+    });
+
+    $("#check_item").click(function() {
+         if ((document.getElementById("description").value != ""))
+            {
+                $.ajax({
+                  url: "/task_add/",
+                  type: "get",
+                  data: {category: document.getElementById("category").value,
+                         entry_type: document.getElementById("entry_type").value,
+                         description: document.getElementById("description").value,
+                         datef: document.getElementById("datef").value,
+                         },
+                  success: function(response) {
+                    $("#sched_table").html(response);}
+                  })
+                
+                var new_date = document.getElementById("datef").value.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+                $.ajax({
+                      url: "/taskdatelist/",
+                      type: "get",
+                      data: {jsdata: new_date,
+                             e_date: document.getElementById("datef").value},
+                      success: function(response) {
+                        $("#changebody").html(response);}
+                      })
+                $.ajax({
+                  url: "/taskmenuupdate/",
+                  type: "get",
+                  success: function(response) {
+                    $("#menu_bar").html(response);}
+                  })
+                $.ajax({
+                      url: "/date_test_task/",
+                      type: "get",
+                      dataType: "json",
+                      data: {jsdata: document.getElementById("datef").value},
+                      success: function(response)
+                      {
+                        var dataObject = response;
+                        eventDates = {};
+                        for (i=0; i < dataObject.length; i++)
+                        {
+                            dataObject[i] = formatDate(dataObject[i]).toString();
+                            eventDates[new Date(dataObject[i])] = new Date(dataObject[i]).toString();
+                        }
+                        var new_date = document.getElementById("datef").value.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+                        $("#inline-start").datepicker("setDate", new_date);}
+                      })
+                clear_inputs();
+            }
+         else {alert('Please Fill in Fields');}
+    });    
+
+    $("#del_item").click(function() {
+         if ((document.getElementById("taskid").value != ""))
+            {
+                if (confirm("Confirm Delete?")){
+                    var new_date = document.getElementById("datef").value.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+                    $.ajax({
+                      url: "/task_del/",
+                      type: "get",
+                      data: {taskid: document.getElementById("taskid").value,
+                             datef: document.getElementById("datef").value
+                             },
+                      success: function(response) {
+                        $("#sched_table").html(response);}
+                      })
+                    $.ajax({
+                      url: "/taskdatelist/",
+                      type: "get",
+                      data: {jsdata: new_date,
+                             e_date: document.getElementById("datef").value},
+                      success: function(response) {
+                        $("#changebody").html(response);}
+                      })
+                    $.ajax({
+                      url: "/taskmenuupdate/",
+                      type: "get",
+                      success: function(response) {
+                        $("#menu_bar").html(response);}
+                      })
+                  $.ajax({
+                      url: "/date_test_task/",
+                      type: "get",
+                      dataType: "json",
+                      data: {jsdata: document.getElementById("datef").value},
+                      success: function(response)
+                      {
+                        var dataObject = response;
+                        eventDates = {};
+                        for (i=0; i < dataObject.length; i++)
+                        {
+                            dataObject[i] = formatDate(dataObject[i]).toString();
+                            eventDates[new Date(dataObject[i])] = new Date(dataObject[i]).toString();
+                        }
+                        var new_date = document.getElementById("datef").value.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+                        $("#inline-start").datepicker("setDate", new_date);
+                        }
+                      })
+                    clear_inputs();
+                }
+            }
+         else {alert('No Item to Delete');}
+    });
+
+    $("#edit_scratch").click(function() {
+         document.getElementById("multiline").innerHTML = editor.getValue();
+         if ((document.getElementById("text_input").style.display == 'none'))
+            {   
+                document.getElementById("text_input").style.display='block';
+                document.getElementById("text_input").style.visibility='visible';
+                document.getElementById("content").dispatchEvent(new Event("input"));
+                document.getElementById("text_display").style.display='none';
+                document.getElementById("text_display").style.visibility='hidden';
+            }
+         else {
+                document.getElementById("text_input").style.display='none';
+                document.getElementById("text_input").style.visibility='hidden';
+                document.getElementById("text_display").style.display='block';
+                document.getElementById("text_display").style.visibility='visible';
+
+             }
+    });      
+
+    $("#new_item").click(function() {
+        clear_inputs()
+    });   
+    
+    $("#reset").click(function() {
+        $.ajax({
+          url: "/taskdatelist/",
+          type: "get",
+          success: function(response) {
+            $("#changebody").html(response);}
+          })
+    });
+    var now = new Date();
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+});
+
+function single_view(category, date){
+      $.ajax({
+          url: "/taskdatelist/",
+          type: "get",
+          data: {jsdata: date,
+                 category: category},
+          success: function(response) {
+            $("#changebody").html(response);}
+          })
+      $.ajax({
+          url: "/tasktableupdate/",
+          type: "get",
+          data: {dateg: date,
+                 category: category},
+          success: function(response) {
+            $("#sched_table").html(response);}
+          })
+      $.ajax({
+          url: "/date_test_task/",
+          type: "get",
+          dataType: "json",
+          data: {jsdata: date,
+                 category:category},
+          success: function(response)
+          {
+            var dataObject = response;
+            eventDates = {};
+            for (i=0; i < dataObject.length; i++)
+            {
+                dataObject[i] = formatDate(dataObject[i]).toString();
+                eventDates[new Date(dataObject[i])] = new Date(dataObject[i]).toString();
+            }
+            var new_date = date.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+            $("#inline-start").datepicker("setDate", new_date);
+          }
+        })      
+}
+
+function day_view(date){
+      $.ajax({
+          url: "/taskdatelist/",
+          type: "get",
+          data: {jsdata: date,
+                 e_date: date},
+          success: function(response) {
+            $("#changebody").html(response);}
+          })
+      $.ajax({
+          url: "/date_test_task/",
+          type: "get",
+          dataType: "json",
+          data: {jsdata: date,
+                 e_date: date},
+          success: function(response)
+          {
+            var dataObject = response;
+            eventDates = {};
+            for (i=0; i < dataObject.length; i++)
+            {
+                dataObject[i] = formatDate(dataObject[i]).toString();
+                eventDates[new Date(dataObject[i])] = new Date(dataObject[i]).toString();
+            }
+            var new_date = date.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+            $("#inline-start").datepicker("setDate", new_date);
+          }
+        })      
+}
+
+function edit_sched(taskid, category, entry_type, description, timef, datef){
+    document.getElementById("taskid").value = taskid;
+    if (category != 'None') {document.getElementById("category").value = category;}
+        else if (category == 'None') {document.getElementById("category").value = '';}
+    if (entry_type != 'None') {document.getElementById("entry_type").value = entry_type;}
+        else if (entry_type == 'None') {document.getElementById("entry_type").value = '';}
+    if (description != 'None') {var content_replace = description.replace(/<br\s\/>/g, "\n");
+                                document.getElementById("description").innerHTML = content_replace;
+                                document.getElementById("description").value = content_replace;
+                                document.getElementById("description").dispatchEvent(new Event("input"));}
+        else if (description == 'None') {document.getElementById("description").value = '';
+                                         document.getElementById("description").innerHTML='';}
+    if (timef != 'None') {document.getElementById("timef").value = timef;}
+        else if (timef == 'None') {document.getElementById("timef").value = '';}
+    document.getElementById("datef").value = datef;
+    var new_date = datef.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+    $("#inline-start").datepicker("setDate", new_date);
+          $.ajax({
+          url: "/scratch_query/",
+          type: "get",
+          data: {taskid: taskid},
+          success: function(response) {
+            editor.setValue(response);
+            document.getElementById("multiline").innerHTML = response;
+            document.getElementById("content").dispatchEvent(new Event("response"));}
+          })
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drag (event, taskid) {
+    event.dataTransfer.setData("text", event.target.id);
+    document.getElementById("taskid").value = taskid;
+}
+
+function drop(event, date_field) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+      $.ajax({
+          url: "/tasktablecommit/",
+          type: "get",
+          data: {sdate: date_field,
+                 taskid: document.getElementById("taskid").value,
+                 },
+          success: function(response) {
+            $("#sched_table").html(response);}
+      })
+      $.ajax({
+          url: "/taskdatelist/",
+          type: "get",
+          data: {jsdata: date_field},
+          success: function(response) {
+            $("#changebody").html(response);}
+          })
+      $.ajax({
+          url: "/date_test_task/",
+          type: "get",
+          dataType: "json",
+          data: {jsdata: date_field},
+          success: function(response)
+          {
+            var dataObject = response;
+            eventDates = {};
+            for (i=0; i < dataObject.length; i++)
+            {
+                dataObject[i] = formatDate(dataObject[i]).toString();
+                eventDates[new Date(dataObject[i])] = new Date(dataObject[i]).toString();
+            }
+            var new_date = date_field.replace(/(\d{4})-(\d\d)-(\d\d)/, "$2/$3/$1");
+            $("#inline-start").datepicker("setDate", new_date);
+          }
+        })    
+    event.target.appendChild(document.getElementById(data));
+}
+
+$('.clockpicker').clockpicker();
+
+
+</script> 
+ 
+
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js')}}"></script>
+    <script src="{{ url_for('static', filename='plugins/html5shiv.js')}}"></script>
+<![endif]-->
+
+</body>
+</html>	

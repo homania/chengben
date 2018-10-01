@@ -14,8 +14,12 @@
 
                 <!-- Logo -->
                 <div class="logo" style="padding:0px;">
-                    <a href="../">
-                        <img id="logo-header" src="../static/img/logo2.png" alt="Logo" style="width:inherit;">
+                    {% if menu_mgmt == 1 %}
+                        <a href="/l1mgmt/">
+                    {%else%}
+                        <a href="/">
+                    {%endif%}
+                        <img id="logo-header" src="{{ url_for('static', filename='img/logos/logo2.png') }}" alt="Logo" style="width:inherit;">
                     </a>
                 </div>
                 <!-- End Logo -->
