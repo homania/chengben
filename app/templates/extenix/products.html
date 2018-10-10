@@ -86,16 +86,18 @@
                     <div id="js-filters-juicy-projects1" class="cbp-l-filters-button cbp-l-filters-left">
                         <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All</div>
                         <div data-filter=".RACK" class="cbp-filter-item">Rack Mount</div>
-                        <div data-filter=".MODULE" class="cbp-filter-item">Component</div>
+                        <div data-filter=".MODULE" class="cbp-filter-item">Module</div>
+                        <div data-filter=".AMP" class="cbp-filter-item">Amplifier</div>
+                        <div data-filter=".NEW" class="cbp-filter-item">NEW!</div>
                     </div>
 
                     <div id="js-filters-juicy-projects2" class="cbp-l-filters-button cbp-l-filters-right">
                         <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All</div>
                         <div data-filter=".USB" class="cbp-filter-item">USB/SD</div>
-                        <div data-filter=".DAB" class="cbp-filter-item">SAB+</div>
+                        <div data-filter=".DAB" class="cbp-filter-item">DAB+</div>
                         <div data-filter=".FM" class="cbp-filter-item">FM Tuner</div>
                         <div data-filter=".CD" class="cbp-filter-item">Compact Disc</div>
-                        <div data-filter=".SPEAKER" class="cbp-filter-item">Speaker</div>
+                        <div data-filter=".IT" class="cbp-filter-item">iRadio</div>
                         <div data-filter=".CASSETTE" class="cbp-filter-item">Cassette</div>
                     </div>
                 </div>
@@ -107,8 +109,8 @@
                     {% for item in items %}
                     <div class="cbp-item {{item.tags}}">
                         <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="{{item.sm_img_link}}" style="height:170px!important; width:auto!important" alt="">
+                            <div class="cbp-caption-defaultWrap" style="height:170px!important;">
+                                <img src="../../static/unify251/img/extenix/{{item.sm_img_link}}" style="max-height:170px!important; width:auto!important" alt="">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -116,7 +118,7 @@
 <a href="../../static/unify251/templates/project.html" class="cbp-singlePage cbp-l-caption-buttonLeft" rel="nofollow" onclick="more_info('{{item.item_id}}')">
 
                                         more info</a>
-                                        <a href="{{item.lg_img_link}}" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="Dashboard<br>by Paul Flavius Nechita">view larger</a>
+                                        <a href="../../static/unify251/img/extenix/{{item.lg_img_link}}" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="Dashboard<br>by Paul Flavius Nechita">view larger</a>
                                     </div>
                                 </div>
                             </div>
